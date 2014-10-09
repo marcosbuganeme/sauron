@@ -29,9 +29,7 @@
 	<h:outputScript library="js" name="tv.js" />
 
 	<title>
-		<ui:insert name="titulo">
-			<h:outputText value="Sauron" />
-		</ui:insert>
+		<ui:insert name="titulo">#{msgs['titulo.generico']}</ui:insert>
 	</title>
 
 </h:head>
@@ -60,7 +58,7 @@
 						<span class="icon-bar"></span>
 					</button>
 					<a class="navbar-brand" href="/sauron/paginas/inicial.xhtml">
-						<span class="fontePreta">SGB MENU</span>
+						<span class="fontePreta">#{msgs['titulo.sgb']}</span>
 					</a>
 				</div>
 
@@ -68,74 +66,72 @@
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
 						<li>
-							<a href="/sauron/paginas/inicial.xhtml"><span class="fontePreta">Home</span></a>
+							<h:link value="#{msgs['menu.home']}" outcome="/paginas/inicial.xhtml" />
 						</li>
 
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								<span class="fontePreta">Relatório<span class="caret" /></span>
+								<span>#{msgs['menu.relatorio']}<span class="caret" /></span>
 							</a>
 
 							<ul class="dropdown-menu" role="menu">
 								<li>
-									<a href="/sauron/paginas/grafico/grafico_bitcoin.xhtml">Cotação bitcoin</a>
+									<h:link value="#{msgs['menu.cotacaobitcoin']}" outcome="/paginas/grafico/grafico_bitcoin.xhtml" />
 								</li>
 							</ul>
 						</li>
 
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								<span class="fontePreta">Ferramentas Administrativas <span class="caret"/></span>
+								<span>#{msgs['menu.ferramentasadministrativas']}<span class="caret"/></span>
 							</a>
 
 							<ul class="dropdown-menu" role="menu">
 								<li>
-									<p:link value="Gerenciar Usuário" outcome="/paginas/usuario/inicial" />
+									<h:link value="#{msgs['submenu.usuario']}" outcome="/paginas/usuario/inicial" />
 								</li>
 
 								<li>
-									<p:link value="Gerenciar Permissão" outcome="/paginas/permissao/inicial" />
+									<h:link value="#{msgs['submenu.permissao']}" outcome="/paginas/permissao/inicial" />
 								</li>
 
 								<li>
-									<p:link value="Gerenciar Carteira" outcome="/paginas/carteira/inicial" />
+									<h:link value="#{msgs['submenu.carteira']}" outcome="/paginas/carteira/inicial" />
 								</li>
 
 								<li>
-									<p:link value="Gerenciar Bitcoin" outcome="/paginas/bitcoin/inicial" />
+									<h:link value="#{msgs['submenu.bitcoin']}" outcome="/paginas/bitcoin/inicial" />
 								</li>
 
 								<li>
-									<p:link value="Gerenciar Transação" outcome="/paginas/transacao/inicial" />
+									<h:link value="#{msgs['submenu.transacao']}" outcome="/paginas/transacao/inicial" />
 								</li>
 							</ul>
 						</li>
 
 						<li>
-							<a href="/sauron/paginas/contato/detalhar.xhtml"><span class="fontePreta">Contato</span></a>
+							<h:link value="#{msgs['menu.contato']}" outcome="/paginas/contato/detalhar.xhtml" />
 						</li>
 
 					</ul>
 
 					<ul class="nav navbar-nav navbar-right">
 						<li style="margin-top: 15px">
-							<span class="fontePreta">Seja bem vindo, 
-								<small>#{manterUsuarioLogadoController.nomeUsuarioLogado}</small>
-							</span>
+							<span>#{msgs['label.boasvindas']}<small>#{manterUsuarioLogadoController.nomeUsuarioLogado}</small></span>
 						</li>
 
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								<span class="fontePreta">Opções <span class="caret" /></span>
+								<span>#{msgs['menu.opcoes']} <span class="caret" /></span>
 							</a>
 
 							<ul class="dropdown-menu" role="menu">
 								<li>
-									<a href="#">Estatística</a>									
+									<a href="#">#{msgs['submenu.estatistica']}</a>									
 								</li>
 
 								<li>
-									<a href="/sauron/j_spring_security_logout">Sair</a>
+									<a href="/sauron/j_spring_security_logout">#{msgs['submenu.sair']}</a>
 								</li>
 							</ul>
 						</li>

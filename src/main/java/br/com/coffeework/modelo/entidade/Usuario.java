@@ -59,7 +59,7 @@ public class Usuario extends EntidadeSauron {
 
 	/** Atributo senha. */
 	@NotEmpty
-	@Column(name = "senha", length = 60)
+	@Column(name = "senha", length = 32)
 	private String senha;
 
 	/**
