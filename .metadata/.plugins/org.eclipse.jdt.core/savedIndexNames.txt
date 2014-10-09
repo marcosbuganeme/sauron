@@ -1,0 +1,1 @@
+INDEX VERSION 1.127+C:\ambiente\desenvolvimento\workspace\cursos\sauron\.metadata\.plugins\org.eclipse.jdt.core

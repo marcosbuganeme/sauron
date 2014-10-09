@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/template/template.xhtml">
+
+<ui:define name="titulo">#{msgs['contato.titulo']}</ui:define>
+
+<ui:define name="titulo_conteudo">
+	<h1 class="well">
+		<span>#{msgs['contato.titulo.pagina']}</span>
+	</h1>
+</ui:define>
+
+<ui:define name="conteudo">
+
+	<h3> 
+		<span class="label label-default">#{msgs['contato.nomedesenvolvedor']}</span>
+	</h3>
+
+	<ul class="list-group">
+		<li class="list-group-item">
+			<span class="badge">2</span>
+			<span>#{msgs['contato.titulo01']}</span>
+		</li>
+		
+		<li class="list-group-item">
+			<span>#{msgs['contato.titulo01.label01']}</span>
+			<br />
+			<span>#{msgs['contato.titulo01.label02']}</span>
+		</li>
+	</ul>
+
+	<ul class="list-group">
+		<li class="list-group-item">
+			<span class="badge">2</span>
+			<h:outputText value="#{msgs['contato.titulo02']}" />
+  		</li>
+  		<li class="list-group-item">
+			<h:outputText value="#{msgs['contato.titulo02.label01']}" />
+			<br />
+			<h:outputText value="#{msgs['contato.titulo02.label02']}" />
+		</li>			
+	</ul>
+
+	<ul class="list-group">
+		<li class="list-group-item">
+			<span class="badge">9</span>
+			<h:outputText value="#{msgs['contato.titulo03']}" />
+  		</li>
+
+  		<li class="list-group-item">
+			<h:outputText value="#{msgs['contato.titulo03.label01']}" />
+			<br />
+			<h:outputText value="#{msgs['contato.titulo03.label02']}" />
+			<br />
+			<h:outputText value="#{msgs['contato.titulo03.label03']}" />
+			<br />
+			<h:outputText value="#{msgs['contato.titulo03.label04']}" />
+			<br />
+			<h:outputText value="#{msgs['contato.titulo03.label05']}" />
+			<br />
+			<h:outputText value="#{msgs['contato.titulo03.label06']}" />
+			<br />
+			<h:outputText value="#{msgs['contato.titulo03.label07']}" />
+			<br />
+			<h:outputText value="#{msgs['contato.titulo03.label08']}" />
+			<br />
+			<h:outputText value="#{msgs['contato.titulo03.label09']}" />
+		</li>
+	</ul>
+
+	<ul class="list-group">
+		<li class="list-group-item">
+			<span class="badge">3</span>
+			<h:outputText value="#{msgs['contato.titulo04']}" /> 
+		</li>
+		<li class="list-group-item">
+			<h:outputText value="#{msgs['contato.titulo04.label01']}" />
+			<br />
+			<h:outputText value="#{msgs['contato.titulo04.label02']}" />
+			<br />
+			<h:outputText value="#{msgs['contato.titulo04.label03']}" />
+		</li>
+	</ul>
+
+	<ul class="list-group">
+		<li class="list-group-item">
+			<span class="badge">4</span>
+			<h:outputText value="#{msgs['contato.titulo05']}" />
+		</li>
+		<li class="list-group-item">
+			<span>#{msgs['contato.titulo05.label01']}</span>
+			<br />
+			<span>#{msgs['contato.titulo05.label02']}</span>
+			<br />
+			<span>#{msgs['contato.titulo05.label03']}</span>
+			<br />
+			<span>#{msgs['contato.titulo05.label04']}</span>
+			<br />
+			<span>#{msgs['contato.titulo05.label05']}</span>
+		</li>
+	</ul>
+
+	<ul class="list-group">
+		<li class="list-group-item">
+			<span class="badge">3</span>
+			<h:outputText value="#{msgs['contato.titulo06']}" />
+		</li>
+
+		<li class="list-group-item">
+			<h:outputText value="#{msgs['contato.titulo06.label01']}" />
+			<br />
+			<h:outputText value="#{msgs['contato.titulo06.label02']}" />
+			<br />
+			<h:outputText value="#{msgs['contato.titulo06.label03']}" />
+			<br />
+		</li>
+	</ul>
+
+</ui:define>
+
+</ui:composition>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrought"
+	xmlns:o="http://omnifaces.org/ui"
+	template="/WEB-INF/template/template.xhtml">
+
+<ui:define name="titulo">#{msgs['usuario.titulo']}</ui:define>
+
+<ui:define name="titulo_conteudo">
+	<h2 class="well">
+		<span jsf:rendered="#{manterUsuarioController.formulario.entidade.novoRegistro}">#{msgs['usuario.label.incluir']}</span>
+		<span jsf:rendered="#{!manterUsuarioController.formulario.entidade.novoRegistro}">#{msgs['usuario.label.editar']}</span>
+	</h2>
+</ui:define>
+
+<ui:define name="conteudo">
+
+	<f:metadata>
+		<o:viewParam name="usuario" value="#{manterUsuarioController.formulario.entidade}" />
+	</f:metadata>
+
+	<h:form id="frm">
+		<p:panel id="panelUsuario" styleClass="sem-bordas">
+			<f:facet name="header">´
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<div class="pull-left">
+							<div class="btn-group">				
+								<h:commandButton id="btnSalvar" value="#{msgs['btn.salvar']}"
+									action="#{manterUsuarioController.salvar()}" title="#{msgs['btn.salvar.title']}" 
+									rendered="#{manterUsuarioController.formulario.entidade.novoRegistro}" 
+									styleClass="btn btn-lg btn-success" />
+
+								<h:commandButton id="btnEditar" value="#{msgs['btn.editar']}"
+									title="#{msgs['btn.editar.title']}"
+									action="#{manterUsuarioController.mesclar()}"
+									rendered="#{!manterUsuarioController.formulario.entidade.novoRegistro}" 
+									styleClass="btn btn-lg btn-success" />
+
+								<h:button id="btnCancelar" value="#{msgs['btn.cancelar']}"
+									title="#{msgs['btn.cancelar.title']}"
+									outcome="/paginas/usuario/inicial" styleClass="btn btn-lg btn-default" />
+
+								<h:button id="btnLimpar" value="#{msgs['btn.limpar']}"
+									title="#{msgs['btn.limpar.title']}"
+									styleClass="btn btn-lg btn-danger" />
+							</div>
+						</div>
+
+						<div class="pull-right">
+							<div class="btn-group">
+								<h:button id="btnPesquisar" value="#{msgs['btn.pesquisar']}"
+									title="#{msgs['btn.pesquisar.title']}"
+									outcome="/paginas/usuario/detalhar" styleClass="btn btn-lg btn-warning" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</f:facet>
+
+			<p:focus context="panelUsuario" />
+
+			<p:spacer height="2px" />
+
+			<div class="row" jsf:rendered="#{!manterUsuarioController.formulario.entidade.novoRegistro}">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<h3><b><span>#{msgs['usuario.label.datacadastrada']} #{manterUsuarioController.dataCadastroFormatada}</span></b></h3>
+				</div>
+			</div>
+
+			<p:spacer height="5px" />
+
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+						<p:outputLabel value="#{msgs['usuario.label.nome']}" for="txtNome" />
+						<span style="color: red !important;">*</span>
+					</div>
+
+					<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+						<p:inputText id="txtNome" value="#{manterUsuarioController.formulario.entidade.nome}" maxlength="80" 
+							pt:placeholder="#{msgs['usuario.placeholder.nome']}" style="width: 100%;" />
+					</div>
+				</div>
+			</div>					
+
+			<p:spacer height="5px" />
+
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+						<p:outputLabel value="#{msgs['usuario.label.email']}" for="txtEmail" />
+						<span style="color: red !important;">*</span>
+					</div>
+
+					<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+						<p:inputText id="txtEmail" value="#{manterUsuarioController.formulario.entidade.email}"
+							pt:placeholder="#{msgs['usuario.placeholder.email']}"
+							maxlength="80" style="width: 100%;" />
+					</div>
+				</div>
+			</div>
+
+			<p:spacer height="5px" />
+
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+						<p:outputLabel value="#{msgs['usuario.label.cpf']}" for="txtCPF" />
+						<span style="color: red !important">*</span>
+					</div>
+
+					<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+						<p:inputText id="txtCPF" value="#{manterUsuarioController.formulario.entidade.cpf}"
+							pt:placeholder="#{msgs['usuario.placeholder.cpf']}"
+							maxlength="14" style="width: 100%;" />
+					</div>
+
+					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+						<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+							<h:commandButton id="btnGerarCPF" value="gerar cpf" action="#{manterUsuarioController.gerarCPF()}" styleClass="btn btn-default">
+								<p:ajax process="@this" update="frm:txtCPF" partialSubmit="true" />
+							</h:commandButton>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<p:spacer height="5px" />
+
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+						<p:outputLabel value="#{msgs['usuario.label.senha']}" for="txtSenha" />
+						<span style="color: red !important">*</span>
+					</div>
+
+					<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+						<p:password id="txtSenha" value="#{manterUsuarioController.formulario.entidade.senha}"
+							placeholder="#{msgs['usuario.placeholder.senha']}" maxlength="20" style="width: 100%;" />
+					</div>
+
+					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" />
+				</div>
+			</div>
+		</p:panel>
+	</h:form>
+</ui:define>
+</ui:composition>

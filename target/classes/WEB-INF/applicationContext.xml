@@ -1,0 +1,57 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/security
+           http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+	<beans:bean id="appUserDetailsService"
+		class="br.com.coffeework.springsecurity.AppUserDetailsService" />
+
+	<http pattern="/paginas/login.xhtml" security="none" />
+	<http pattern="/paginas/erro/404.xhtml" security="none" />
+	<http pattern="/javax.faces.resource/**" security="none" />
+
+
+	<http auto-config="false" use-expressions="true">
+		<form-login login-page="/paginas/login.xhtml" authentication-failure-url="/paginas/login.xhtml?invalid=true"
+			default-target-url="/" always-use-default-target="true" />
+
+		<logout logout-url="/j_spring_security_logout" invalidate-session="true" />
+
+		<intercept-url pattern="/paginas/inicial.xhtml" access="isAuthenticated()" />
+
+		<intercept-url pattern="/paginas/contato/**" access="hasAnyRole('USUARIO', 'ADMINISTRADOR')" />
+
+		<intercept-url pattern="/paginas/grafico/**" access="hasAnyRole('USUARIO', 'ADMINISTRADOR')" />
+
+		<intercept-url pattern="/paginas/permissao/inicial.xhtml" access="hasAnyRole('USUARIO', 'ADMINISTRADOR')" />
+		<intercept-url pattern="/paginas/permissao/incluir.xhtml" access="hasAnyRole('USUARIO', 'ADMINISTRADOR')" />
+		<intercept-url pattern="/paginas/permissao/detalhar.xhtml" access="hasAnyRole('ADMINISTRADOR')" />
+
+		<intercept-url pattern="/paginas/usuario/inicial.xhtml" access="hasAnyRole('USUARIO', 'ADMINISTRADOR')" />
+		<intercept-url pattern="/paginas/usuario/incluir.xhtml" access="hasAnyRole('USUARIO', 'ADMINISTRADOR')" />
+		<intercept-url pattern="/paginas/usuario/detalhar.xhtml" access="hasAnyRole('ADMINISTRADOR')" />
+
+		<intercept-url pattern="/paginas/carteira/inicial.xhtml" access="hasAnyRole('USUARIO', 'ADMINISTRADOR')" />
+		<intercept-url pattern="/paginas/carteira/incluir.xhtml" access="hasAnyRole('USUARIO', 'ADMINISTRADOR')" />
+		<intercept-url pattern="/paginas/carteira/detalhar.xhtml" access="hasAnyRole('ADMINISTRADOR')" />
+
+		<intercept-url pattern="/paginas/bitcoin/inicial.xhtml" access="hasAnyRole('USUARIO', 'ADMINISTRADOR')" />
+		<intercept-url pattern="/paginas/bitcoin/incluir.xhtml" access="hasAnyRole('USUARIO', 'ADMINISTRADOR')" />
+		<intercept-url pattern="/paginas/bitcoin/detalhar.xhtml" access="hasAnyRole('ADMINISTRADOR')" />
+
+		<intercept-url pattern="/paginas/transacao/inicial.xhtml" access="hasAnyRole('USUARIO', 'ADMINISTRADOR')" />
+		<intercept-url pattern="/paginas/transacao/incluir.xhtml" access="hasAnyRole('USUARIO', 'ADMINISTRADOR')" />
+		<intercept-url pattern="/paginas/transacao/detalhar.xhtml" access="hasAnyRole('ADMINISTRADOR')" />
+
+		<intercept-url pattern="/**" access="denyAll" />
+	</http>
+
+	<authentication-manager>
+		<authentication-provider user-service-ref="appUserDetailsService">
+			<password-encoder hash="md5" />
+		</authentication-provider>
+	</authentication-manager>
+
+</beans:beans>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/template/template.xhtml">
+
+	<ui:define name="titulo">Sauron - Cotação</ui:define>
+
+	<ui:define name="titulo_conteudo">
+		<h2 class="well">
+			<span>Gráfico Cotação Bitcoin - Litcoin</span>
+		</h2>
+	</ui:define>
+
+	<ui:define name="conteudo">
+		<div class="table-responsive">
+			<script type="text/javascript"> 
+				new TradingView.widget({
+					"width": 1024,
+					"height": 600,
+					"symbol": "MERCADO:BTCBRL",
+					"interval": "1",
+					"timezone": "exchange",
+					"theme": "White",
+					"toolbar_bg": "#f4f7f9",
+					"hide_side_toolbar": false,
+					"watchlist": [
+					  "MERCADO:BTCBRL",
+					  "MERCADO:LTCBRL",
+					  "BITSTAMP:BTCUSD"
+					],
+					"details": true,
+					"hideideas": true
+				});
+			</script>
+		</div>
+	</ui:define>
+</ui:composition>

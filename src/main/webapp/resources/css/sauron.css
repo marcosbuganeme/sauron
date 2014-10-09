@@ -1,0 +1,50 @@
+@CHARSET "utf-8";
+
+.ajax-status {
+	width: 35px;
+	height: 35px;
+	position: fixed;
+	right: 10px;
+	top: 60px;
+}
+
+.sem-bordas td {
+	border: none !important;
+	border-color: none !important;
+}
+
+.jumbotron {
+	background-color: white !important;
+	margin-bottom: 10px !important;
+}
+
+body {
+	background-color: white !important;
+}
+
+mark {
+	color: black !important;
+	background: transparent !important;
+}
+
+.well {
+	background-color: lightgrey !important;
+}
+
+.fontePreta {
+	color: black !important;
+}
+
+.table-hover tbody tr:hover td {
+	background: lightgrey !important;
+}
+
+.dropdown-menu li>a:hover, .dropdown-menu li>a:focus, .dropdown-submenu:hover>a
+	{
+	background: lightgrey !important;
+}
+
+.ui-widget-content, .ui-widget-header {
+	border: none !important;
+	background-color: white !important;
+}

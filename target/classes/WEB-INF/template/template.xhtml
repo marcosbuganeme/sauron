@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+	<meta name="description" content="SGB - Sistema Gerenciador de BitCoin" />
+
+	<meta name="author" content="Marcos Olavo Silva Buganeme" />
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<h:outputStylesheet library="css" name="sauron.css" />
+
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+
+	<h:outputScript library="js" name="bootstrap.min.js" />
+
+	<h:outputScript library="js" name="jquery-1.11.1.min.js" />
+
+	<h:outputScript library="js" name="jquery.maskMoney.js" />
+
+	<h:outputScript library="js" name="tv.js" />
+
+	<title>
+		<ui:insert name="titulo">
+			<h:outputText value="Sauron" />
+		</ui:insert>
+	</title>
+
+</h:head>
+
+<h:body>
+
+	<p:ajaxStatus id="idAjaxStatus" styleClass="ajax-status" onsuccess="configurarMoeda();">
+		<f:facet name="start">
+			<h:graphicImage id="idCarregamentoLoadingGif" library="img" name="loading.gif" />
+		</f:facet>
+
+		<f:facet name="complete">
+			<h:outputText value="" />
+		</f:facet>
+	</p:ajaxStatus>
+
+	<div class="container">
+		<div class="container-fluid">
+			<nav class="navbar navbar-fixed-top navbar-default" role="navigation">
+			<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span> 
+						<span class="icon-bar"></span> 
+						<span class="icon-bar"></span> 
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="/sauron/paginas/inicial.xhtml">
+						<span class="fontePreta">SGB MENU</span>
+					</a>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li>
+							<a href="/sauron/paginas/inicial.xhtml"><span class="fontePreta">Home</span></a>
+						</li>
+
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								<span class="fontePreta">Relatório<span class="caret" /></span>
+							</a>
+
+							<ul class="dropdown-menu" role="menu">
+								<li>
+									<a href="/sauron/paginas/grafico/grafico_bitcoin.xhtml">Cotação bitcoin</a>
+								</li>
+							</ul>
+						</li>
+
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								<span class="fontePreta">Ferramentas Administrativas <span class="caret"/></span>
+							</a>
+
+							<ul class="dropdown-menu" role="menu">
+								<li>
+									<p:link value="Gerenciar Usuário" outcome="/paginas/usuario/inicial" />
+								</li>
+
+								<li>
+									<p:link value="Gerenciar Permissão" outcome="/paginas/permissao/inicial" />
+								</li>
+
+								<li>
+									<p:link value="Gerenciar Carteira" outcome="/paginas/carteira/inicial" />
+								</li>
+
+								<li>
+									<p:link value="Gerenciar Bitcoin" outcome="/paginas/bitcoin/inicial" />
+								</li>
+
+								<li>
+									<p:link value="Gerenciar Transação" outcome="/paginas/transacao/inicial" />
+								</li>
+							</ul>
+						</li>
+
+						<li>
+							<a href="/sauron/paginas/contato/detalhar.xhtml"><span class="fontePreta">Contato</span></a>
+						</li>
+
+					</ul>
+
+					<ul class="nav navbar-nav navbar-right">
+						<li style="margin-top: 15px">
+							<span class="fontePreta">Seja bem vindo, 
+								<small>#{manterUsuarioLogadoController.nomeUsuarioLogado}</small>
+							</span>
+						</li>
+
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								<span class="fontePreta">Opções <span class="caret" /></span>
+							</a>
+
+							<ul class="dropdown-menu" role="menu">
+								<li>
+									<a href="#">Estatística</a>									
+								</li>
+
+								<li>
+									<a href="/sauron/j_spring_security_logout">Sair</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div> <!-- /.navbar-collapse -->
+			</nav>
+		</div> <!-- /.container-fluid -->
+	</div>
+
+	<p:spacer height="50px" />
+
+	<div class="jumbotron">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+					<h:graphicImage library="img" name="logo-sistema.png" styleClass="imagem" />
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+					<h1>
+						SGB <small>Sistema Gerenciador de bitcoin's</small>
+					</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+					<ui:insert name="titulo_conteudo" />
+				</div>
+			</div>
+
+			<p:spacer height="20px" />
+
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+					<h:messages />
+					<p:messages autoUpdate="true" closable="true" />
+
+					<ui:insert name="conteudo" />
+				</div>
+			</div>
+
+			<p:spacer height="20px" />
+
+			<div class="row text-center">
+				<div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-10 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+					<footer>
+						<mark><strong>#{msgs['sauron.softwaredesenvolvidopor']} #{msgs['contato.nomedesenvolvedor']}</strong></mark>
+					</footer>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		var configurarMoeda = function() {
+   			$('.moeda:not(.moeda-masked)').maskMoney({decimal: ',', thousands: '.', allowZero: true});
+   			$('.moeda:not(.moeda-masked)').addClass('moeda-masked');
+		};
+
+		$(document).ready(function() {
+		   configurarMoeda();
+		});
+	</script>
+
+</h:body>
+
+</html>
