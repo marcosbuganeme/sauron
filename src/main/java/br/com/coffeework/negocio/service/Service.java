@@ -37,11 +37,11 @@ public abstract class Service<E extends Entidade> implements ServiceFacade<E> {
 	/** Constante serialVersionUID. */
 	private static final long serialVersionUID = 133306835756114188L;
 
-	/** Constante MENSAGEM_REGISTRO_NAO_EXISTE. */
-	private static final String MENSAGEM_REGISTRO_NAO_EXISTE = "Registro não encontrado";
+	/** Atributo LOG. */
+	private static final Log LOG = LogFactory.getLog(Service.class);
 
-	/** Atributo log. */
-	private static final Log log = LogFactory.getLog(Service.class);
+	/** Constante MENSAGEM_REGISTRO_NAO_EXISTE. */
+	private static final String MENSAGEM_REGISTRO_NAO_EXISTE = "registro.nao.existe";
 
 	/**
 	 * Método responsável por obter o dao da entidade.
@@ -67,7 +67,7 @@ public abstract class Service<E extends Entidade> implements ServiceFacade<E> {
 
 		if (entidadeObtida == null) {
 
-			Service.log.error("Registro não encontrado");
+			Service.LOG.error("Registro não encontrado");
 
 			throw new RegistroNaoExisteException(Service.MENSAGEM_REGISTRO_NAO_EXISTE);
 		}
@@ -87,7 +87,10 @@ public abstract class Service<E extends Entidade> implements ServiceFacade<E> {
 	@Override
 	public void salvar(final E entidade) throws NegocioException {
 
-		this.getDao().salvar(entidade);
+		if (entidade != null) {
+
+			this.getDao().salvar(entidade);
+		}
 	}
 
 	/**
@@ -102,7 +105,10 @@ public abstract class Service<E extends Entidade> implements ServiceFacade<E> {
 	@Override
 	public void mesclar(final E entidade) throws NegocioException {
 
-		this.getDao().mesclar(entidade);
+		if (entidade != null) {
+
+			this.getDao().mesclar(entidade);
+		}
 	}
 
 	/**

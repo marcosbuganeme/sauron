@@ -30,17 +30,26 @@ public abstract class ManutencaoController<E extends Entidade> extends ConsultaC
 	/** Constante serialVersionUID. */
 	private static final long serialVersionUID = -3930469472566435845L;
 
-	/** Constante log. */
+	/** Constante LOG. */
 	private static final Log LOG = LogFactory.getLog(ManutencaoController.class);
 
 	/** Constante MSG_SALVAR_SUCESSO. */
 	private static final String MSG_SALVAR_SUCESSO = "registro.salvo.sucesso";
 
 	/** Constante MSG_SALVAR_SUCESSO. */
-	private static final String MSG_ALTERAR_SUCESSO = "Registro alterado com sucesso !!";
+	private static final String MSG_ALTERAR_SUCESSO = "registro.alterado.sucesso";
 
 	/** Constante MSG_EXCLUIR_SUCESSO. */
-	private static final String MSG_EXCLUIR_SUCESSO = "Registro removido com sucesso !!";
+	private static final String MSG_EXCLUIR_SUCESSO = "registro.remover.sucesso";
+
+	/**
+	 * Método responsável por navegar para a página de inclusão de um ECDU.
+	 *
+	 * @author marcosbuganeme
+	 *
+	 * @return <i>página de inclusão</i>.
+	 */
+	public abstract String abreIncluir();
 
 	/**
 	 * Método responsável por persistir o objeto parametrizado na base de dados.
@@ -59,16 +68,16 @@ public abstract class ManutencaoController<E extends Entidade> extends ConsultaC
 			this.getService().salvar(this.getFormulario().getEntidade());
 
 			final String mensagemSalvar = this.getMessage(ManutencaoController.MSG_SALVAR_SUCESSO);
-			
+
 			UtilitarioJSF.addMensagemInfo(mensagemSalvar);
 
 			this.limparDados();
 
 		} catch (final NegocioException negocioException) {
 
-			UtilitarioJSF.addMensagemError(negocioException.getMessage());
+			UtilitarioJSF.addMensagemError(this.getMessage(negocioException.getMessage()));
 
-			ManutencaoController.LOG.error("ERRO MÉTODO SALVAR()" + this.getClass().getSimpleName(), negocioException.getCause());
+			ManutencaoController.LOG.error("ERRO MÉTODO SALVAR() " + this.getClass().getSimpleName(), negocioException.getCause());
 		}
 	}
 
@@ -87,13 +96,15 @@ public abstract class ManutencaoController<E extends Entidade> extends ConsultaC
 
 			this.getService().mesclar(this.getFormulario().getEntidade());
 
-			UtilitarioJSF.addMensagemInfo(ManutencaoController.MSG_ALTERAR_SUCESSO);
+			final String mensagemMesclar = this.getMessage(ManutencaoController.MSG_ALTERAR_SUCESSO);
+
+			UtilitarioJSF.addMensagemInfo(mensagemMesclar);
 
 			this.limparDados();
 
 		} catch (final NegocioException negocioException) {
 
-			UtilitarioJSF.addMensagemError(negocioException.getMessage());
+			UtilitarioJSF.addMensagemError(this.getMessage(negocioException.getMessage()));
 
 			ManutencaoController.LOG.error("ERRO MÉTODO MESCLAR()" + this.getClass().getSimpleName(), negocioException.getCause());
 		}
@@ -115,11 +126,13 @@ public abstract class ManutencaoController<E extends Entidade> extends ConsultaC
 
 			this.getFormulario().getColecaoEntidades().remove(this.getFormulario().getEntidade());
 
-			UtilitarioJSF.addMensagemInfo(ManutencaoController.MSG_EXCLUIR_SUCESSO);
+			final String mensagemExcluir = this.getMessage(ManutencaoController.MSG_EXCLUIR_SUCESSO);
+
+			UtilitarioJSF.addMensagemInfo(mensagemExcluir);
 
 		} catch (final NegocioException negocioException) {
 
-			UtilitarioJSF.addMensagemError(negocioException.getMessage());
+			UtilitarioJSF.addMensagemError(this.getMessage(negocioException.getMessage()));
 
 			ManutencaoController.LOG.error("ERRO MÉTODO REMOVER()" + this.getClass().getSimpleName(), negocioException.getCause());
 		}

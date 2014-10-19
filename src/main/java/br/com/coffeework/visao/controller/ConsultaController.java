@@ -43,12 +43,7 @@ public abstract class ConsultaController<E extends Entidade> extends Controller 
 	 *
 	 * @return <i>página de detalhamento</i>.
 	 */
-	protected String abreDetalhar() {
-
-		this.carregarDados();
-
-		return this.getClass().getSimpleName() + "/detalhar";
-	}
+	public abstract String abreDetalhar();
 
 	/**
 	 * Método responsável por realizar a consulta de acordo com a entidade passada como filtro.

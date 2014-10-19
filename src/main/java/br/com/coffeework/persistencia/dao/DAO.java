@@ -3,7 +3,7 @@ package br.com.coffeework.persistencia.dao;
 import java.io.Serializable;
 import java.util.Collection;
 
-import br.com.coffeework.exception.ValidacaoException;
+import br.com.coffeework.exception.NegocioException;
 import br.com.coffeework.modelo.entidade.Entidade;
 
 /**
@@ -36,9 +36,9 @@ public interface DAO<E extends Entidade> extends Serializable {
 	 * 
 	 * @return <code>entidade obtida</code>.
 	 * 
-	 * @throws ValidacaoException
+	 * @throws NegocioException
 	 */
-	E obterPorId(final Serializable identificador) throws ValidacaoException;
+	E obterPorId(final Serializable identificador) throws NegocioException;
 
 	/**
 	 * Método responsável por persistir o objeto parametrizado na base de dados.
@@ -48,9 +48,9 @@ public interface DAO<E extends Entidade> extends Serializable {
 	 * @param entidade
 	 *            - objeto que será persistido.
 	 * 
-	 * @throws ValidacaoException
+	 * @throws NegocioException
 	 */
-	void salvar(final E entidade) throws ValidacaoException;
+	void salvar(final E entidade) throws NegocioException;
 
 	/**
 	 * Método responsável por mesclar um objeto (Salvar e/ou alterar). <br>
@@ -61,9 +61,9 @@ public interface DAO<E extends Entidade> extends Serializable {
 	 * @param entidade
 	 *            - objeto que será persistido/alterado.
 	 * 
-	 * @throws ValidacaoException
+	 * @throws NegocioException
 	 */
-	void mesclar(final E entidade) throws ValidacaoException;
+	void mesclar(final E entidade) throws NegocioException;
 
 	/**
 	 * Método responsável por remover um objeto da base de dados.
@@ -73,9 +73,9 @@ public interface DAO<E extends Entidade> extends Serializable {
 	 * @param entidade
 	 *            - objeto que será persistido/alterado.
 	 * 
-	 * @throws ValidacaoException
+	 * @throws NegocioException
 	 */
-	void remover(final E entidade);
+	void remover(final E entidade) throws NegocioException;
 
 	/**
 	 * Método responsável por obter registros da base de dados de acordo com o filtro parametrizado.

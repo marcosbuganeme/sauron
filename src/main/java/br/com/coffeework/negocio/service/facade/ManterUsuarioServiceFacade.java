@@ -32,4 +32,16 @@ public interface ManterUsuarioServiceFacade extends ServiceFacade<Usuario> {
 	 * @return <code>coleção de usuários pesquisado</code>.
 	 */
 	Collection<Usuario> autoCompleteUsuarioPorEmail(final String email);
+
+	/**
+	 * Método responsável por verificar se um usuário já existe.
+	 *
+	 * @author marcosbuganeme
+	 *
+	 * @param usuario
+	 *            - objeto que será filtrado.
+	 * 
+	 * @return <i>True, usuário já existe</i>.
+	 */
+	boolean isUsuarioJaExiste(final Usuario usuario);
 }

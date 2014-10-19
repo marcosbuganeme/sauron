@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+<h:form>
+	<div class="container">
+		<div class="container-fluid">
+			<nav class="navbar navbar-fixed-top navbar-default" role="navigation">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar" />
+						<span class="icon-bar" />
+						<span class="icon-bar" />
+					</button>
+					<a class="navbar-brand" href="/sauron/publico/inicial.xhtml">
+						<span class="fontePreta">#{msgs['titulo.sgb']}</span>
+					</a>
+				</div>
+
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li>
+							<h:link value="#{msgs['menu.home']}" outcome="/publico/inicial" />
+						</li>
+
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								<span>#{msgs['menu.relatorio']}<span class="caret" /></span>
+							</a>
+
+							<ul class="dropdown-menu" role="menu">
+								<li>
+									<h:link value="#{msgs['menu.cotacaobitcoin']}" outcome="/publico/grafico/detalhar" />
+								</li>
+							</ul>
+						</li>
+
+						<li class="dropdown" jsf:rendered="#{!manterUsuarioLogadoController.administrador}">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								<span>#{msgs['menu.cadastros']}<span class="caret" /></span>
+							</a>
+
+							<ul class="dropdown-menu" role="menu">
+								<li>
+									<h:commandLink value="#{msgs['submenu.cad.usuario']}" action="#{manterUsuarioController.abreIncluir()}" />
+								</li>
+							</ul>
+						</li>
+
+						<li class="dropdown" jsf:rendered="#{manterUsuarioLogadoController.administrador}">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								<span>#{msgs['menu.ferramentasadministrativas']}<span class="caret" /></span>
+							</a>
+
+							<ul class="dropdown-menu" role="menu">
+								<li>
+									<h:commandLink value="#{msgs['submenu.usuario']}" action="#{manterUsuarioController.abreIniciar()}" />
+								</li>
+
+								<li>
+									<h:commandLink value="#{msgs['submenu.permissao']}" action="#{manterPermissaoController.abreIniciar()}" />
+								</li>
+							</ul>
+						</li>
+
+						<li>
+							<h:link value="#{msgs['menu.contato']}" outcome="/publico/contato/detalhar" />
+						</li>
+					</ul>
+
+					<ul class="nav navbar-nav navbar-right">
+						<li style="margin-top: 15px">
+							<span>#{msgs['label.boasvindas']}
+								<small>#{manterUsuarioLogadoController.nomeUsuarioLogado}</small>
+							</span>
+						</li>
+
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown"> <span>#{msgs['menu.opcoes']} <span
+									class="caret" /></span>
+						</a>
+
+							<ul class="dropdown-menu" role="menu">
+								<li>
+									<a href="#{facesContext.externalContext.requestContextPath}/j_spring_security_logout">#{msgs['submenu.sair']}</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+	</div>
+</h:form>
+
+</html>

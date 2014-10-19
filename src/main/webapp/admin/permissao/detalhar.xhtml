@@ -26,7 +26,7 @@
 				<div class="pull-left">
 					<div class="btn-group">
 						<h:button id="btnNovo" value="#{msgs['btn.novo']}" title="#{msgs['btn.novo.title']}" 
-							outcome="/paginas/permissao/incluir" styleClass="btn btn-lg btn-default" />
+							outcome="/admin/permissao/incluir" styleClass="btn btn-lg btn-default" />
 					</div>
 				</div>
 			</f:facet>
@@ -78,7 +78,7 @@
 						</p:column>
 
 						<p:column width="10%">
-							<h:link id="btnEditar" title="#{msgs['link.editar.title']}" outcome="/paginas/permissao/incluir">
+							<h:link id="btnEditar" title="#{msgs['link.editar.title']}" outcome="/admin/permissao/incluir">
 								<f:param name="permissao" value="#{permissao.identificador}" />
 								<h:graphicImage library="img" name="btnEditar_preto-20x20.png" />
 							</h:link>
@@ -101,10 +101,12 @@
 					showEffect="fade" >
 
 					<p:button id="btnNao" value="#{msgs['btn.label.nao']}"
-						onclick="PF('dlgExcluir').hide(); return false;" />
+						onclick="PF('dlgExcluir').hide(); return false;"
+						styleClass="btn btn-lg btn-default" />
 
 					<p:commandButton id="btnSim" value="#{msgs['btn.label.sim']}"
-						action="#{manterPermissaoController.remover()}" oncomplete="PF('dlgExcluir').hide();" />
+						action="#{manterPermissaoController.remover()}" oncomplete="PF('dlgExcluir').hide();"
+						styleClass="btn btn-lg btn-default" />
 
 				</p:confirmDialog>
 			</h:form>

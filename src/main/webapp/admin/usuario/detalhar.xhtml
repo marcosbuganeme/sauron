@@ -25,7 +25,7 @@
 				<div class="pull-left">
 					<div class="btn-group">
 						<h:button id="btnNovo" value="#{msgs['btn.novo']}" title="#{msgs['btn.novo.title']}" 
-							outcome="/paginas/usuario/incluir" styleClass="btn btn-lg btn-default" />
+							outcome="/publico/usuario/incluir" styleClass="btn btn-lg btn-default" />
 					</div>
 				</div>
 			</f:facet>
@@ -53,44 +53,35 @@
 						</p:column>
 
 						<p:column width="10%">
-							<h:link title="#{msgs['link.editar.title']}" outcome="/paginas/usuario/incluir">
+							<h:link title="#{msgs['link.editar.title']}" outcome="/publico/usuario/incluir">
 								<f:param name="usuario" value="#{usuario.identificador}" />
 								<h:graphicImage library="img" name="btnEditar_preto-20x20.png" />
 							</h:link>
 
 							<p:spacer width="20px" />
 
-							<p:commandLink title="#{msgs['link.excluir.title']}" oncomplete="PF('dialogExcluir').show();" >
+							<p:commandLink id="btnRemover" title="#{msgs['link.excluir.title']}" oncomplete="PF('dlgExcluir').show();"
+								process="@this" update="@form">
 								<h:graphicImage library="img" name="btnRemover_preto-20x20.png" />
+								<f:setPropertyActionListener target="#{manterUsuarioController.formulario.entidade}" value="#{usuario}" />
 							</p:commandLink>
 						</p:column>
 					</p:dataTable>
 				</div>
 
-				<p:dialog widgetVar="dialogExcluir" header="#{msgs['confirmDialog.excluir.header']}"
-					modal="true" closable="false" resizable="false" draggable="false" >
+		    	<p:confirmDialog id="btnDlgExcluir" widgetVar="dlgExcluir" header="#{msgs['confirmDialog.excluir.header']}"
+		    		message="#{msgs['confirmDialog.mensagem']} #{manterUsuarioController.formulario.entidade.email} ?"
+		    		showEffect="fade">
 
-		    		<h:button value="#{msgs['btn.label.nao']}" 
-		    			onclick="PF('dlgExcluir').hide(); return false;" styleClass="btn btn-lg btn-default" />
-
-					<p:spacer width="20px" />
-
-		    		<h:commandButton value="#{msgs['btn.label.sim']}" 
-		    			oncomplete="dlgExcluir.hide();" styleClass="btn btn-lg btn-default" />
-				
-				</p:dialog>
-
-		    	<p:confirmDialog widgetVar="dlgExcluir" header="#{msgs['confirmDialog.excluir.header']}"
-		    		width="600px" height="100px" hideEffect="fade" closable="false"
-		    		message="#{msgs['confirmDialog.mensagem']} #{manterUsuarioController.formulario.entidade.email} ?">
-
-		    		<h:button value="#{msgs['btn.label.nao']}" 
-		    			onclick="PF('dlgExcluir').hide(); return false;" styleClass="btn btn-lg btn-default" />
+		    		<h:button id="btnNao" value="#{msgs['btn.label.nao']}" 
+		    			onclick="PF('dlgExcluir').hide(); return false;" 
+		    			styleClass="btn btn-lg btn-default" />
 
 					<p:spacer width="20px" />
 
-		    		<h:commandButton value="#{msgs['btn.label.sim']}" 
-		    			oncomplete="dlgExcluir.hide();" styleClass="btn btn-lg btn-default" />
+		    		<h:commandButton id="btnSim" value="#{msgs['btn.label.sim']}"
+		    			action="#{manterUsuarioController.remover()}" oncomplete="dlgExcluir.hide();"
+		    			styleClass="btn btn-lg btn-default" />
 
 		    	</p:confirmDialog>
 			</h:form>

@@ -57,6 +57,15 @@ public class ManterLoginController implements Serializable {
 		}
 	}
 
+	/**
+	 * Método responsável por autenticar um usuário, verificando suas credenciais na base de dados.
+	 *
+	 * @author marcosbuganeme
+	 *
+	 * @throws ServletException
+	 * 
+	 * @throws IOException
+	 */
 	public void autenticar() throws ServletException, IOException {
 
 		final RequestDispatcher dispatcher = this.getRequest().getRequestDispatcher("/j_spring_security_check");

@@ -4,6 +4,7 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
@@ -46,100 +47,7 @@
 		</f:facet>
 	</p:ajaxStatus>
 
-	<div class="container">
-		<div class="container-fluid">
-			<nav class="navbar navbar-fixed-top navbar-default" role="navigation">
-			<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span> 
-						<span class="icon-bar"></span> 
-						<span class="icon-bar"></span> 
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="/sauron/paginas/inicial.xhtml">
-						<span class="fontePreta">#{msgs['titulo.sgb']}</span>
-					</a>
-				</div>
-
-				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav">
-						<li>
-							<h:link value="#{msgs['menu.home']}" outcome="/paginas/inicial.xhtml" />
-						</li>
-
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								<span>#{msgs['menu.relatorio']}<span class="caret" /></span>
-							</a>
-
-							<ul class="dropdown-menu" role="menu">
-								<li>
-									<h:link value="#{msgs['menu.cotacaobitcoin']}" outcome="/paginas/grafico/grafico_bitcoin.xhtml" />
-								</li>
-							</ul>
-						</li>
-
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								<span>#{msgs['menu.ferramentasadministrativas']}<span class="caret"/></span>
-							</a>
-
-							<ul class="dropdown-menu" role="menu">
-								<li>
-									<h:link value="#{msgs['submenu.usuario']}" outcome="/paginas/usuario/inicial" />
-								</li>
-
-								<li>
-									<h:link value="#{msgs['submenu.permissao']}" outcome="/paginas/permissao/inicial" />
-								</li>
-
-								<li>
-									<h:link value="#{msgs['submenu.carteira']}" outcome="/paginas/carteira/inicial" />
-								</li>
-
-								<li>
-									<h:link value="#{msgs['submenu.bitcoin']}" outcome="/paginas/bitcoin/inicial" />
-								</li>
-
-								<li>
-									<h:link value="#{msgs['submenu.transacao']}" outcome="/paginas/transacao/inicial" />
-								</li>
-							</ul>
-						</li>
-
-						<li>
-							<h:link value="#{msgs['menu.contato']}" outcome="/paginas/contato/detalhar.xhtml" />
-						</li>
-
-					</ul>
-
-					<ul class="nav navbar-nav navbar-right">
-						<li style="margin-top: 15px">
-							<span>#{msgs['label.boasvindas']}<small>#{manterUsuarioLogadoController.nomeUsuarioLogado}</small></span>
-						</li>
-
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								<span>#{msgs['menu.opcoes']} <span class="caret" /></span>
-							</a>
-
-							<ul class="dropdown-menu" role="menu">
-								<li>
-									<a href="#">#{msgs['submenu.estatistica']}</a>									
-								</li>
-
-								<li>
-									<a href="/sauron/j_spring_security_logout">#{msgs['submenu.sair']}</a>
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</div> <!-- /.navbar-collapse -->
-			</nav>
-		</div> <!-- /.container-fluid -->
-	</div>
+	<ui:include src="/WEB-INF/template/navbar.xhtml" />
 
 	<p:spacer height="50px" />
 
@@ -151,7 +59,7 @@
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
 					<h1>
-						SGB <small>Sistema Gerenciador de bitcoin's</small>
+						#{msgs['template.sgb']} <small>#{msgs['template.sgb.continuacao']}</small>
 					</h1>
 				</div>
 			</div>
@@ -170,7 +78,6 @@
 
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
-					<h:messages />
 					<p:messages autoUpdate="true" closable="true" />
 
 					<ui:insert name="conteudo" />

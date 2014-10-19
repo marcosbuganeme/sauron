@@ -95,7 +95,7 @@ public class JSFExceptionHandler extends ExceptionHandlerWrapper {
 
 					System.out.println("pqp deu erro caralho ... redirect 404 na face");
 					
-					this.redirecionarUrl("/paginas/error/404.xhtml");
+					this.redirecionarUrl("/publico/erro.xhtml");
 				}
 
 			} finally {

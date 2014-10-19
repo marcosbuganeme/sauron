@@ -53,22 +53,7 @@ public abstract class Controller implements Serializable {
 	 *
 	 * @return <i>página inicial</i>.
 	 */
-	protected String abreIniciar() {
-
-		return this.getClass().getSimpleName() + "/inicial";
-	}
-
-	/**
-	 * Método responsável por navegar para a página de inclusão de um ECDU.
-	 *
-	 * @author marcosbuganeme
-	 *
-	 * @return <i>página de inclusão</i>.
-	 */
-	protected String abreIncluir() {
-
-		return this.getClass().getSimpleName() + "/incluir";
-	}
+	public abstract String abreIniciar();
 
 	/**
 	 * Método responsável por retornar a mensagem vinculada a chave passada como parâmetro.

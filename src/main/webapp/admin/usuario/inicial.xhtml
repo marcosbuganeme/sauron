@@ -18,13 +18,16 @@
 		<h:form id="frm">
 			<div class="row">
 				<div class="btn-group">
-					<h:button id="btnNovo" value="#{msgs['btn.novo']}" title="#{msgs['btn.novo.title']}"
-						outcome="/paginas/usuario/incluir" styleClass="btn btn-lg btn-default" />
+					<h:button id="btnNovo" value="#{msgs['btn.novo']}"
+						title="#{msgs['btn.novo.title']}"
+						outcome="/publico/usuario/incluir"
+						styleClass="btn btn-lg btn-default" />
 
 					<p:spacer width="5px" />
 
-					<h:button id="btnPesquisar" value="#{msgs['btn.pesquisar']}" title="#{msgs['btn.pesquisar.title']}"
-						outcome="/paginas/usuario/detalhar" styleClass="btn btn-lg btn-warning" />
+					<h:button id="btnPesquisar" value="#{msgs['btn.pesquisar']}" 
+						title="#{msgs['btn.pesquisar.title']}" outcome="/admin/usuario/detalhar" 
+						styleClass="btn btn-lg btn-warning" />  
 				</div>
 			</div>
 		</h:form>

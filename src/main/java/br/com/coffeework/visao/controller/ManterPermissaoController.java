@@ -7,15 +7,10 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
-import br.com.coffeework.exception.NegocioException;
 import br.com.coffeework.modelo.entidade.Permissao;
 import br.com.coffeework.modelo.entidade.Usuario;
 import br.com.coffeework.modelo.enuns.EnumPermissao;
 import br.com.coffeework.negocio.service.ManterPermissaoService;
-import br.com.coffeework.util.jsf.UtilitarioJSF;
 import br.com.coffeework.visao.formulario.ManterPermissaoFormulario;
 
 /**
@@ -39,12 +34,6 @@ public class ManterPermissaoController extends ManutencaoController<Permissao> {
 
 	/** Atributo serialVersionUID. */
 	private static final long serialVersionUID = 76877174362364325L;
-
-	/** Constante log. */
-	private static final Log LOG = LogFactory.getLog(ManterPermissaoController.class);
-
-	/** Constante MSG_SALVAR_SUCESSO. */
-	private static final String MSG_SALVAR_SUCESSO = "Permissão salva com sucesso !!";
 
 	/** Atributo formulario. */
 	@Inject
@@ -73,33 +62,6 @@ public class ManterPermissaoController extends ManutencaoController<Permissao> {
 	public void iniciarDados() {
 
 		this.getFormulario().setColecaoUsuarios(this.getService().consultarTodosUsuarios());
-	}
-
-	/**
-	 * Descrição Padrão: <br>
-	 * <br>
-	 *
-	 * {@inheritDoc}
-	 *
-	 * @see br.com.coffeework.visao.controller.ManutencaoController#salvar()
-	 */
-	@Override
-	public void salvar() {
-
-		try {
-
-			this.getService().salvar(this.getFormulario().getEntidade());
-
-			UtilitarioJSF.addMensagemInfo(ManterPermissaoController.MSG_SALVAR_SUCESSO);
-
-			this.limparDados();
-
-		} catch (final NegocioException negocioException) {
-
-			UtilitarioJSF.addMensagemError(negocioException.getMessage());
-
-			ManterPermissaoController.LOG.error("ERRO MÉTODO SALVAR()" + this.getClass().getSimpleName(), negocioException.getCause());
-		}
 	}
 
 	/**
@@ -150,6 +112,48 @@ public class ManterPermissaoController extends ManutencaoController<Permissao> {
 	public void limparDados() {
 
 		this.getFormulario().setEntidade(new Permissao());
+	}
+
+	/**
+	 * Descrição Padrão: <br>
+	 * <br>
+	 *
+	 * {@inheritDoc}
+	 *
+	 * @see br.com.coffeework.visao.controller.Controller#abreIniciar()
+	 */
+	@Override
+	public String abreIniciar() {
+
+		return "/admin/permissao/inicial.xhtml";
+	}
+
+	/**
+	 * Descrição Padrão: <br>
+	 * <br>
+	 *
+	 * {@inheritDoc}
+	 *
+	 * @see br.com.coffeework.visao.controller.ManutencaoController#abreIncluir()
+	 */
+	@Override
+	public String abreIncluir() {
+
+		return "/admin/permissao/incluir.xhtml";
+	}
+
+	/**
+	 * Descrição Padrão: <br>
+	 * <br>
+	 *
+	 * {@inheritDoc}
+	 *
+	 * @see br.com.coffeework.visao.controller.ConsultaController#abreDetalhar()
+	 */
+	@Override
+	public String abreDetalhar() {
+
+		return "/admin/permissao/detalhar.xhtml";
 	}
 
 	/**

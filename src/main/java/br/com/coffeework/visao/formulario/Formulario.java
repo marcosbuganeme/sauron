@@ -46,6 +46,11 @@ public abstract class Formulario<E extends Entidade> implements Serializable {
 	/** Atributo colecaoEntidades. */
 	private Collection<E> colecaoEntidades;
 
+	/**
+	 * Responsável pela criação de novas instâncias desta classe.
+	 * 
+	 * @param classe
+	 */
 	public Formulario( final Class<E> classe ) {
 
 		try {

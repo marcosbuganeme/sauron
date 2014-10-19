@@ -67,28 +67,10 @@ public class UsuarioHibernateDAO extends HibernateDAO<Usuario> implements Usuari
 	 *
 	 * {@inheritDoc}
 	 *
-	 * @see br.com.coffeework.persistencia.dao.impl.HibernateDAO#listar()
-	 */
-	@Override
-	public Collection<Usuario> listar() {
-
-		final Criteria criteria = this.obterCriteria();
-
-		criteria.add(Restrictions.eq("status", EnumStatus.ATIVO));
-
-		return criteria.list();
-	}
-
-	/**
-	 * Descrição Padrão: <br>
-	 * <br>
-	 *
-	 * {@inheritDoc}
-	 *
 	 * @see br.com.coffeework.persistencia.dao.UsuarioDAO#obterUsuarioPorEmail(java.lang.String)
 	 */
 	@Override
-	public Usuario obterUsuarioPorEmail(String email) {
+	public Usuario obterUsuarioPorEmail(final String email) {
 
 		final Criteria criteria = this.obterCriteria();
 

@@ -33,12 +33,16 @@ public class ManterUsuarioController extends ManutencaoController<Usuario> {
 	/** Constante serialVersionUID. */
 	private static final long serialVersionUID = -4636009997949369987L;
 
+	/** Atributo manterUsuarioLogadocontroller. */
 	@Inject
+	private ManterUsuarioLogadoController manterUsuarioLogadocontroller;
+
 	/** Atributo formulario. */
+	@Inject
 	private ManterUsuarioFormulario formulario;
 
-	@Inject
 	/** Atributo service. */
+	@Inject
 	private ManterUsuarioService service;
 
 	/**
@@ -49,11 +53,23 @@ public class ManterUsuarioController extends ManutencaoController<Usuario> {
 	}
 
 	/**
+	 * Método responsável por obter a instância da entidade do tipo <code>Usuario</code> em tempo de execução e preencher os dados do usuário para edição do cadastro.
+	 *
+	 * @author marcosbuganeme
+	 *
+	 * @return <i>objeto preenchido da entidade <code>Usuario</code></i>.
+	 */
+	public Usuario obterUsuarioLogadoMenuPerfil() {
+
+		return this.manterUsuarioLogadocontroller.obterUsuarioLogadoMenuPerfil();
+	}
+
+	/**
 	 * Método responsável por formatar a data de cadastro do usuário.
 	 *
 	 * @author marcosbuganeme
 	 *
-	 * @return <i>a data de cadastro do usuário formatada de acordo com o pattern dd/MM/yyyy</i>.
+	 * @return <i>a data de cadastro do usuário formatada de acordo com o pattern { "dd 'do mês' MMMM 'de' yyyy" }</i>.
 	 */
 	public String getDataCadastroFormatada() {
 
@@ -75,13 +91,14 @@ public class ManterUsuarioController extends ManutencaoController<Usuario> {
 
 		if (UtilCPF.validaCPF(cpf)) {
 
-			this.getFormulario().getEntidade().setCpf(new String(cpf));
+			this.getFormulario().getEntidade().setCpf(cpf);
 		}
 	}
 
 	/**
 	 * Descrição Padrão: <br>
-	 * <br>
+	 * 
+	 * Implementação do método abstrato. <br>
 	 *
 	 * {@inheritDoc}
 	 *
@@ -91,6 +108,52 @@ public class ManterUsuarioController extends ManutencaoController<Usuario> {
 	public void limparDados() {
 
 		this.getFormulario().setEntidade(new Usuario());
+	}
+
+	/**
+	 * Descrição Padrão: <br>
+	 * 
+	 * Implementação do método abstrato. <br>
+	 *
+	 * {@inheritDoc}
+	 *
+	 * @see br.com.coffeework.visao.controller.Controller#abreIniciar()
+	 */
+	@Override
+	public String abreIniciar() {
+
+		return "/admin/usuario/inicial.xhtml";
+	}
+
+	/**
+	 * Descrição Padrão: <br>
+	 * 
+	 * Implementação do método abstrato. <br>
+	 *
+	 * {@inheritDoc}
+	 *
+	 * @see br.com.coffeework.visao.controller.ManutencaoController#abreIncluir()
+	 */
+	@Override
+	public String abreIncluir() {
+
+		return "/publico/usuario/incluir.xhtml";
+	}
+
+	/**
+	 * Descrição Padrão: <br>
+	 * 
+	 * Implementação do método abstrato. <br>
+	 * <br>
+	 *
+	 * {@inheritDoc}
+	 *
+	 * @see br.com.coffeework.visao.controller.ConsultaController#abreDetalhar()
+	 */
+	@Override
+	public String abreDetalhar() {
+
+		return "/admin/usuario/detalhar.xhtml";
 	}
 
 	/**
@@ -114,5 +177,4 @@ public class ManterUsuarioController extends ManutencaoController<Usuario> {
 
 		return this.service;
 	}
-
 }

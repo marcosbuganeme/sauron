@@ -100,10 +100,7 @@ public class HibernateDAO<E extends Entidade> implements DAO<E> {
 	@Override
 	public void mesclar(final E entidade) throws NegocioException {
 
-		if (entidade != null) {
-
-			this.getManager().merge(entidade);
-		}
+		this.getManager().merge(entidade);
 	}
 
 	/**

@@ -54,7 +54,7 @@ public class Usuario extends EntidadeSauron {
 	/** Atributo email. */
 	@NotEmpty
 	@Email
-	@Column(name = "email", length = 80, unique = true)
+	@Column(name = "email", length = 80, unique = true, updatable = false)
 	private String email;
 
 	/** Atributo senha. */
