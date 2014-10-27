@@ -25,50 +25,27 @@ public class ManterPermissaoFormulario extends Formulario<Permissao> {
 	/** Constante serialVersionUID. */
 	private static final long serialVersionUID = 4331853604598332970L;
 
-	/** Atributo palavraConsultada. */
-	private String palavraConsultada;
-
-	/** Atributo colecaoUsuarios. */
-	private Collection<Usuario> colecaoUsuarios;
+	/** Atributo colecaoUsuariosComboBox. */
+	private Collection<Usuario> colecaoUsuariosComboBox;
 
 	/**
-	 * Retorna o valor do atributo <code>colecaoUsuarios</code>
+	 * Retorna o valor do atributo <code>colecaoUsuariosComboBox</code>
 	 *
 	 * @return <code>Collection<Usuario></code>
 	 */
-	public Collection<Usuario> getColecaoUsuarios() {
+	public Collection<Usuario> getColecaoUsuariosComboBox() {
 
-		return this.colecaoUsuarios;
+		return this.colecaoUsuariosComboBox;
 	}
 
 	/**
-	 * Define o valor do atributo <code>colecaoUsuarios</code>.
+	 * Define o valor do atributo <code>colecaoUsuariosComboBox</code>.
 	 *
-	 * @param colecaoUsuarios
+	 * @param colecaoUsuariosComboBox
 	 */
-	public void setColecaoUsuarios(final Collection<Usuario> colecaoUsuarios) {
+	public void setColecaoUsuariosComboBox(final Collection<Usuario> colecaoUsuariosComboBox) {
 
-		this.colecaoUsuarios = colecaoUsuarios;
-	}
-
-	/**
-	 * Retorna o valor do atributo <code>palavraConsultada</code>
-	 *
-	 * @return <code>String</code>
-	 */
-	public String getPalavraConsultada() {
-
-		return this.palavraConsultada;
-	}
-
-	/**
-	 * Define o valor do atributo <code>palavraConsultada</code>.
-	 *
-	 * @param palavraConsultada
-	 */
-	public void setPalavraConsultada(final String palavraConsultada) {
-
-		this.palavraConsultada = palavraConsultada;
+		this.colecaoUsuariosComboBox = colecaoUsuariosComboBox;
 	}
 
 }

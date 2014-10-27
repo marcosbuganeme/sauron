@@ -51,32 +51,6 @@ public class ManterPermissaoController extends ManutencaoController<Permissao> {
 	}
 
 	/**
-	 * Descrição Padrão: <br>
-	 * <br>
-	 *
-	 * {@inheritDoc}
-	 *
-	 * @see br.com.coffeework.visao.controller.Controller#iniciarDados()
-	 */
-	@Override
-	public void iniciarDados() {
-
-		this.getFormulario().setColecaoUsuarios(this.getService().consultarTodosUsuarios());
-	}
-
-	/**
-	 * Método responsável por obter uma colecação de todos os usuários registrados.
-	 *
-	 * @author marcosbuganeme
-	 *
-	 * @return <i>coleção de usuários</i>.
-	 */
-	public Collection<Usuario> obterUsuarios() {
-
-		return this.getFormulario().getColecaoUsuarios();
-	}
-
-	/**
 	 * Método responsável por obter um usuário pelo seu email.
 	 *
 	 * @author marcosbuganeme
@@ -89,15 +63,41 @@ public class ManterPermissaoController extends ManutencaoController<Permissao> {
 	}
 
 	/**
+	 * Método responsável por obter uma colecação de todos os usuários registrados.
+	 *
+	 * @author marcosbuganeme
+	 *
+	 * @return <i>coleção de usuários</i>.
+	 */
+	public Collection<Usuario> preencheComboBoxUsuario() {
+
+		return this.getFormulario().getColecaoUsuariosComboBox();
+	}
+
+	/**
 	 * Método responsável por obter uma lista dos tipos de permissões.
 	 *
 	 * @author marcosbuganeme
 	 *
 	 * @return <i>coleção de permissões</i>
 	 */
-	public Collection<EnumPermissao> obterPermissoes() {
+	public Collection<EnumPermissao> preencheComboBoxPermissao() {
 
 		return Arrays.asList(EnumPermissao.values());
+	}
+
+	/**
+	 * Descrição Padrão: <br>
+	 * <br>
+	 *
+	 * {@inheritDoc}
+	 *
+	 * @see br.com.coffeework.visao.controller.Controller#iniciarDados()
+	 */
+	@Override
+	public void iniciarDados() {
+
+		this.getFormulario().setColecaoUsuariosComboBox(this.getService().consultarTodosUsuarios());
 	}
 
 	/**

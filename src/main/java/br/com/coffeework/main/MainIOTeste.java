@@ -1,20 +1,14 @@
-package br.com.coffeework.visao.controller;
+package br.com.coffeework.main;
 
-import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-
-import javax.imageio.ImageIO;
 
 import br.com.coffeework.util.criptografia.UtilCriptografia;
 
-public class Principal {
+public class MainIOTeste {
 
 	public static void main(String[] args) throws IOException {
 
-		final String senhaCriptografada = UtilCriptografia.obterStringMD5("markin123");
+		final String senhaCriptografada = UtilCriptografia.obterStringMD5("123456");
 		
 		System.out.println(senhaCriptografada);
 		

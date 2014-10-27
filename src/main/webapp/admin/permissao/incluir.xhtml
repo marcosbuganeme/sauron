@@ -67,16 +67,16 @@
 
 					<div class="col-xs-4 col-md-4 col-md-4 col-lg-4">
 						<p:outputLabel value="#{msgs['usuario.label.usuariocadastrado']}" for="comboBoxUsuario" />
-						<span style="color: red !important"> *</span>
+						<span style="color: red !important;"> *</span>
 					</div>
 
 					<div class="col-xs-8 col-md-8 col-md-8 col-lg-8">
 						<h:selectOneMenu id="comboBoxUsuario" converter="omnifaces.SelectItemsConverter"
 							value="#{manterPermissaoController.formulario.entidade.usuario}"
-							style="width: 100% !important">
+							style="width: 100% !important;">
 
 							<f:selectItem itemLabel="#{msgs['combobox.selecionaritens']}" noSelectionOption="true" />
-							<f:selectItems value="#{manterPermissaoController.obterUsuarios()}" var="usuario" 
+							<f:selectItems value="#{manterPermissaoController.preencheComboBoxUsuario()}" var="usuario" 
 								itemLabel="#{usuario.email}" itemValue="#{usuario}" />
 
 						</h:selectOneMenu>
@@ -85,13 +85,13 @@
 				</div>			
 			</div>
 
-			<p:spacer height="5px" />			
+			<p:spacer height="5px" />
 
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg12">
 					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
 						<p:outputLabel value="#{msgs['usuario.label.permissao']}" for="comboBoxPermissao" />
-						<span style="color: red !important"> *</span>
+						<span style="color: red !important;"> *</span>
 					</div>
 
 					<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
@@ -99,7 +99,7 @@
 							style="width: 100% !important">
 
 							<f:selectItem itemLabel="#{msgs['combobox.selecionaritens']}" noSelectionOption="true" />
-							<f:selectItems value="#{manterPermissaoController.obterPermissoes()}" var="permissao" 
+							<f:selectItems value="#{manterPermissaoController.preencheComboBoxPermissao()}" var="permissao" 
 								itemLabel="#{permissao}" itemValue="#{permissao}" />
 
 						</h:selectOneMenu>
@@ -113,12 +113,12 @@
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
 					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-						<p:outputLabel value="#{msgs['usuario.label.descricao']}" for="txtDescricao" /><span style="color: red !important"> *</span>
+						<p:outputLabel value="#{msgs['usuario.label.descricao']}" for="txtDescricao" /><span style="color: red !important;"> *</span>
 					</div>
 
 					<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
 						<h:inputText id="txtDescricao" value="#{manterPermissaoController.formulario.entidade.descricao}"
-							pt:placeholder="#{msgs['usuario.placeholder.descricao']}" style="width: 100% !important" />
+							pt:placeholder="#{msgs['usuario.placeholder.descricao']}" style="width: 100% !important;" />
 					</div>
 
 				</div>

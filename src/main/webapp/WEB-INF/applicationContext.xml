@@ -5,7 +5,7 @@
            http://www.springframework.org/schema/security
            http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 
-	<beans:bean id="appUserDetailsService" class="br.com.coffeework.springsecurity.AppUserDetailsService" />
+	<beans:bean id="usuarioLogadoService" class="br.com.coffeework.springsecurity.ManterUsuarioLogadoService" />
 
 	<http pattern="/publico/login.xhtml" security="none" />
 	<http pattern="/javax.faces.resource/**" security="none" />
@@ -33,7 +33,7 @@
 
 	<authentication-manager>
 
-		<authentication-provider user-service-ref="appUserDetailsService">
+		<authentication-provider user-service-ref="usuarioLogadoService">
 			<password-encoder hash="md5" />
 		</authentication-provider>
 

@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:jsf="http://xmlns.jcp.org/jsf"
-	xmlns:h="http://xmlns.jcp.org/jsf/html">
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <h:form>
 	<div class="container">
@@ -45,7 +46,11 @@
 
 							<ul class="dropdown-menu" role="menu">
 								<li>
-									<h:commandLink value="#{msgs['submenu.cad.usuario']}" action="#{manterUsuarioController.abreIncluir()}" />
+									<h:commandLink value="#{msgs['submenu.cad.bitcoin']}" action="#{manterUsuarioController.abreIncluir()}" />
+								</li>
+
+								<li>
+									<h:commandLink value="#{msgs['submenu.cad.transacao']}" action="#{manterUsuarioController.abreIncluir()}" />
 								</li>
 							</ul>
 						</li>
@@ -63,6 +68,12 @@
 								<li>
 									<h:commandLink value="#{msgs['submenu.permissao']}" action="#{manterPermissaoController.abreIniciar()}" />
 								</li>
+								<li>
+									<h:commandLink value="#{msgs['submenu.bitcoin']}" action="#{manterPermissaoController.abreIniciar()}" />
+								</li>
+								<li>
+									<h:commandLink value="#{msgs['submenu.transacao']}" action="#{manterPermissaoController.abreIniciar()}" />
+								</li>
 							</ul>
 						</li>
 
@@ -78,16 +89,8 @@
 							</span>
 						</li>
 
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown"> <span>#{msgs['menu.opcoes']} <span
-									class="caret" /></span>
-						</a>
-
-							<ul class="dropdown-menu" role="menu">
-								<li>
-									<a href="#{facesContext.externalContext.requestContextPath}/j_spring_security_logout">#{msgs['submenu.sair']}</a>
-								</li>
-							</ul>
+						<li>
+							<a href="#{facesContext.externalContext.requestContextPath}/j_spring_security_logout">#{msgs['submenu.sair']}</a>
 						</li>
 					</ul>
 				</div>

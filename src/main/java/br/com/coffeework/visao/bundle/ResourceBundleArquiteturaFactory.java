@@ -24,8 +24,14 @@ import br.com.coffeework.exception.ResourceBundleFactoryException;
  */
 public abstract class ResourceBundleArquiteturaFactory {
 
-	/** Atributo log. */
-	private static Log log = LogFactory.getLog(ResourceBundleArquiteturaFactory.class);
+	/** Constante LOG. */
+	private static Log LOG = LogFactory.getLog(ResourceBundleArquiteturaFactory.class);
+
+	/** Constante ERRO_INSTANCIA_BUNDLE. */
+	private static final String ERRO_INSTANCIA_BUNDLE = "Erro na instanciação do resourceBundle :: ";
+
+	/** Constante ERRO_CLASSE_CORRENTE. */
+	private static final String ERRO_CLASSE_CORRENTE = "Erro na classe ResourceBundleArquiteturaFactory :: ";
 
 	/**
 	 * Método responsável por criar o <code>ResourceBundle</code> para a aplicação.
@@ -56,23 +62,13 @@ public abstract class ResourceBundleArquiteturaFactory {
 
 			if (exception instanceof ResourceBundleFactoryException) {
 
-				ResourceBundleArquiteturaFactory.getLog().error("Erro na instanciação do resourceBundle :: " + exception.getMessage(), exception);
+				ResourceBundleArquiteturaFactory.LOG.error(ResourceBundleArquiteturaFactory.ERRO_INSTANCIA_BUNDLE + exception.getMessage(), exception);
 			}
 
-			ResourceBundleArquiteturaFactory.getLog().error("Erro na classe ResourceBundleArquiteturaFactory :: " + exception.getMessage(), exception);
+			ResourceBundleArquiteturaFactory.LOG.error(ResourceBundleArquiteturaFactory.ERRO_CLASSE_CORRENTE + exception.getMessage(), exception);
 		}
 
 		return null;
-	}
-
-	/**
-	 * Retorna o valor do atributo <code>log</code>
-	 *
-	 * @return <code>Log</code>
-	 */
-	public static Log getLog() {
-
-		return ResourceBundleArquiteturaFactory.log;
 	}
 
 }

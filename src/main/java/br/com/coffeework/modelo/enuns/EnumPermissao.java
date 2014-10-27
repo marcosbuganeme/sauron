@@ -21,11 +21,5 @@ public enum EnumPermissao {
 	ADMINISTRADOR,
 
 	/** Constante USUARIO. */
-	USUARIO,
-
-	/** Constante FUNCIONARIO. */
-	FUNCIONARIO,
-
-	/** Constante AUDITOR. */
-	AUDITOR;
+	USUARIO;
 }

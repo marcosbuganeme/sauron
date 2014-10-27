@@ -30,7 +30,7 @@ import br.com.coffeework.util.cdi.CDIServiceLocator;
  *
  * @version 1.0.0
  */
-public class AppUserDetailsService implements UserDetailsService {
+public class ManterUsuarioLogadoService implements UserDetailsService {
 
 	/**
 	 * Descrição Padrão: <br>
@@ -47,18 +47,18 @@ public class AppUserDetailsService implements UserDetailsService {
 
 		final Usuario usuario = usuarioDAO.obterUsuarioPorEmail(email);
 
-		UsuarioSistema user = null;
+		UsuarioSistema usuarioLogado = null;
 
 		if (usuario != null) {
 
-			user = new UsuarioSistema(usuario, this.getPermissoes(usuario));
+			usuarioLogado = new UsuarioSistema(usuario, this.getPermissoes(usuario));
 		}
 
-		return user;
+		return usuarioLogado;
 	}
 
 	/**
-	 * Método responsável por obter as permissões vinculadas a um usuário
+	 * Método responsável por obter as permissões vinculadas a um usuário.
 	 *
 	 * @author marcosbuganeme
 	 *
@@ -78,5 +78,4 @@ public class AppUserDetailsService implements UserDetailsService {
 
 		return colecaoPermissoes;
 	}
-
 }

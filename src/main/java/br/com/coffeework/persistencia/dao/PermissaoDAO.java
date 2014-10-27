@@ -21,5 +21,5 @@ import br.com.coffeework.modelo.entidade.Permissao;
  */
 public interface PermissaoDAO extends DAO<Permissao> {
 
-	Collection<Permissao> obterPermissoesPorUsuario(final Long idUsuario);
+	Collection<Permissao> obterPermissaoUsuario(final Long idUsuario);
 }

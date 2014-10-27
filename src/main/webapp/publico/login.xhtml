@@ -15,10 +15,6 @@
 		<h:outputStylesheet library="css" name="login.css" />
 
 		<h:outputStylesheet library="css" name="bootstrap.min.css" />
-
-		<h:outputScript library="js" name="bootstrap.min.js" />
-
-		<h:outputScript library="js" name="jquery-1.11.1.min.js" />
     </h:head>
 
     <h:body>
@@ -28,28 +24,30 @@
     		<f:event listener="#{manterLoginController.preRender()}" type="preRenderView" />
     	</f:metadata>
 
+		<p:ajaxStatus id="ajaxStatusLogin" styleClass="ajax-status">
+			<f:facet name="start">
+				<h:graphicImage id="loadingGif" library="img" name="loading.gif" />
+			</f:facet>
+
+			<f:facet name="complete">
+				<h:outputText value="" />
+			</f:facet>
+		</p:ajaxStatus>
+
 		<p:spacer height="100px" />
 
 		<div class="container">
-			<div class="container-fluid">
 				<div class="jumbotron">
-
-					<p:ajaxStatus id="ajaxStatusLogin" styleClass="ajax-status">
-						<f:facet name="start">
-							<h:graphicImage id="loadingGif" library="img" name="loading.gif" />
-						</f:facet>
-
-						<f:facet name="complete">
-							<h:outputText value="" />
-						</f:facet>
-					</p:ajaxStatus>				
 
 			   		<h:form id="frm" prependId="false" styleClass="form-signin">
 			   			<div class="page-header">
 	   						<h1 class="form-signin-heading text-center">
-								<h:graphicImage library="img" name="logo-sistema.png" />
-  								<span class="label text-danger">SGB</span>
-   								<span class="label label-warning text-danger">Sistema Gerenciador de Bitcoin</span>
+								<h:graphicImage library="img" name="logo-sistema.png" styleClass="image-responsive" />
+ 								<span class="label">SGB</span>
+ 								<div class="form-group">
+   									<span class="label">Sistema</span>
+   									<span class="label label-warning">Gerenciador de Bitcoin</span>
+   								</div>
 	   						</h1>
 						</div>
 
@@ -57,7 +55,7 @@
 			   			<p:growl id="growls" autoUpdate="true" life="5000" />
 
 						<div class="row">
-							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<div class="col-xs-12">
 								<p:outputLabel value="#{msgs['usuario.label.email']}" for="j_username" />
 								<div class="input-group">
 									<span class="input-group-addon">@</span>
@@ -70,7 +68,7 @@
 						<p:spacer height="20px" />
 
 						<div class="row">
-							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<div class="col-xs-12">
 								<h:outputLabel value="#{msgs['usuario.label.senha']}" for="j_password" />
 								<div class="input-group">
 									<span class="input-group-addon">#</span>
@@ -79,24 +77,30 @@
 								</div>
 							</div>
 						</div>
-	
+
 						<p:spacer height="20px" />
+
 						<div class="row">
-							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-			
-								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-					 				<h:commandButton id="btnAutenticar" value="Autenticar" action="#{manterLoginController.autenticar()}"
+							<div class="col-xs-12">
+
+								<div class="col-xs-6">
+					 				<h:commandButton id="btnAutenticar" value="#{msgs['label.autenticar']}"
+					 					action="#{manterLoginController.autenticar()}"
 					 					styleClass="btn btn-lg btn-success btn-block" />
 								</div>
-			
-								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-									<h:commandButton id="btnLimpar" value="Limpar" styleClass="btn btn-lg btn-danger btn-block" />
+
+								<div class="col-xs-6">
+									<h:commandButton id="btnLimpar" value="#{msgs['btn.limpar']}"
+										styleClass="btn btn-lg btn-danger btn-block" />
 								</div>
 							</div>
 						</div>
 			   		</h:form>
-		   		</div>
-			</div>
-		</div>   	
+
+		   		</div><!-- jumbotron -->
+		</div><!-- container -->
+
+		<h:outputScript library="js" name="bootstrap.min.js" />
+
     </h:body>
 </html>

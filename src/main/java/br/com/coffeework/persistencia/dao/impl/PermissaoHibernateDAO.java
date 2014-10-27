@@ -43,10 +43,10 @@ public class PermissaoHibernateDAO extends HibernateDAO<Permissao> implements Pe
 	 *
 	 * {@inheritDoc}
 	 *
-	 * @see br.com.coffeework.persistencia.dao.PermissaoDAO#obterPermissoesPorUsuario(java.lang.Long)
+	 * @see br.com.coffeework.persistencia.dao.PermissaoDAO#obterPermissaoUsuario(java.lang.Long)
 	 */
 	@Override
-	public Collection<Permissao> obterPermissoesPorUsuario(final Long idUsuario) {
+	public Collection<Permissao> obterPermissaoUsuario(final Long idUsuario) {
 
 		final Criteria criteria = this.obterCriteria();
 

@@ -34,27 +34,6 @@
 			<p:spacer height="20px" />
 
 			<h:form id="frm">
-				<div class="row">
-					<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-						<h:inputText id="txtPalavraChave" style="width: 100% !important;"
-							value="#{manterPermissaoController.formulario.palavraConsultada}"
-							pt:placeholder="#{msgs['permissao.placeholder.palavrachave']}"
-							styleClass="form-control" />
-					</div>
-
-					<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-						<h:commandButton id="btnConsultar" value="#{msgs['btn.consultar']}" 
-							action="#{manterPermissaoController.obterUsuarioPorEmail()}"
-							title="#{msgs['btn.title.consultar']}" styleClass="btn btn-sm btn-default">
-
-							<p:ajax process="@this" update="txtPalavraChave frm:dtPermissao" />
-
-						</h:commandButton>
-					</div>
-				</div>
-
-				<p:spacer height="20px" />
-
 				<div class="table-responsive">
 					<p:dataTable id="dtPermissao" value="#{manterPermissaoController.formulario.colecaoEntidades}" var="permissao" 
 						paginator="true" paginatorPosition="bottom" paginatorAlwaysVisible="false" rows="10"
@@ -91,7 +70,6 @@
 								<f:setPropertyActionListener target="#{manterPermissaoController.formulario.entidade}" value="#{permissao}" />
 							</p:commandLink>
 						</p:column>
-
 					</p:dataTable>
 				</div>
 
@@ -100,12 +78,14 @@
 					#{msgs['confirmDialog.mensagem.continuacao']} #{manterPermissaoController.formulario.entidade.permissao} ?"
 					showEffect="fade" >
 
-					<p:button id="btnNao" value="#{msgs['btn.label.nao']}"
+					<h:button id="btnNao" value="#{msgs['btn.label.nao']}"
 						onclick="PF('dlgExcluir').hide(); return false;"
 						styleClass="btn btn-lg btn-default" />
 
-					<p:commandButton id="btnSim" value="#{msgs['btn.label.sim']}"
-						action="#{manterPermissaoController.remover()}" oncomplete="PF('dlgExcluir').hide();"
+					<p:spacer width="20px" />
+
+					<h:commandButton id="btnSim" value="#{msgs['btn.label.sim']}"
+						action="#{manterPermissaoController.remover()}" oncomplete="dlgExcluir.hide();"
 						styleClass="btn btn-lg btn-default" />
 
 				</p:confirmDialog>

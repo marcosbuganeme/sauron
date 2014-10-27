@@ -1,7 +1,6 @@
 package br.com.coffeework.visao.controller;
 
 import java.io.IOException;
-import java.io.Serializable;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -31,20 +30,23 @@ import br.com.coffeework.util.jsf.UtilitarioJSF;
  */
 @Named
 @SessionScoped
-public class ManterLoginController implements Serializable {
+public class ManterLoginController extends Controller {
 
 	/** Constante serialVersionUID. */
 	private static final long serialVersionUID = 3370166387308296693L;
 
-	/** Atributo email. */
-	private String email;
+	/** Constante FALHA_VALIDACAO_CREDENCIAIS. */
+	private static final String FALHA_VALIDACAO_CREDENCIAIS = "credencial.invalida";
 
 	/** Atributo facesContext. */
 	@Inject
 	private FacesContext facesContext;
 
+	/** Atributo email. */
+	private String email;
+	
 	/**
-	 * Método responsável por inicialziar o ciclo de vida do JSF e executar logo na sexta fase.
+	 * Método responsável por inicializar o ciclo de vida do JSF na sexta fase (RENDER_RESPONSE).
 	 *
 	 * @author marcosbuganeme
 	 *
@@ -53,7 +55,9 @@ public class ManterLoginController implements Serializable {
 
 		if ("true".equals(this.getRequest().getParameter("invalid"))) {
 
-			UtilitarioJSF.addMensagemError("Usuário e/ou senha inválido!");
+			final String mensagemCredencialInvalida = this.getMessage(ManterLoginController.FALHA_VALIDACAO_CREDENCIAIS);
+
+			UtilitarioJSF.addMensagemError(mensagemCredencialInvalida);
 		}
 	}
 
@@ -113,6 +117,17 @@ public class ManterLoginController implements Serializable {
 	protected HttpServletResponse getResponse() {
 
 		return (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+	}
+
+	@Override
+	public void limparDados() {
+
+	}
+
+	@Override
+	public String abreIniciar() {
+
+		return null;
 	}
 
 }

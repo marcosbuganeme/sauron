@@ -112,7 +112,7 @@ public abstract class EntidadeSauron implements Entidade {
 	 */
 	@Override
 	public boolean isNovoRegistro() {
-
+		
 		return this.getIdentificador() == null;
 	}
 

@@ -16,23 +16,25 @@
 
 	<ui:define name="conteudo">
 		<div class="table-responsive">
-			<script type="text/javascript"> 
+			<script type="text/javascript" src="https://s3.amazonaws.com/tradingview/tv.js" />
+
+			<script type="text/javascript">
 				new TradingView.widget({
-					"width": 1024,
-					"height": 600,
-					"symbol": "MERCADO:BTCBRL",
-					"interval": "1",
-					"timezone": "exchange",
-					"theme": "White",
-					"toolbar_bg": "#f4f7f9",
-					"hide_side_toolbar": false,
-					"watchlist": [
-					  "MERCADO:BTCBRL",
-					  "MERCADO:LTCBRL",
-					  "BITSTAMP:BTCUSD"
-					],
-					"details": true,
-					"hideideas": true
+				  "width": 1024,
+				  "height": 600,
+				  "symbol": "MERCADO:BTCBRL",
+				  "interval": "1",
+				  "timezone": "exchange",
+				  "theme": "White",
+				  "toolbar_bg": "#F8F8FF",
+				  "hide_side_toolbar": false,
+				  "watchlist": [
+				    "MERCADO:BTCBRL",
+				    "MERCADO:LTCBRL",
+				    "BITSTAMP:BTCUSD"
+				  ],
+				  "details": true,
+				  "hideideas": true
 				});
 			</script>
 		</div>
