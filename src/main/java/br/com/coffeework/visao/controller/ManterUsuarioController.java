@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import br.com.coffeework.modelo.entidade.Usuario;
-import br.com.coffeework.negocio.service.ManterUsuarioService;
+import br.com.coffeework.negocio.service.facade.ManterUsuarioServiceFacade;
 import br.com.coffeework.util.pattern.UtilCPF;
 import br.com.coffeework.visao.formulario.ManterUsuarioFormulario;
 
@@ -39,7 +39,7 @@ public class ManterUsuarioController extends ManutencaoController<Usuario> {
 
 	/** Atributo service. */
 	@Inject
-	private ManterUsuarioService service;
+	private ManterUsuarioServiceFacade service;
 
 	/**
 	 * Responsável pela criação de novas instâncias desta classe.
@@ -106,7 +106,7 @@ public class ManterUsuarioController extends ManutencaoController<Usuario> {
 	@Override
 	public String abreIniciar() {
 
-		return "/admin/usuario/inicial.xhtml";
+		return "/admin/usuario/inicial";
 	}
 
 	/**
@@ -121,7 +121,7 @@ public class ManterUsuarioController extends ManutencaoController<Usuario> {
 	@Override
 	public String abreIncluir() {
 
-		return "/publico/usuario/incluir.xhtml";
+		return "/restrito/usuario/incluir.xhtml";
 	}
 
 	/**
@@ -157,7 +157,7 @@ public class ManterUsuarioController extends ManutencaoController<Usuario> {
 	 * @return <code>UsuarioService</code>
 	 */
 	@Override
-	protected ManterUsuarioService getService() {
+	protected ManterUsuarioServiceFacade getService() {
 
 		return this.service;
 	}

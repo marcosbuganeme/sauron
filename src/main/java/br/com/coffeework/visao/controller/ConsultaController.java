@@ -30,12 +30,6 @@ public abstract class ConsultaController<E extends Entidade> extends Controller 
 	/** Atributo serialVersionUID. */
 	private static final long serialVersionUID = 6196651668127017568L;
 
-	/** Atributo formulario. */
-	private Formulario<E> formulario;
-
-	/** Atributo service. */
-	private ServiceFacade<E> service;
-
 	/**
 	 * Método responsável por navegar para a página de detalhamento de um ECDU.
 	 *
@@ -128,18 +122,12 @@ public abstract class ConsultaController<E extends Entidade> extends Controller 
 	 *
 	 * @return <code>Formulario<E></code>
 	 */
-	protected Formulario<E> getFormulario() {
-
-		return this.formulario;
-	}
+	protected abstract Formulario<E> getFormulario();
 
 	/**
 	 * Retorna o valor do atributo <code>service</code>
 	 *
 	 * @return <code>ServiceFacade</code>
 	 */
-	protected ServiceFacade<E> getService() {
-
-		return this.service;
-	}
+	protected abstract ServiceFacade<E> getService();
 }

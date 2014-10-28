@@ -1,28 +1,26 @@
 package br.com.coffeework.visao.controller;
 
-import java.util.Arrays;
 import java.util.Collection;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import br.com.coffeework.modelo.entidade.Permissao;
+import br.com.coffeework.modelo.entidade.Carteira;
 import br.com.coffeework.modelo.entidade.Usuario;
-import br.com.coffeework.modelo.enuns.EnumPermissao;
-import br.com.coffeework.negocio.service.facade.ManterPermissaoServiceFacade;
-import br.com.coffeework.visao.formulario.ManterPermissaoFormulario;
+import br.com.coffeework.negocio.service.facade.ManterCarteiraServiceFacade;
+import br.com.coffeework.visao.formulario.ManterCarteiraFormulario;
 
 /**
  * <p>
- * <b>Título:</b> ManterPermissaoController.java
+ * <b>Título:</b> ManterCarteiraController.java
  * </p>
  *
  * <p>
- * <b>Descrição:</b> Classe responsável por gerenciar a tela da entidade <code>Permissao</code>.
+ * <b>Descrição:</b> Classe responsável por conter as regras de tela da entidade <code>Carteira</code>.
  * </p>
  *
- * Data de criação: 01/10/2014
+ * Data de criação: 27/10/2014
  *
  * @author marcosbuganeme
  *
@@ -30,25 +28,18 @@ import br.com.coffeework.visao.formulario.ManterPermissaoFormulario;
  */
 @Named
 @ViewScoped
-public class ManterPermissaoController extends ManutencaoController<Permissao> {
+public class ManterCarteiraController extends ManutencaoController<Carteira> {
 
-	/** Atributo serialVersionUID. */
-	private static final long serialVersionUID = 76877174362364325L;
+	/** Constante serialVersionUID. */
+	private static final long serialVersionUID = -1309210038925155558L;
 
 	/** Atributo formulario. */
 	@Inject
-	private ManterPermissaoFormulario formulario;
+	private ManterCarteiraFormulario formulario;
 
 	/** Atributo service. */
 	@Inject
-	private ManterPermissaoServiceFacade service;
-
-	/**
-	 * Responsável pela criação de novas instâncias desta classe.
-	 */
-	public ManterPermissaoController() {
-
-	}
+	private ManterCarteiraServiceFacade service;
 
 	/**
 	 * Método responsável por obter uma colecação de todos os usuários registrados.
@@ -60,18 +51,6 @@ public class ManterPermissaoController extends ManutencaoController<Permissao> {
 	public Collection<Usuario> preencheComboBoxUsuario() {
 
 		return this.getFormulario().getColecaoUsuariosComboBox();
-	}
-
-	/**
-	 * Método responsável por obter uma lista dos tipos de permissões.
-	 *
-	 * @author marcosbuganeme
-	 *
-	 * @return <i>coleção de permissões</i>
-	 */
-	public Collection<EnumPermissao> preencheComboBoxPermissao() {
-
-		return Arrays.asList(EnumPermissao.values());
 	}
 
 	/**
@@ -99,7 +78,7 @@ public class ManterPermissaoController extends ManutencaoController<Permissao> {
 	@Override
 	public void limparDados() {
 
-		this.getFormulario().setEntidade(new Permissao());
+		this.getFormulario().setEntidade(new Carteira());
 	}
 
 	/**
@@ -113,7 +92,7 @@ public class ManterPermissaoController extends ManutencaoController<Permissao> {
 	@Override
 	public String abreIniciar() {
 
-		return "/admin/permissao/inicial.xhtml";
+		return "/admin/carteira/inicial";
 	}
 
 	/**
@@ -127,7 +106,7 @@ public class ManterPermissaoController extends ManutencaoController<Permissao> {
 	@Override
 	public String abreIncluir() {
 
-		return "/admin/permissao/incluir.xhtml";
+		return "/restrito/carteira/incluir";
 	}
 
 	/**
@@ -141,27 +120,33 @@ public class ManterPermissaoController extends ManutencaoController<Permissao> {
 	@Override
 	public String abreDetalhar() {
 
-		return "/admin/permissao/detalhar.xhtml";
+		return "/admin/carteira/detalhar";
 	}
 
 	/**
-	 * Retorna o valor do atributo <code>formulario</code>
+	 * Descrição Padrão: <br>
+	 * <br>
 	 *
-	 * @return <code>ManterPermissaoFormulario</code>
+	 * {@inheritDoc}
+	 *
+	 * @see br.com.coffeework.visao.controller.ConsultaController#getFormulario()
 	 */
 	@Override
-	public ManterPermissaoFormulario getFormulario() {
+	public ManterCarteiraFormulario getFormulario() {
 
 		return this.formulario;
 	}
 
 	/**
-	 * Retorna o valor do atributo <code>service</code>
+	 * Descrição Padrão: <br>
+	 * <br>
 	 *
-	 * @return <code>ManterPermissaoService</code>
+	 * {@inheritDoc}
+	 *
+	 * @see br.com.coffeework.visao.controller.ConsultaController#getService()
 	 */
 	@Override
-	public ManterPermissaoServiceFacade getService() {
+	public ManterCarteiraServiceFacade getService() {
 
 		return this.service;
 	}

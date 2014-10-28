@@ -6,6 +6,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * <p>
@@ -34,11 +37,13 @@ public class BitCoin extends EntidadeSauron {
 	private Transacao transacao;
 
 	/** Atributo volume. */
+	@NotEmpty
 	@Column(name = "volume", length = 10, nullable = false)
 	private String volume;
 
 	/** Atributo preco. */
-	@Column(name = "preco")
+	@NotNull
+	@Column(name = "preco", nullable = false)
 	private BigDecimal preco;
 
 	/**

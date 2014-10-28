@@ -30,16 +30,4 @@ public interface ManterPermissaoServiceFacade extends ServiceFacade<Permissao> {
 	 * @return <i>coleção de usuários</i>
 	 */
 	Collection<Usuario> consultarTodosUsuarios();
-
-	/**
-	 * Método responsável por obter um usuário pelo seu email.
-	 *
-	 * @author marcosbuganeme
-	 *
-	 * @param email
-	 *            - filtro da consulta.
-	 * 
-	 * @return <code>coleção usuário pesquisado</code>.
-	 */
-	Collection<Usuario> obterUsuarioPorEmail(final String email);
 }

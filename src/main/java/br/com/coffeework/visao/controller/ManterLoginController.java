@@ -44,7 +44,7 @@ public class ManterLoginController extends Controller {
 
 	/** Atributo email. */
 	private String email;
-	
+
 	/**
 	 * Método responsável por inicializar o ciclo de vida do JSF na sexta fase (RENDER_RESPONSE).
 	 *
@@ -119,11 +119,28 @@ public class ManterLoginController extends Controller {
 		return (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
 	}
 
+	/**
+	 * Descrição Padrão: <br>
+	 * <br>
+	 *
+	 * {@inheritDoc}
+	 *
+	 * @see br.com.coffeework.visao.controller.Controller#limparDados()
+	 */
 	@Override
 	public void limparDados() {
 
+		this.email = new String();
 	}
 
+	/**
+	 * Descrição Padrão: <br>
+	 * <br>
+	 *
+	 * {@inheritDoc}
+	 *
+	 * @see br.com.coffeework.visao.controller.Controller#abreIniciar()
+	 */
 	@Override
 	public String abreIniciar() {
 

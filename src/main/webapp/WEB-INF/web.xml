@@ -36,7 +36,7 @@
 
 	<welcome-file-list>
 
-		<welcome-file>publico/inicial.xhtml</welcome-file>
+		<welcome-file>restrito/inicial.xhtml</welcome-file>
 
 	</welcome-file-list>
 

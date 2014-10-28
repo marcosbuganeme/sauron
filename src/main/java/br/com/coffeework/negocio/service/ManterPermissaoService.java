@@ -58,20 +58,6 @@ public class ManterPermissaoService extends Service<Permissao> implements Manter
 	 *
 	 * {@inheritDoc}
 	 *
-	 * @see br.com.coffeework.negocio.service.facade.ManterPermissaoServiceFacade#obterUsuarioPorEmail(java.lang.String)
-	 */
-	@Override
-	public Collection<Usuario> obterUsuarioPorEmail(final String email) {
-
-		return this.getUsuarioDAO().autoCompleteUsuarioPorEmail(email);
-	}
-
-	/**
-	 * Descrição Padrão: <br>
-	 * <br>
-	 *
-	 * {@inheritDoc}
-	 *
 	 * @see br.com.coffeework.negocio.service.Service#getDao()
 	 */
 	@Override

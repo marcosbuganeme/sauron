@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 /**
  * <p>
@@ -27,7 +28,7 @@ import javax.persistence.Table;
  * @version 1.0.0
  */
 @Entity
-@Table(name = "conta")
+@Table(name = "carteira")
 public class Carteira extends EntidadeSauron {
 
 	/** Constante serialVersionUID. */
@@ -35,7 +36,7 @@ public class Carteira extends EntidadeSauron {
 
 	/** Atributo usuario. */
 	@OneToOne(optional = false)
-	@JoinColumn(name = "id_usuario", unique = true, foreignKey = @ForeignKey(name = "FK_USUARIO_CARTEIRA"))
+	@JoinColumn(name = "id_usuario", foreignKey = @ForeignKey(name = "FK_USUARIO_CARTEIRA"))
 	private Usuario usuario;
 
 	/** Atributo colecaoTransacoes. */
@@ -43,6 +44,7 @@ public class Carteira extends EntidadeSauron {
 	private Collection<Transacao> colecaoTransacoes;
 
 	/** Atributo saldo. */
+	@NotNull
 	@Column(name = "saldo", nullable = false)
 	private BigDecimal saldo;
 

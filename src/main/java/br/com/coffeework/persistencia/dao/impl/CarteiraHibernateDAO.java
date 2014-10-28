@@ -3,33 +3,32 @@ package br.com.coffeework.persistencia.dao.impl;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
-import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 
-import br.com.coffeework.modelo.entidade.Usuario;
+import br.com.coffeework.modelo.entidade.Carteira;
 import br.com.coffeework.modelo.enuns.EnumStatus;
-import br.com.coffeework.persistencia.dao.UsuarioDAO;
+import br.com.coffeework.persistencia.dao.CarteiraDAO;
 
 /**
  * <p>
- * <b>Título:</b> UsuarioHibernateDAO.java
+ * <b>Título:</b> CarteiraHibernateDAO.java
  * </p>
  *
  * <p>
- * <b>Descrição:</b> Classe responsável por disponibilizar as implementações da interface <code>UsuarioDAO</code>.
+ * <b>Descrição:</b>
  * </p>
  *
- * Data de criação: 21/09/2014
+ * Data de criação: 27/10/2014
  *
  * @author marcosbuganeme
  *
  * @version 1.0.0
  */
-public class UsuarioHibernateDAO extends HibernateDAO<Usuario> implements UsuarioDAO {
+public class CarteiraHibernateDAO extends HibernateDAO<Carteira> implements CarteiraDAO {
 
 	/** Constante serialVersionUID. */
-	private static final long serialVersionUID = -2853667669101185513L;
+	private static final long serialVersionUID = -7117555776757083761L;
 
 	/** Atributo manager. */
 	@Inject
@@ -41,21 +40,23 @@ public class UsuarioHibernateDAO extends HibernateDAO<Usuario> implements Usuari
 	 *
 	 * {@inheritDoc}
 	 *
-	 * @see br.com.coffeework.persistencia.dao.UsuarioDAO#obterUsuarioPorEmail(java.lang.String)
+	 * @see br.com.coffeework.persistencia.dao.CarteiraDAO#obterCarteiraPorUsuario(java.lang.Long)
 	 */
 	@Override
-	public Usuario obterUsuarioPorEmail(final String email) {
+	public Carteira obterCarteiraPorUsuario(final Long idUsuario) {
 
 		final Criteria criteria = this.obterCriteria();
 
+		criteria.createAlias("usuario", "user");
+		
 		criteria.add(Restrictions.eq("status", EnumStatus.ATIVO));
 
-		if (email != null && !StringUtils.isEmpty(email)) {
+		if (idUsuario != null) {
 
-			criteria.add(Restrictions.eq("email", email));
+			criteria.add(Restrictions.eq("user.id", idUsuario));
 		}
 
-		return (Usuario) criteria.uniqueResult();
+		return (Carteira) criteria.uniqueResult();
 	}
 
 	/**

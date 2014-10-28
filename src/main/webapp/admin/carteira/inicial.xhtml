@@ -6,11 +6,13 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/template/template.xhtml">
 
-	<ui:define name="titulo">#{msgs['usuario.titulo']}</ui:define>
+	<ui:define name="titulo">
+		<h:outputText value="#{msgs['carteira.titulo']}" />
+	</ui:define>
 
 	<ui:define name="titulo_conteudo">
-		<h2 class="well">
-			<span>#{msgs['usuario.titulo.inicial']}</span>
+		<h2 class="text-center well">
+			<h:outputText value="#{msgs['carteira.inicial.titulo']}" />
 		</h2>
 	</ui:define>
 
@@ -20,13 +22,14 @@
 				<div class="btn-group">
 					<h:button id="btnNovo" value="#{msgs['btn.novo']}"
 						title="#{msgs['btn.novo.title']}"
-						outcome="/restrito/usuario/incluir"
+						outcome="/restrito/carteira/incluir"
 						styleClass="btn btn-lg btn-default" />
 
 					<p:spacer width="5px" />
 
 					<h:button id="btnPesquisar" value="#{msgs['btn.pesquisar']}" 
-						title="#{msgs['btn.pesquisar.title']}" outcome="/admin/usuario/detalhar" 
+						title="#{msgs['btn.pesquisar.title']}"
+						outcome="/admin/carteira/detalhar" 
 						styleClass="btn btn-lg btn-warning" />  
 				</div>
 			</div>

@@ -25,7 +25,7 @@
 				<div class="pull-left">
 					<div class="btn-group">
 						<h:button id="btnNovo" value="#{msgs['btn.novo']}" title="#{msgs['btn.novo.title']}" 
-							outcome="/publico/usuario/incluir" styleClass="btn btn-lg btn-default" />
+							outcome="/restrito/usuario/incluir" styleClass="btn btn-lg btn-default" />
 					</div>
 				</div>
 			</f:facet>
@@ -53,7 +53,7 @@
 						</p:column>
 
 						<p:column width="10%">
-							<h:link title="#{msgs['link.editar.title']}" outcome="/publico/usuario/incluir">
+							<h:link title="#{msgs['link.editar.title']}" outcome="/restrito/usuario/incluir">
 								<f:param name="usuario" value="#{usuario.identificador}" />
 								<h:graphicImage library="img" name="btnEditar_preto-20x20.png" />
 							</h:link>

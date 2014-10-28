@@ -7,26 +7,28 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/template/template.xhtml">
 
-	<ui:define name="titulo">#{msgs['permissao.titulo']}</ui:define>
+	<ui:define name="titulo">#{msgs['carteira.titulo']}</ui:define>
 
 	<ui:define name="titulo_conteudo">
 		<h2 class="well">
-			<span>#{msgs['permissao.detalhar.titulo']}</span>
+			<span>#{msgs['carteira.detalhar.titulo']}</span>
 		</h2>
 	</ui:define>
 
 	<ui:define name="conteudo">
 
 		<f:metadata>
-			<f:viewAction action="#{manterPermissaoController.listar()}" />
+			<f:viewAction action="#{manterCarteiraController.listar()}" />
 		</f:metadata>
 
-		<p:panel id="panelPermissao" styleClass="sem-bordas">
+		<p:panel id="panelCarteira" styleClass="sem-bordas">
 			<f:facet name="header">
 				<div class="pull-left">
 					<div class="btn-group">
-						<h:button id="btnNovo" value="#{msgs['btn.novo']}" title="#{msgs['btn.novo.title']}" 
-							outcome="/admin/permissao/incluir" styleClass="btn btn-lg btn-default" />
+						<h:button id="btnNovo" value="#{msgs['btn.novo']}"
+							title="#{msgs['btn.novo.title']}" 
+							outcome="/restrito/carteira/incluir"
+							styleClass="btn btn-lg btn-default" />
 					</div>
 				</div>
 			</f:facet>
@@ -35,30 +37,26 @@
 
 			<h:form id="frm">
 				<div class="table-responsive">
-					<p:dataTable id="dtPermissao" value="#{manterPermissaoController.formulario.colecaoEntidades}" var="permissao" 
-						paginator="true" paginatorPosition="bottom" paginatorAlwaysVisible="false" rows="10"
-						rowsPerPageLabel="#{msgs['datatable.label.rows']} :" rowsPerPageTemplate="10, 15, 30, 50"
+					<p:dataTable id="dtPermissao" value="#{manterCarteiraController.formulario.colecaoEntidades}"
+						var="carteira" paginator="true" paginatorPosition="bottom" paginatorAlwaysVisible="false"
+						rows="10" rowsPerPageLabel="#{msgs['datatable.label.rows']} :" rowsPerPageTemplate="10, 15, 30, 50"
 						emptyMessage="#{msgs['datatable.mensagem.vazia']}" styleClass="table table-hover" >
 
 						<p:column headerText="#{msgs['label.id']}" width="10%">
-							<span>#{permissao.identificador}</span>
+							<span>#{carteira.identificador}</span>
 						</p:column>
 
 						<p:column headerText="#{msgs['usuario.label.email']}" width="30%" >
-							<span>#{permissao.usuario.email}</span>
+							<span>#{carteira.usuario.email}</span>
 						</p:column>
 
 						<p:column headerText="#{msgs['usuario.label.permissao']}" width="20%">
-							<span>#{permissao.permissao}</span>
-						</p:column>
-
-						<p:column headerText="#{msgs['usuario.label.descricao']}" width="30%">
-							<span>#{permissao.descricao}</span>
+							<span>#{carteira.saldo}</span>
 						</p:column>
 
 						<p:column width="10%">
-							<h:link id="btnEditar" title="#{msgs['link.editar.title']}" outcome="/admin/permissao/incluir">
-								<f:param name="permissao" value="#{permissao.identificador}" />
+							<h:link id="btnEditar" title="#{msgs['link.editar.title']}" outcome="/restrito/carteira/incluir">
+								<f:param name="carteira" value="#{carteira.identificador}" />
 								<h:graphicImage library="img" name="btnEditar_preto-20x20.png" />
 							</h:link>
 
@@ -67,15 +65,14 @@
 							<p:commandLink id="btnRemover" title="#{msgs['link.excluir.title']}" oncomplete="PF('dlgExcluir').show();" 
 								process="@this" update="@form">
 								<h:graphicImage library="img" name="btnRemover_preto-20x20.png" />
-								<f:setPropertyActionListener target="#{manterPermissaoController.formulario.entidade}" value="#{permissao}" />
+								<f:setPropertyActionListener target="#{manterCarteiraController.formulario.entidade}" value="#{carteira}" />
 							</p:commandLink>
 						</p:column>
 					</p:dataTable>
 				</div>
 
 				<p:confirmDialog id="btnDlgExcluir" widgetVar="dlgExcluir" header="#{msgs['confirmDialog.excluir.header']}"
-					message="#{msgs['confirmDialog.mensagem']} #{manterPermissaoController.formulario.entidade.usuario.email} 
-					#{msgs['confirmDialog.mensagem.continuacao']} #{manterPermissaoController.formulario.entidade.permissao} ?"
+					message="#{msgs['confirmDialog.mensagem']} #{manterCarteiraController.formulario.entidade.usuario.email} ?"
 					showEffect="fade" >
 
 					<h:button id="btnNao" value="#{msgs['btn.label.nao']}"
@@ -85,7 +82,7 @@
 					<p:spacer width="20px" />
 
 					<h:commandButton id="btnSim" value="#{msgs['btn.label.sim']}"
-						action="#{manterPermissaoController.remover()}" oncomplete="dlgExcluir.hide();"
+						action="#{manterCarteiraController.remover()}" oncomplete="dlgExcluir.hide();"
 						styleClass="btn btn-lg btn-default" />
 
 				</p:confirmDialog>

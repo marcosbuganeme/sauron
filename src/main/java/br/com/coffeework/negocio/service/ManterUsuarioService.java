@@ -1,8 +1,8 @@
 package br.com.coffeework.negocio.service;
 
-import java.util.Collection;
-
 import javax.inject.Inject;
+
+import org.apache.commons.lang3.StringUtils;
 
 import br.com.coffeework.exception.NegocioException;
 import br.com.coffeework.exception.RegistroJaExisteException;
@@ -45,27 +45,13 @@ public class ManterUsuarioService extends Service<Usuario> implements ManterUsua
 	 *
 	 * {@inheritDoc}
 	 *
-	 * @see br.com.coffeework.negocio.service.facade.ManterUsuarioServiceFacade#autoCompleteUsuarioPorEmail(java.lang.String)
-	 */
-	@Override
-	public Collection<Usuario> autoCompleteUsuarioPorEmail(final String email) {
-
-		return this.getDao().autoCompleteUsuarioPorEmail(email);
-	}
-
-	/**
-	 * Descrição Padrão: <br>
-	 * <br>
-	 *
-	 * {@inheritDoc}
-	 *
 	 * @see br.com.coffeework.negocio.service.Service#salvar(br.com.coffeework.modelo.entidade.Entidade)
 	 */
 	@Transacional
 	@Override
 	public void salvar(final Usuario usuario) throws NegocioException {
 
-		if (usuario != null && !usuario.getSenha().trim().equals("")) {
+		if (usuario != null && !StringUtils.isEmpty(usuario.getSenha())) {
 
 			if (this.isUsuarioJaExiste(usuario)) {
 

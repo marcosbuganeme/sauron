@@ -7,7 +7,7 @@
 
 	<beans:bean id="usuarioLogadoService" class="br.com.coffeework.springsecurity.ManterUsuarioLogadoService" />
 
-	<http pattern="/publico/login.xhtml" security="none" />
+	<http pattern="/publico/**" security="none" />
 	<http pattern="/javax.faces.resource/**" security="none" />
 
 	<http auto-config="false" use-expressions="true">
@@ -16,18 +16,9 @@
 
 		<logout logout-url="/j_spring_security_logout" invalidate-session="true" />
 
-		<intercept-url pattern="/publico/inicial.xhtml" access="isAuthenticated()" />
-		<intercept-url pattern="/publico/teste.xhtml" access="isAuthenticated()" />
-		<intercept-url pattern="/publico/erro.xhtml" access="isAuthenticated()" />
+		<intercept-url pattern="/restrito/**" access="isAuthenticated()" />
+		<intercept-url pattern="/admin/**" access="hasAnyRole('ADMINISTRADOR')" />
 
-		<intercept-url pattern="/publico/grafico/**" access="hasAnyRole('USUARIO', 'ADMINISTRADOR')" />
-		<intercept-url pattern="/publico/usuario/**" access="hasAnyRole('USUARIO', 'ADMINISTRADOR')" />
-		<intercept-url pattern="/publico/bitcoin/**" access="hasAnyRole('USUARIO', 'ADMINISTRADOR')" />
-		<intercept-url pattern="/publico/contato/**" access="hasAnyRole('USUARIO', 'ADMINISTRADOR')" />
-
-		<intercept-url pattern="/admin/usuario/inicial.xhtml" access="hasAnyRole('ADMINISTRADOR')" />
-		<intercept-url pattern="/admin/usuario/detalhar.xhtml" access="hasAnyRole('ADMINISTRADOR')" />
-		<intercept-url pattern="/admin/permissao/**" access="hasAnyRole('ADMINISTRADOR')" />
 		<intercept-url pattern="/**" access="denyAll" />
 	</http>
 

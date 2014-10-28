@@ -21,5 +21,15 @@ import br.com.coffeework.modelo.entidade.Permissao;
  */
 public interface PermissaoDAO extends DAO<Permissao> {
 
+	/**
+	 * Método responsável por obter as permissões através do usuário.
+	 *
+	 * @author marcosbuganeme
+	 *
+	 * @param idUsuario
+	 *            - identificador do usuário que será filtrado.
+	 * 
+	 * @return <i>coleção de usuários pelas permissões</i>
+	 */
 	Collection<Permissao> obterPermissaoUsuario(final Long idUsuario);
 }

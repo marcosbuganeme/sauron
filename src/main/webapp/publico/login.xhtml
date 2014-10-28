@@ -45,8 +45,8 @@
 								<h:graphicImage library="img" name="logo-sistema.png" styleClass="image-responsive" />
  								<span class="label">SGB</span>
  								<div class="form-group">
-   									<span class="label">Sistema</span>
-   									<span class="label label-warning">Gerenciador de Bitcoin</span>
+   									<span class="label label-success">Sistema</span>
+   									<span class="label label-danger">Gerenciador de Bitcoin</span>
    								</div>
 	   						</h1>
 						</div>
@@ -84,13 +84,14 @@
 							<div class="col-xs-12">
 
 								<div class="col-xs-6">
-					 				<h:commandButton id="btnAutenticar" value="#{msgs['label.autenticar']}"
+					 				<h:commandButton id="btnAutenticar" value="#{msgs['btn.autenticar']}"
 					 					action="#{manterLoginController.autenticar()}"
 					 					styleClass="btn btn-lg btn-success btn-block" />
 								</div>
 
 								<div class="col-xs-6">
 									<h:commandButton id="btnLimpar" value="#{msgs['btn.limpar']}"
+										action="#{manterLoginController.limparDados()}"
 										styleClass="btn btn-lg btn-danger btn-block" />
 								</div>
 							</div>

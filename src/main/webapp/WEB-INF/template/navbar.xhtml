@@ -16,7 +16,7 @@
 						<span class="icon-bar" />
 						<span class="icon-bar" />
 					</button>
-					<a class="navbar-brand" href="/sauron/publico/inicial.xhtml">
+					<a class="navbar-brand" href="/sauron/restrito/inicial.xhtml">
 						<span class="fontePreta">#{msgs['titulo.sgb']}</span>
 					</a>
 				</div>
@@ -24,7 +24,7 @@
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
 						<li>
-							<h:link value="#{msgs['menu.home']}" outcome="/publico/inicial" />
+							<h:link value="#{msgs['menu.home']}" outcome="/restrito/inicial" />
 						</li>
 
 						<li class="dropdown">
@@ -34,7 +34,7 @@
 
 							<ul class="dropdown-menu" role="menu">
 								<li>
-									<h:link value="#{msgs['menu.cotacaobitcoin']}" outcome="/publico/grafico/detalhar" />
+									<h:link value="#{msgs['menu.cotacaobitcoin']}" outcome="/restrito/grafico/detalhar" />
 								</li>
 							</ul>
 						</li>
@@ -46,11 +46,15 @@
 
 							<ul class="dropdown-menu" role="menu">
 								<li>
-									<h:commandLink value="#{msgs['submenu.cad.bitcoin']}" action="#{manterUsuarioController.abreIncluir()}" />
+									<h:commandLink value="#{msgs['submenu.cad.bitcoin']}" action="#{manterBitcoinController.abreIncluir()}" />
 								</li>
 
 								<li>
-									<h:commandLink value="#{msgs['submenu.cad.transacao']}" action="#{manterUsuarioController.abreIncluir()}" />
+									<h:commandLink value="#{msgs['submenu.cad.carteira']}" action="#{manterCarteiraController.abreIncluir()}" />
+								</li>
+
+								<li>
+									<h:commandLink value="#{msgs['submenu.cad.transacao']}" action="#{manterTransacaoController.abreIncluir()}" />
 								</li>
 							</ul>
 						</li>
@@ -68,17 +72,23 @@
 								<li>
 									<h:commandLink value="#{msgs['submenu.permissao']}" action="#{manterPermissaoController.abreIniciar()}" />
 								</li>
+
 								<li>
-									<h:commandLink value="#{msgs['submenu.bitcoin']}" action="#{manterPermissaoController.abreIniciar()}" />
+									<h:commandLink value="#{msgs['submenu.bitcoin']}" action="#{manterBitcoinController.abreIniciar()}" />
 								</li>
+
 								<li>
-									<h:commandLink value="#{msgs['submenu.transacao']}" action="#{manterPermissaoController.abreIniciar()}" />
+									<h:commandLink value="#{msgs['submenu.carteira']}" action="#{manterCarteiraController.abreIniciar()}" />
+								</li>
+
+								<li>
+									<h:commandLink value="#{msgs['submenu.transacao']}" action="#{manterTransacaoController.abreIniciar()}" />
 								</li>
 							</ul>
 						</li>
 
 						<li>
-							<h:link value="#{msgs['menu.contato']}" outcome="/publico/contato/detalhar" />
+							<h:link value="#{msgs['menu.contato']}" outcome="/restrito/contato/detalhar" />
 						</li>
 					</ul>
 

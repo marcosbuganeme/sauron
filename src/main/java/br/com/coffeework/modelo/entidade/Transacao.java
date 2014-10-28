@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import br.com.coffeework.modelo.enuns.EnumTipoOperacao;
 
@@ -37,16 +38,19 @@ public class Transacao extends EntidadeSauron {
 	/** Atributo carteira. */
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "id_carteira", nullable = false, updatable = false, foreignKey = @ForeignKey(name = "FK_CARTEIRA_TRANSACAO"))
+	@NotNull
 	private Carteira carteira;
 
 	/** Atributo bitCoin. */
 	@OneToOne(optional = false)
 	@JoinColumn(name = "id_bitcoin", nullable = false, updatable = false, foreignKey = @ForeignKey(name = "FK_BITCOIN_TRANSACAO"))
+	@NotNull
 	private BitCoin bitCoin;
 
 	/** Atributo tipoOperacao. */
 	@Enumerated(EnumType.STRING)
 	@Column(name = "tipo_operacao", length = 20, nullable = false)
+	@NotNull
 	private EnumTipoOperacao tipoOperacao;
 
 	/**
