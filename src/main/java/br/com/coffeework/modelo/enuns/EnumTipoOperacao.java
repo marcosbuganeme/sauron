@@ -6,7 +6,7 @@ package br.com.coffeework.modelo.enuns;
  * </p>
  *
  * <p>
- * <b>Descrição:</b> Enumerator responsável por representar os tipos de operações disponíveis para uma transação de bitcoin.
+ * <b>Descrição:</b> Enumerator responsável por representar os tipos de operações disponíveis para uma <code>Transacao</code> de <code>bitcoin</code>.
  * </p>
  *
  * Data de criação: 30/09/2014

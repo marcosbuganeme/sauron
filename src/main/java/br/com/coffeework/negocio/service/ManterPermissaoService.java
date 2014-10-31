@@ -16,7 +16,7 @@ import br.com.coffeework.persistencia.dao.UsuarioDAO;
  * </p>
  *
  * <p>
- * <b>Descrição:</b> Classe responsável por conter a implementação das regras de negócio que serão vinculadas a entidade <code>Permissao</code>.
+ * <b>Descrição:</b> Classe responsável por implementar as funções de negócio relativas ao ECDU 03 - Manter Permissão.
  * </p>
  *
  * Data de criação: 01/10/2014

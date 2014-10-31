@@ -14,7 +14,7 @@ import br.com.coffeework.visao.formulario.ManterBitcoinFormulario;
  * </p>
  *
  * <p>
- * <b>Descrição:</b> Classe responsável pelo controle de regras de negócio da tela do ECDU - Gerenciar Bitcoin.
+ * <b>Descrição:</b> Classe responsável pelo controle de regras de negócio da tela do ECDU06 - Manter Bitcoin.
  * </p>
  *
  * Data de criação: 27/10/2014

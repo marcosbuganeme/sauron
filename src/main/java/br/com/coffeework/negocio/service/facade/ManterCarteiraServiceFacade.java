@@ -11,7 +11,7 @@ import br.com.coffeework.modelo.entidade.Usuario;
  * </p>
  *
  * <p>
- * <b>Descrição:</b> Interface responsável por prover as funções de negócio da entidade <code>Carteira</code>.
+ * <b>Descrição:</b> Interface responsável por conter as funções de negócio do ECDU05 - Manter Carteira.
  * </p>
  *
  * Data de criação: 27/10/2014

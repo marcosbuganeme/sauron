@@ -17,7 +17,7 @@ import br.com.coffeework.visao.formulario.ManterUsuarioFormulario;
  * </p>
  *
  * <p>
- * <b>Descrição:</b> Classe responsável por gerenciar a tela da entidade <code>Usuario</code>.
+ * <b>Descrição:</b> Classe responsável pelo controle de regras de negócio da tela do ECDU02 - Manter Usuário.
  * </p>
  *
  * Data de criação: 21/09/2014

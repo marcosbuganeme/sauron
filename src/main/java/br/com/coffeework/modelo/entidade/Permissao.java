@@ -20,7 +20,7 @@ import br.com.coffeework.modelo.enuns.EnumPermissao;
  * </p>
  *
  * <p>
- * <b>Descrição:</b> Classe responsável por representar as permissões de acesso que o ator tem em relação ao comportamento do sistema.
+ * <b>Descrição:</b> Classe responsável por representar as permissões de acesso que um determinado usuário tenha em relação ao comportamento do sistema.
  * </p>
  *
  * Data de criação: 25/09/2014
@@ -66,7 +66,7 @@ public class Permissao extends EntidadeSauron {
 	 * @return <code>Usuario</code>
 	 */
 	public Usuario getUsuario() {
-		
+
 		return this.usuario;
 	}
 

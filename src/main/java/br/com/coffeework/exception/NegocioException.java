@@ -6,7 +6,7 @@ package br.com.coffeework.exception;
  * </p>
  *
  * <p>
- * <b>Descrição:</b> Classe responsável pelo tratamento de exceções para regras de negócio.
+ * <b>Descrição:</b> Classe responsável pelo tratamento de exceções que quebram as regras de negócio vinculadas a uma entidade.
  * </p>
  *
  * Data de criação: 24/09/2014

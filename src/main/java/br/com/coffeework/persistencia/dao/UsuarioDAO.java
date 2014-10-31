@@ -1,7 +1,5 @@
 package br.com.coffeework.persistencia.dao;
 
-import java.util.Collection;
-
 import br.com.coffeework.modelo.entidade.Usuario;
 
 /**
@@ -10,7 +8,7 @@ import br.com.coffeework.modelo.entidade.Usuario;
  * </p>
  *
  * <p>
- * <b>Descrição:</b> Interface responsável por prover funções de CRUD para a entidade <code>Usuario</code>
+ * <b>Descrição:</b> Interface responsável por prover funções do repositório da entidade <code>Usuario</code>.
  * </p>
  *
  * Data de criação: 21/09/2014

@@ -129,7 +129,7 @@ public abstract class Controller implements Serializable {
 	 * 
 	 * @see ResourceBundleArquiteturaFactory
 	 */
-	public Class<? extends ResourceBundleArquiteturaFactory> getResourceBundleFactory() {
+	protected Class<? extends ResourceBundleArquiteturaFactory> getResourceBundleFactory() {
 
 		return ResourceBundleArquitetura.class;
 	}

@@ -17,7 +17,7 @@ import br.com.coffeework.visao.formulario.ManterCarteiraFormulario;
  * </p>
  *
  * <p>
- * <b>Descrição:</b> Classe responsável por conter as regras de tela da entidade <code>Carteira</code>.
+ * <b>Descrição:</b> Classe responsável pelo controle de regras de negócio da tela do ECDU05 - Manter Carteira.
  * </p>
  *
  * Data de criação: 27/10/2014

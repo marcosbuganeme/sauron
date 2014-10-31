@@ -11,7 +11,7 @@ import br.com.coffeework.modelo.entidade.Usuario;
  * </p>
  *
  * <p>
- * <b>Descrição:</b> Classe responsável por prover os atributos de controle do ECDU 04 - Gerenciar Carteira
+ * <b>Descrição:</b> Classe responsável por prover os atributos de controle do ECDU05 - Manter Carteira.
  * </p>
  *
  * Data de criação: 27/10/2014

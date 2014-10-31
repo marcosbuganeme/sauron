@@ -6,7 +6,7 @@ package br.com.coffeework.modelo.enuns;
  * </p>
  *
  * <p>
- * <b>Descrição:</b> Enumerator responsável por representar o tipo da <code>Permissao</code> do <code>Usuario</code> do sistema.
+ * <b>Descrição:</b> Enumerator responsável por representar os possíveis tipos de <code>Permissao</code> vinculadas a um <code>Usuario</code>.
  * </p>
  *
  * Data de criação: 21/09/2014

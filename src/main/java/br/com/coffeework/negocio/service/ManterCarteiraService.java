@@ -19,7 +19,7 @@ import br.com.coffeework.persistencia.dao.UsuarioDAO;
  * </p>
  *
  * <p>
- * <b>Descrição:</b> Classe responsável por conter as funções de implementação de negócio da entidade <code>Carteira</code>
+ * <b>Descrição:</b> Classe responsável por implementar as funções de negócio relativas ao ECDU 05 - Manter Carteira.
  * </p>
  *
  * Data de criação: 27/10/2014

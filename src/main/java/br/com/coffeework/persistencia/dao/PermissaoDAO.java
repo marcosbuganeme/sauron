@@ -10,7 +10,7 @@ import br.com.coffeework.modelo.entidade.Permissao;
  * </p>
  *
  * <p>
- * <b>Descrição:</b> Interface responsável por prover as funções de consulta para e entidade <code>Permissao</code>.
+ * <b>Descrição:</b> Interface responsável por prover funções do repositório da entidade <code>Permissao</code>.
  * </p>
  *
  * Data de criação: 01/10/2014

@@ -30,7 +30,6 @@ public class UtilCriptografia {
 	 */
 	private UtilCriptografia() {
 
-		super();
 	}
 
 	/**
@@ -60,7 +59,7 @@ public class UtilCriptografia {
 
 		} catch (final Exception e) {
 
-			UtilCriptografia.LOG.info(e.getMessage());
+			UtilCriptografia.LOG.error("MENSAGEM DE ERROR >>>>> " + e.getMessage());
 		}
 
 		return strBuilder.toString().toLowerCase();

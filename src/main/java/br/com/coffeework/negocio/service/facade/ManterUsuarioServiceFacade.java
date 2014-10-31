@@ -8,7 +8,7 @@ import br.com.coffeework.modelo.entidade.Usuario;
  * </p>
  *
  * <p>
- * <b>Descrição:</b> Interface responsável por conter a assinatura dos métodos que fazem parte da regra de negócio.
+ * <b>Descrição:</b> Interface responsável por conter as funções de negócio do ECDU02 - Manter Usuário.
  * </p>
  *
  * Data de criação: 25/09/2014

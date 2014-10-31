@@ -8,7 +8,7 @@ import br.com.coffeework.modelo.entidade.BitCoin;
  * </p>
  *
  * <p>
- * <b>Descrição:</b> Interface responsável por conter as funções de negócio do ECDU - Gerenciar Bitcoin.
+ * <b>Descrição:</b> Interface responsável por conter as funções de negócio do ECDU04 - Manter Bitcoin.
  * </p>
  *
  * Data de criação: 27/10/2014

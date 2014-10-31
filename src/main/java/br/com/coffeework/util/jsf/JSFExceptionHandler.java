@@ -34,8 +34,11 @@ import br.com.coffeework.exception.NegocioException;
  */
 public class JSFExceptionHandler extends ExceptionHandlerWrapper {
 
-	/** Atributo log. */
-	private final Log log = LogFactory.getLog(JSFExceptionHandler.class);
+	/** Constante LOG. */
+	private static final Log LOG = LogFactory.getLog(JSFExceptionHandler.class);
+
+	/** Constante PAGINA_ERROR. */
+	private static final String PAGINA_ERROR = "/restrito/erro.xhtml";
 
 	/** Atributo wrapped. */
 	private final ExceptionHandler wrapped;
@@ -93,9 +96,7 @@ public class JSFExceptionHandler extends ExceptionHandlerWrapper {
 
 					handled = true;
 
-					System.out.println("pqp deu erro caralho ... redirect 404 na face");
-					
-					this.redirecionarUrl("/restrito/erro.xhtml");
+					this.redirecionarUrl(JSFExceptionHandler.PAGINA_ERROR);
 				}
 
 			} finally {
@@ -136,7 +137,7 @@ public class JSFExceptionHandler extends ExceptionHandlerWrapper {
 
 		} catch (final IOException exception) {
 
-			this.log.error("ERROR no redirecionamento de página :: " + exception.getMessage(), exception);
+			JSFExceptionHandler.LOG.error("ERROR no redirecionamento de página :: " + exception.getMessage(), exception);
 
 			throw new FacesException(exception);
 		}
@@ -179,15 +180,4 @@ public class JSFExceptionHandler extends ExceptionHandlerWrapper {
 
 		return this.wrapped;
 	}
-
-	/**
-	 * Retorna o valor do atributo <code>log</code>
-	 *
-	 * @return <code>Log</code>
-	 */
-	public Log getLog() {
-
-		return this.log;
-	}
-
 }

@@ -11,7 +11,7 @@ import br.com.coffeework.modelo.entidade.Usuario;
  * </p>
  *
  * <p>
- * <b>Descrição:</b> Classe responsável por conter os atributos que serão usados nos formulários da entidade <code>Permissao</code>.
+ * <b>Descrição:</b> Classe responsável por prover os atributos de controle do ECDU03 - Manter Permissão.
  * </p>
  *
  * Data de criação: 01/10/2014

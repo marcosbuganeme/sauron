@@ -19,7 +19,7 @@ import br.com.coffeework.util.jsf.UtilitarioJSF;
  * </p>
  *
  * <p>
- * <b>Descrição:</b> Classe responsável por manter o usuário logado em sessão.
+ * <b>Descrição:</b> Classe responsável pelo controle de regras de negócio da tela do ECDU01 - Manter Login.
  * </p>
  *
  * Data de criação: 08/10/2014

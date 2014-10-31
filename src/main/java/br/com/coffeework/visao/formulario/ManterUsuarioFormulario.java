@@ -8,7 +8,7 @@ import br.com.coffeework.modelo.entidade.Usuario;
  * </p>
  *
  * <p>
- * <b>Descrição:</b> Classe responsável por conter os atributos relacionados a tela de visão da entidade <code>Usuario</code>.
+ * <b>Descrição:</b> Classe responsável por prover os atributos de controle do ECDU02 - Manter Usuário.
  * </p>
  *
  * Data de criação: 22/09/2014

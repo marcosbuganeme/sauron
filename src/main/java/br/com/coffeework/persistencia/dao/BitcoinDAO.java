@@ -8,7 +8,7 @@ import br.com.coffeework.modelo.entidade.BitCoin;
  * </p>
  *
  * <p>
- * <b>Descrição:</b> Interface responsável por conter as funções do repositório da entidade <code>Bitcoin</code>.
+ * <b>Descrição:</b> Interface responsável por prover funções do repositório da entidade <code>Bitcoin</code>.
  * </p>
  *
  * Data de criação: 27/10/2014

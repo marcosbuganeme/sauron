@@ -18,7 +18,7 @@ import javax.validation.constraints.NotNull;
  * </p>
  *
  * <p>
- * <b>Descrição:</b> Classe responsável por representar a carteira
+ * <b>Descrição:</b> Classe responsável por representar a carteira do usuário do sistema.
  * </p>
  *
  * Data de criação: 29/09/2014

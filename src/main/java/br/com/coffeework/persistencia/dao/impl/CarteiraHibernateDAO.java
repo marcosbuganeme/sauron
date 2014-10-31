@@ -16,7 +16,7 @@ import br.com.coffeework.persistencia.dao.CarteiraDAO;
  * </p>
  *
  * <p>
- * <b>Descrição:</b>
+ * <b>Descrição:</b> Classe responsável por implementar as funções do repositório da entidade <code>Carteira</code>.
  * </p>
  *
  * Data de criação: 27/10/2014

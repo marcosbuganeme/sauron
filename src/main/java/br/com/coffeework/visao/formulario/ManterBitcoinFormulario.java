@@ -8,7 +8,7 @@ import br.com.coffeework.modelo.entidade.BitCoin;
  * </p>
  *
  * <p>
- * <b>Descrição:</b> Classe responsável pela manipulação dos atributos do ECDU - Gerenciar Bitcoin.
+ * <b>Descrição:</b> Classe responsável por prover os atributos de controle do ECDU06 - Manter BitCoin.
  * </p>
  *
  * Data de criação: 27/10/2014

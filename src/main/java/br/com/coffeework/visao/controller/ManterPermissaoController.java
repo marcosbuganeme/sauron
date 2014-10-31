@@ -19,7 +19,7 @@ import br.com.coffeework.visao.formulario.ManterPermissaoFormulario;
  * </p>
  *
  * <p>
- * <b>Descrição:</b> Classe responsável por gerenciar a tela da entidade <code>Permissao</code>.
+ * <b>Descrição:</b> Classe responsável pelo controle de regras de negócio da tela do ECDU03 - Manter Permissão.
  * </p>
  *
  * Data de criação: 01/10/2014

@@ -18,7 +18,7 @@ import br.com.coffeework.util.jpa.Transacional;
  * </p>
  *
  * <p>
- * <b>Descrição:</b> Classe responsável por prover funções relacionadas as regras de negócio da aplicação.
+ * <b>Descrição:</b> Classe responsável por implementar as funções de negócio relativas ao ECDU 02 - Manter Usuário.
  * </p>
  *
  * Data de criação: 23/09/2014

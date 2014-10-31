@@ -12,7 +12,7 @@ import br.com.coffeework.modelo.entidade.Entidade;
  * </p>
  *
  * <p>
- * <b>Descrição:</b> Interface pai de todos os servicos.
+ * <b>Descrição:</b> Interface pai de todos os servicos, responsável por prover as funções mais utilizadas.
  * </p>
  *
  * Data de criação: 21/09/2014

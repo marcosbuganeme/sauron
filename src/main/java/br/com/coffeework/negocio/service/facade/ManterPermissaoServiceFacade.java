@@ -11,7 +11,7 @@ import br.com.coffeework.modelo.entidade.Usuario;
  * </p>
  *
  * <p>
- * <b>Descrição:</b> interface responsável por conter as regras de negócio que serão vinculadas a entidade <code>Permissao</code>.
+ * <b>Descrição:</b> Interface responsável por conter as funções de negócio do ECDU03 - Manter Permissão.
  * </p>
  *
  * Data de criação: 01/10/2014

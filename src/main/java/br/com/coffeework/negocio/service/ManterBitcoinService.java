@@ -12,7 +12,7 @@ import br.com.coffeework.persistencia.dao.BitcoinDAO;
  * </p>
  *
  * <p>
- * <b>Descrição:</b> Classe responsável por implementar as funções de negócio relativas ao ECDU 03 - Gerenciar Bitcoin.
+ * <b>Descrição:</b> Classe responsável por implementar as funções de negócio relativas ao ECDU 03 - Manter Bitcoin.
  * </p>
  *
  * Data de criação: 27/10/2014

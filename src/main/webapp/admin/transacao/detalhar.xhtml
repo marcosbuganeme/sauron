@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/template/template.xhtml">
+
+	<ui:define name="titulo">#{msgs['transacao.titulo']}</ui:define>
+
+	<ui:define name="titulo_conteudo">
+		<h2 class="well">
+			<span>#{msgs['transacao.titulo.detalhar']}</span>
+		</h2>
+	</ui:define>
+
+	<ui:define name="conteudo">
+
+		<f:metadata>
+			<f:viewAction action="#{manterTransacaoController.listar()}" />
+		</f:metadata>
+
+		<p:panel id="panelUsuario" styleClass="sem-bordas">
+			<f:facet name="header">
+				<div class="pull-left">
+					<div class="btn-group">
+						<h:button id="btnNovo" value="#{msgs['btn.novo']}"
+							title="#{msgs['btn.novo.title']}" 
+							outcome="/restrito/transacao/incluir"
+							styleClass="btn btn-lg btn-default" />
+					</div>
+				</div>
+			</f:facet>
+
+			<p:spacer height="20px" />
+
+			<h:form id="frm">
+
+				<div class="table-responsive">
+					<p:dataTable id="dtUsuario" var="transacao" value="#{manterTransacaoController.formulario.colecaoEntidades}" paginator="true" paginatorPosition="bottom"
+						paginatorAlwaysVisible="false" rows="10" rowsPerPageLabel="#{msgs['datatable.label.rows']} :" rowsPerPageTemplate="10, 15, 30, 50"
+						emptyMessage="#{msgs['datatable.mensagem.vazia']}" styleClass="table table-hover">
+
+						<p:column headerText="#{msgs['label.id']}" width="10%">
+							<span>#{transacao.identificador}</span>
+						</p:column>
+
+						<p:column headerText="#{msgs['usuario.label.nome']}" width="45%">
+							<span>#{transacao.carteira.usuario.nome}</span>
+						</p:column>
+
+						<p:column headerText="#{msgs['transacao.label.tipooperacao']}" width="20%">
+							<span>#{transacao.tipoOperacao}</span>
+						</p:column>
+
+						<p:column headerText="#{msgs['bitcoin.label.valor']}" width="15%">
+							<span>#{transacao.bitCoin.preco}</span>
+						</p:column>
+
+						<p:column width="10%">
+							<h:link title="#{msgs['link.editar.title']}" outcome="/restrito/transacao/incluir">
+								<f:param name="transacao" value="#{transacao.identificador}" />
+								<h:graphicImage library="img" name="btnEditar_preto-20x20.png" />
+							</h:link>
+
+							<p:spacer width="20px" />
+
+							<p:commandLink id="btnRemover" title="#{msgs['link.excluir.title']}" oncomplete="PF('dlgExcluir').show();"
+								process="@this" update="@form">
+								<h:graphicImage library="img" name="btnRemover_preto-20x20.png" />
+								<f:setPropertyActionListener target="#{manterTransacaoController.formulario.entidade}" value="#{transacao}" />
+							</p:commandLink>
+						</p:column>
+					</p:dataTable>
+				</div>
+
+		    	<p:confirmDialog id="btnDlgExcluir" widgetVar="dlgExcluir" header="#{msgs['confirmDialog.excluir.header']}"
+		    		message="#{msgs['confirmDialog.mensagem']} #{manterUsuarioController.formulario.entidade.email} ?"
+		    		showEffect="fade">
+
+		    		<h:button id="btnNao" value="#{msgs['btn.label.nao']}" 
+		    			onclick="PF('dlgExcluir').hide(); return false;" 
+		    			styleClass="btn btn-lg btn-default" />
+
+					<p:spacer width="20px" />
+
+		    		<h:commandButton id="btnSim" value="#{msgs['btn.label.sim']}"
+		    			action="#{manterUsuarioController.remover()}" oncomplete="PF('dlgExcluir').hide();"
+		    			styleClass="btn btn-lg btn-default" />
+
+		    	</p:confirmDialog>
+			</h:form>
+		</p:panel>
+	</ui:define>
+</ui:composition>

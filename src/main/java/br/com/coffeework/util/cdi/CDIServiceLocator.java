@@ -8,6 +8,9 @@ import javax.enterprise.inject.spi.BeanManager;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 /**
  * <p>
  * <b>Título:</b> CDIServiceLocator.java
@@ -25,20 +28,48 @@ import javax.naming.NamingException;
  */
 public class CDIServiceLocator {
 
+	/** Constante LOG. */
+	private static final Log LOG = LogFactory.getLog(CDIServiceLocator.class.getSimpleName());
+
+	/** Constante JNDI_CDI. */
+	private static final String JNDI_CDI = "java:comp/env/BeanManager";
+
+	/** Constante EXCECAO_BEAN_NAO_CONVETIDO. */
+	private static final String EXCECAO_BEAN_NAO_CONVETIDO = "Não pôde encontrar BeanManager no JNDI";
+
+	/**
+	 * Método responsável por obter um bean CDI através do contexto da aplicação.
+	 *
+	 * @author marcosbuganeme
+	 *
+	 * @return <i>um bean gerenciado pelo CDI</i>.
+	 */
 	private static BeanManager getBeanManager() {
 
 		try {
 
 			final InitialContext initialContext = new InitialContext();
 
-			return (BeanManager) initialContext.lookup("java:comp/env/BeanManager");
+			return (BeanManager) initialContext.lookup(CDIServiceLocator.JNDI_CDI);
 
 		} catch (final NamingException e) {
 
-			throw new RuntimeException("Não pôde encontrar BeanManager no JNDI.");
+			CDIServiceLocator.LOG.error(" MENSAGEM DE ERRO >>>> " + e.getMessage());
+
+			throw new RuntimeException(CDIServiceLocator.EXCECAO_BEAN_NAO_CONVETIDO);
 		}
 	}
 
+	/**
+	 * Método responsável por obter um bean gerenciado pelo CDI através da classe parametrizada.
+	 *
+	 * @author marcosbuganeme
+	 *
+	 * @param clazz
+	 *            - classe que será obtida.
+	 * 
+	 * @return <i>bean gerenciado pelo CDI</i>.
+	 */
 	@SuppressWarnings("unchecked")
 	public static <T> T getBean(final Class<T> clazz) {
 

@@ -19,7 +19,7 @@ import br.com.coffeework.modelo.enuns.EnumTipoOperacao;
  * </p>
  *
  * <p>
- * <b>Descrição:</b> Classe responsável por representar as transações da <code>Conta</code> do <code>Usuario</code>.
+ * <b>Descrição:</b> Classe responsável por representar as transações da <code>Carteira</code> de um determinado <code>Usuario</code> do sistema.
  * </p>
  *
  * Data de criação: 30/09/2014
