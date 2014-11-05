@@ -125,7 +125,10 @@ public abstract class Service<E extends Entidade> implements ServiceFacade<E> {
 
 		final E entidadeobtida = this.obterPorId(entidade.getIdentificador());
 
-		this.getDao().remover(entidadeobtida);
+		if (entidadeobtida != null) {
+
+			this.getDao().remover(entidadeobtida);
+		}
 	}
 
 	/**

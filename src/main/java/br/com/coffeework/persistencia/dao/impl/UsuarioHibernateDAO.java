@@ -59,6 +59,29 @@ public class UsuarioHibernateDAO extends HibernateDAO<Usuario> implements Usuari
 	}
 
 	/**
+	 * Descrição Padrão: <br>
+	 * <br>
+	 *
+	 * {@inheritDoc}
+	 *
+	 * @see br.com.coffeework.persistencia.dao.UsuarioDAO#obterUsuarioPorCPF(java.lang.String)
+	 */
+	@Override
+	public Usuario obterUsuarioPorCPF(final String cpf) {
+
+		final Criteria criteria = this.obterCriteria();
+
+		criteria.add(Restrictions.eq("status", EnumStatus.ATIVO));
+
+		if (cpf != null && !StringUtils.isEmpty(cpf)) {
+
+			criteria.add(Restrictions.eq("cpf", cpf));
+		}
+
+		return (Usuario) criteria.uniqueResult();
+	}
+
+	/**
 	 * Retorna o valor do atributo <code>manager</code>
 	 *
 	 * @return <code>EntityManager</code>

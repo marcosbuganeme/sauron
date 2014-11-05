@@ -1,5 +1,6 @@
 package br.com.coffeework.modelo.entidade;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -38,7 +39,7 @@ public class Permissao extends EntidadeSauron {
 
 	/** Atributo colecaoUsuarios. */
 	@NotNull
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "id_usuario", nullable = false, foreignKey = @ForeignKey(name = "FK_USUARIO_PERMISSAO"))
 	private Usuario usuario;
 

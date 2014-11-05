@@ -1,5 +1,7 @@
 package br.com.coffeework.persistencia.dao;
 
+import java.util.Collection;
+
 import br.com.coffeework.modelo.entidade.Usuario;
 
 /**
@@ -27,8 +29,19 @@ public interface UsuarioDAO extends DAO<Usuario> {
 	 * @param email
 	 *            - filtro da consulta
 	 * 
-	 * @return <i>o email do usuário pesquisado</i>.
+	 * @return <i>usuário pesquisado</i>.
 	 */
 	Usuario obterUsuarioPorEmail(final String email);
 
+	/**
+	 * Método responsável por obter um usuário apartir de seu CPF.
+	 *
+	 * @author marcosbuganeme
+	 *
+	 * @param cpf
+	 *            - filtro da consulta.
+	 * 
+	 * @return <i>usuário pesquisado</i>.
+	 */
+	Usuario obterUsuarioPorCPF(final String cpf);
 }

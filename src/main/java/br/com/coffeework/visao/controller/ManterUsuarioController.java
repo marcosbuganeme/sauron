@@ -8,6 +8,8 @@ import javax.inject.Named;
 
 import br.com.coffeework.modelo.entidade.Usuario;
 import br.com.coffeework.negocio.service.facade.ManterUsuarioServiceFacade;
+import br.com.coffeework.springsecurity.UsuarioSistema;
+import br.com.coffeework.util.jsf.UtilitarioJSF;
 import br.com.coffeework.util.pattern.UtilCPF;
 import br.com.coffeework.visao.formulario.ManterUsuarioFormulario;
 
@@ -33,6 +35,9 @@ public class ManterUsuarioController extends ManutencaoController<Usuario> {
 	/** Constante serialVersionUID. */
 	private static final long serialVersionUID = -4636009997949369987L;
 
+	/** Constante MSG_NAO_PODE_REMOVER_USUARIO_LOGADO. */
+	private static final String MSG_NAO_PODE_REMOVER_USUARIO_LOGADO = "validacao.remover.usuario.logado";
+
 	/** Atributo formulario. */
 	@Inject
 	private ManterUsuarioFormulario formulario;
@@ -41,10 +46,38 @@ public class ManterUsuarioController extends ManutencaoController<Usuario> {
 	@Inject
 	private ManterUsuarioServiceFacade service;
 
+	/** Atributo usuarioLogadoController. */
+	@Inject
+	private ManterUsuarioLogadoController usuarioLogadoController;
+
 	/**
 	 * Responsável pela criação de novas instâncias desta classe.
 	 */
 	public ManterUsuarioController() {
+
+	}
+
+	/**
+	 * Descrição Padrão: <br>
+	 * <br>
+	 *
+	 * {@inheritDoc}
+	 *
+	 * @see br.com.coffeework.visao.controller.ManutencaoController#remover()
+	 */
+	@Override
+	public void remover() {
+
+		final UsuarioSistema usuarioLogado = this.usuarioLogadoController.obterUsuarioLogado();
+
+		if (this.getService().isUsuarioLogadoIgualUsuarioRemovido(usuarioLogado, this.getFormulario().getEntidade())) {
+
+			UtilitarioJSF.addMensagemError(this.getMessage(ManterUsuarioController.MSG_NAO_PODE_REMOVER_USUARIO_LOGADO));
+
+		} else {
+
+			super.remover();
+		}
 
 	}
 

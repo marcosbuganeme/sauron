@@ -1,14 +1,19 @@
 package br.com.coffeework.negocio.service;
 
+import java.util.Collection;
+
 import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
 
 import br.com.coffeework.exception.NegocioException;
 import br.com.coffeework.exception.RegistroJaExisteException;
+import br.com.coffeework.modelo.entidade.Permissao;
 import br.com.coffeework.modelo.entidade.Usuario;
 import br.com.coffeework.negocio.service.facade.ManterUsuarioServiceFacade;
+import br.com.coffeework.persistencia.dao.PermissaoDAO;
 import br.com.coffeework.persistencia.dao.UsuarioDAO;
+import br.com.coffeework.springsecurity.UsuarioSistema;
 import br.com.coffeework.util.criptografia.UtilCriptografia;
 import br.com.coffeework.util.jpa.Transacional;
 
@@ -32,12 +37,22 @@ public class ManterUsuarioService extends Service<Usuario> implements ManterUsua
 	/** Constante serialVersionUID. */
 	private static final long serialVersionUID = 3746924077180788965L;
 
-	/** Constante REGISTRO_JA_EXISTE. */
-	private static final String REGISTRO_JA_EXISTE = "validacao.usuario.existe";
+	/** Constante REGISTRO_DE_EMAIL_JA_EXISTE. */
+	private static final String REGISTRO_DE_EMAIL_JA_EXISTE = "validacao.usuario.email.existe";
+
+	/** Constante REGISTRO_DE_CPF_JA_EXISTE. */
+	private static final String REGISTRO_DE_CPF_JA_EXISTE = "validacao.usuario.cpf.existe";
+
+	/** Constante MSG_USUARIO_VINCULO_PERMISSAO. */
+	private static final String MSG_USUARIO_VINCULO_PERMISSAO = "validacao.usuario.vinculo.permissao";
 
 	/** Atributo dao. */
 	@Inject
 	private UsuarioDAO dao;
+
+	/** Atributo permissaoDAO. */
+	@Inject
+	private PermissaoDAO permissaoDAO;
 
 	/**
 	 * Descrição Padrão: <br>
@@ -55,7 +70,12 @@ public class ManterUsuarioService extends Service<Usuario> implements ManterUsua
 
 			if (this.isUsuarioJaExiste(usuario)) {
 
-				throw new RegistroJaExisteException(ManterUsuarioService.REGISTRO_JA_EXISTE);
+				throw new RegistroJaExisteException(ManterUsuarioService.REGISTRO_DE_EMAIL_JA_EXISTE);
+			}
+
+			if (this.isCPFJaExiste(usuario)) {
+
+				throw new RegistroJaExisteException(ManterUsuarioService.REGISTRO_DE_CPF_JA_EXISTE);
 			}
 
 			final String senhaCriptografada = UtilCriptografia.obterStringMD5(usuario.getSenha());
@@ -94,6 +114,26 @@ public class ManterUsuarioService extends Service<Usuario> implements ManterUsua
 	 *
 	 * {@inheritDoc}
 	 *
+	 * @see br.com.coffeework.negocio.service.Service#remover(br.com.coffeework.modelo.entidade.Entidade)
+	 */
+	@Transacional
+	@Override
+	public void remover(final Usuario usuario) throws NegocioException {
+
+		if (this.isUsuarioComPermissao(usuario)) {
+
+			throw new NegocioException(ManterUsuarioService.MSG_USUARIO_VINCULO_PERMISSAO);
+		}
+
+		super.remover(usuario);
+	}
+
+	/**
+	 * Descrição Padrão: <br>
+	 * <br>
+	 *
+	 * {@inheritDoc}
+	 *
 	 * @see br.com.coffeework.negocio.service.facade.ManterUsuarioServiceFacade#isUsuarioJaExiste(br.com.coffeework.modelo.entidade.Usuario)
 	 */
 	@Override
@@ -115,12 +155,83 @@ public class ManterUsuarioService extends Service<Usuario> implements ManterUsua
 	 *
 	 * {@inheritDoc}
 	 *
+	 * @see br.com.coffeework.negocio.service.facade.ManterUsuarioServiceFacade#isCPFJaExiste(br.com.coffeework.modelo.entidade.Usuario)
+	 */
+	@Override
+	public boolean isCPFJaExiste(final Usuario usuario) {
+
+		final Usuario usuarioObtido = this.getDao().obterUsuarioPorCPF(usuario.getCpf());
+
+		if (usuarioObtido != null) {
+
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Descrição Padrão: <br>
+	 * <br>
+	 *
+	 * {@inheritDoc}
+	 *
+	 * @see br.com.coffeework.negocio.service.facade.ManterUsuarioServiceFacade#isUsuarioComPermissao(br.com.coffeework.modelo.entidade.Usuario)
+	 */
+	@Override
+	public boolean isUsuarioComPermissao(final Usuario usuario) {
+
+		final Collection<Permissao> colecaoPermissao = this.getPermissaoDAO().obterPermissaoUsuario((Long) usuario.getIdentificador());
+
+		if (colecaoPermissao.size() == 0) {
+
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * Descrição Padrão: <br>
+	 * <br>
+	 *
+	 * {@inheritDoc}
+	 *
+	 * @see br.com.coffeework.negocio.service.facade.ManterUsuarioServiceFacade#isUsuarioLogadoIgualUsuarioRemovido(br.com.coffeework.springsecurity.UsuarioSistema, br.com.coffeework.modelo.entidade.Usuario)
+	 */
+	@Override
+	public boolean isUsuarioLogadoIgualUsuarioRemovido(final UsuarioSistema usuarioLogado, final Usuario usuarioRemover) {
+
+		if (usuarioLogado.getUsuario().equals(usuarioRemover)) {
+
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Descrição Padrão: <br>
+	 * <br>
+	 *
+	 * {@inheritDoc}
+	 *
 	 * @see br.com.coffeework.negocio.service.Service#getDao()
 	 */
 	@Override
 	protected UsuarioDAO getDao() {
 
 		return this.dao;
+	}
+
+	/**
+	 * Retorna o valor do atributo <code>permissaoDAO</code>
+	 *
+	 * @return <code>PermissaoDAO</code>
+	 */
+	private final PermissaoDAO getPermissaoDAO() {
+
+		return this.permissaoDAO;
 	}
 
 }

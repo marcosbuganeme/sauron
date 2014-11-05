@@ -49,10 +49,12 @@ public class PermissaoHibernateDAO extends HibernateDAO<Permissao> implements Pe
 	public Collection<Permissao> obterPermissaoUsuario(final Long idUsuario) {
 
 		final Criteria criteria = this.obterCriteria();
+		
+		criteria.createAlias("usuario", "usuario");
 
 		criteria.add(Restrictions.eq("status", EnumStatus.ATIVO));
 
-		criteria.add(Restrictions.eq("usuario", idUsuario));
+		criteria.add(Restrictions.eq("usuario.id", idUsuario));
 
 		return criteria.list();
 	}

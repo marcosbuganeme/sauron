@@ -32,6 +32,17 @@ import br.com.coffeework.util.cdi.CDIServiceLocator;
  */
 public class ManterUsuarioLogadoService implements UserDetailsService {
 
+	/** Atributo usuarioDAO. */
+	private final UsuarioDAO usuarioDAO;
+
+	/**
+	 * Responsável pela criação de novas instâncias desta classe.
+	 */
+	public ManterUsuarioLogadoService() {
+
+		this.usuarioDAO = CDIServiceLocator.getBean(UsuarioDAO.class);
+	}
+
 	/**
 	 * Descrição Padrão: <br>
 	 * <br>
@@ -43,9 +54,7 @@ public class ManterUsuarioLogadoService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(final String email) throws UsernameNotFoundException {
 
-		final UsuarioDAO usuarioDAO = CDIServiceLocator.getBean(UsuarioDAO.class);
-
-		final Usuario usuario = usuarioDAO.obterUsuarioPorEmail(email);
+		final Usuario usuario = this.usuarioDAO.obterUsuarioPorEmail(email);
 
 		UsuarioSistema usuarioLogado = null;
 

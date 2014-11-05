@@ -82,7 +82,7 @@ public class ManterUsuarioLogadoController extends Controller {
 	 *
 	 * @return <i>usuário logado</i>.
 	 */
-	private UsuarioSistema obterUsuarioLogado() {
+	public UsuarioSistema obterUsuarioLogado() {
 
 		UsuarioSistema usuarioSistema = null;
 
