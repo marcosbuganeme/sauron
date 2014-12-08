@@ -40,15 +40,17 @@
 						rows="10" rowsPerPageLabel="#{msgs['datatable.label.rows']} :" rowsPerPageTemplate="10, 15, 30, 50"
 						emptyMessage="#{msgs['datatable.mensagem.vazia']}" styleClass="table table-hover" >
 
-						<p:column headerText="#{msgs['label.id']}" width="10%">
-							<span>#{carteira.identificador}</span>
+						<p:column headerText="#{msgs['label.datacadastro']}" width="10%" sortBy="#{carteira.dataCadastro}">
+							<h:outputText value="#{carteira.dataCadastro}">
+								<f:convertDateTime pattern="dd/MM/yyyy"/>
+							</h:outputText>
 						</p:column>
 
-						<p:column headerText="#{msgs['usuario.label.email']}" width="30%" >
+						<p:column headerText="#{msgs['usuario.label.email']}" width="30%" sortBy="#{carteira.usuario.email}">
 							<span>#{carteira.usuario.email}</span>
 						</p:column>
 
-						<p:column headerText="#{msgs['carteira.label.saldo']}" width="20%">
+						<p:column headerText="#{msgs['carteira.label.saldo']}" width="20%" sortBy="#{carteira.saldo}">
 							<span>#{carteira.saldo}</span>
 						</p:column>
 

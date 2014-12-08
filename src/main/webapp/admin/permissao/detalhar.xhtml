@@ -40,8 +40,10 @@
 						rowsPerPageLabel="#{msgs['datatable.label.rows']} :" rowsPerPageTemplate="10, 15, 30, 50"
 						emptyMessage="#{msgs['datatable.mensagem.vazia']}" styleClass="table table-hover" >
 
-						<p:column headerText="#{msgs['label.id']}" width="10%">
-							<span>#{permissao.identificador}</span>
+						<p:column headerText="#{msgs['label.datacadastro']}" width="10%" sortBy="#{permissao.dataCadastro}">
+							<h:outputText value="#{permissao.dataCadastro}">
+								<f:convertDateTime pattern="dd/MM/yyyy"/>
+							</h:outputText>
 						</p:column>
 
 						<p:column headerText="#{msgs['usuario.label.email']}" width="30%" sortBy="#{permissao.usuario.email}">

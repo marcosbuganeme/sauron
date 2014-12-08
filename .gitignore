@@ -1,11 +1,9 @@
 *.class
 
 # Retirada de pastas ocultas
-.metadata/
-.settings/
-/Servers/
+/.metadata/
+/.settings/
 /target/
-/RemoteSystemsTempFiles/
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 

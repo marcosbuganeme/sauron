@@ -48,6 +48,12 @@
 							<h:graphicImage library="img" name="transacao_#{bitcoin.comercializado}.png" />
 						</p:column>
 
+						<p:column headerText="#{msgs['label.datacadastro']}" width="10%" sortBy="#{bitcoin.dataCadastro}">
+							<h:outputText value="#{bitcoin.dataCadastro}">
+								<f:convertDateTime pattern="dd/MM/yyyy" locale="pt_BR" />
+							</h:outputText>
+						</p:column>
+
 						<p:column headerText="#{msgs['bitcoin.label.volume']}" width="30%" sortBy="#{bitcoin.volume}">
 							<span>#{bitcoin.volume}</span>
 						</p:column>

@@ -73,7 +73,7 @@
 					<div class="col-xs-8">
 						<h:selectOneMenu id="comboBoxUsuario" converter="omnifaces.SelectItemsConverter"
 							value="#{manterPermissaoController.formulario.entidade.usuario}"
-							style="width: 100% !important;">
+							styleClass="form-control">
 
 							<f:selectItem itemLabel="#{msgs['combobox.selecionaritens']}" noSelectionOption="true" />
 							<f:selectItems value="#{manterPermissaoController.preencheComboBoxUsuario()}" var="usuario" 
@@ -96,7 +96,7 @@
 
 					<div class="col-xs-8">
 						<h:selectOneMenu id="comboBoxPermissao" value="#{manterPermissaoController.formulario.entidade.permissao}"
-							style="width: 100% !important">
+							styleClass="form-control">
 
 							<f:selectItem itemLabel="#{msgs['combobox.selecionaritens']}" noSelectionOption="true" />
 							<f:selectItems value="#{manterPermissaoController.preencheComboBoxPermissao()}" var="permissao" 
@@ -117,7 +117,7 @@
 
 					<div class="col-xs-8">
 						<h:inputText id="txtDescricao" value="#{manterPermissaoController.formulario.entidade.descricao}"
-							pt:placeholder="#{msgs['usuario.placeholder.descricao']}" style="width: 100% !important;" />
+							pt:placeholder="#{msgs['usuario.placeholder.descricao']}" styleClass="form-control" />
 					</div>
 				</div>
 			</div>
