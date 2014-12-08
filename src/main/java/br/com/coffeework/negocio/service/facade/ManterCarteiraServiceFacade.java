@@ -23,13 +23,22 @@ import br.com.coffeework.modelo.entidade.Usuario;
 public interface ManterCarteiraServiceFacade extends ServiceFacade<Carteira> {
 
 	/**
-	 * Método responsável por obter todos os usuários cadastros na base de dados.
+	 * Método responsável por obter uma coleção de usuários que não tenham carteira.
 	 *
 	 * @author marcosbuganeme
 	 *
-	 * @return <i>coleção de usuários</i>
+	 * @return <i>coleção de usuários sem carteira</i>.
 	 */
-	Collection<Usuario> consultarTodosUsuarios();
+	Collection<Usuario> listarUsuariosSemCarteira();
+
+	/**
+	 * Método responsável por obter uma coleção com todos os usuários.
+	 *
+	 * @author marcosbuganeme
+	 *
+	 * @return <i>coleção com todos os usuários</i>.
+	 */
+	public Collection<Usuario> listarTodosUsuarios();
 
 	/**
 	 * Método responsável por verificar se o registro já existe.
@@ -41,5 +50,5 @@ public interface ManterCarteiraServiceFacade extends ServiceFacade<Carteira> {
 	 * 
 	 * @return <i>True, registro existe</i>
 	 */
-	public boolean isRegistroExiste(final Carteira carteiraw);
+	public boolean isRegistroExiste(final Carteira carteira);
 }

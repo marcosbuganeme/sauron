@@ -105,9 +105,7 @@ public class JSFExceptionHandler extends ExceptionHandlerWrapper {
 
 					pilhaEventos.remove();
 				}
-
 			}
-
 		}
 
 		this.getWrapped().handle();

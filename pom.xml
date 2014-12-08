@@ -117,6 +117,7 @@
 
 	<dependencies>
 
+		<!-- API de servlet para controle de sessão do usuário logado -->
 		<dependency>
 
 			<groupId>javax.servlet</groupId>
@@ -319,7 +320,7 @@
 			<artifactId>spring-security-core</artifactId>
 
 			<version>3.1.4.RELEASE</version>
-			
+
 		</dependency>
 
 		<dependency>
@@ -329,7 +330,7 @@
 			<artifactId>spring-security-web</artifactId>
 
 			<version>3.1.4.RELEASE</version>
-			
+
 		</dependency>
 
 		<dependency>
@@ -339,7 +340,7 @@
 			<artifactId>spring-security-config</artifactId>
 
 			<version>3.1.4.RELEASE</version>
-			
+
 		</dependency>
 
 	</dependencies>

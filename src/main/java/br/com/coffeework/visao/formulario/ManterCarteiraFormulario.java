@@ -28,6 +28,9 @@ public class ManterCarteiraFormulario extends Formulario<Carteira> {
 	/** Atributo colecaoUsuariosComboBox. */
 	private Collection<Usuario> colecaoUsuariosComboBox;
 
+	/** Atributo colecaousuariosComboBoxEditar. */
+	private Collection<Usuario> colecaousuariosComboBoxEditar;
+
 	/**
 	 * Retorna o valor do atributo <code>colecaoUsuariosComboBox</code>
 	 *
@@ -46,6 +49,26 @@ public class ManterCarteiraFormulario extends Formulario<Carteira> {
 	public void setColecaoUsuariosComboBox(final Collection<Usuario> colecaoUsuariosComboBox) {
 
 		this.colecaoUsuariosComboBox = colecaoUsuariosComboBox;
+	}
+
+	/**
+	 * Retorna o valor do atributo <code>colecaousuariosComboBoxEditar</code>
+	 *
+	 * @return <code>Collection<Usuario></code>
+	 */
+	public Collection<Usuario> getColecaousuariosComboBoxEditar() {
+
+		return this.colecaousuariosComboBoxEditar;
+	}
+
+	/**
+	 * Define o valor do atributo <code>colecaousuariosComboBoxEditar</code>.
+	 *
+	 * @param colecaousuariosComboBoxEditar
+	 */
+	public void setColecaousuariosComboBoxEditar(final Collection<Usuario> colecaousuariosComboBoxEditar) {
+
+		this.colecaousuariosComboBoxEditar = colecaousuariosComboBoxEditar;
 	}
 
 }

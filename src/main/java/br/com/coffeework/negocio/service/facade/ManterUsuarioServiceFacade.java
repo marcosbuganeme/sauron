@@ -1,5 +1,7 @@
 package br.com.coffeework.negocio.service.facade;
 
+import java.io.Serializable;
+
 import br.com.coffeework.modelo.entidade.Usuario;
 import br.com.coffeework.springsecurity.UsuarioSistema;
 
@@ -70,4 +72,16 @@ public interface ManterUsuarioServiceFacade extends ServiceFacade<Usuario> {
 	 * @return <i>True, se o usuário selecionado for o usuário logado</i>.
 	 */
 	boolean isUsuarioLogadoIgualUsuarioRemovido(final UsuarioSistema usuarioLogado, final Usuario usuarioRemover);
+
+	/**
+	 * Método responsável por obter a carteira do usuário através de seu identificador.
+	 *
+	 * @author marcosbuganeme
+	 *
+	 * @param idUsuario
+	 *            - id do usuário.
+	 * 
+	 * @return <i>True, se o usuário possuir uma carteira</i>.
+	 */
+	boolean isUsuarioPossuiCarteira(final Serializable idUsuario);
 }

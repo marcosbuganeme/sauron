@@ -1,5 +1,6 @@
 package br.com.coffeework.persistencia.dao.impl;
 
+import java.io.Serializable;
 import java.util.Collection;
 
 import javax.inject.Inject;
@@ -43,6 +44,29 @@ public class TransacaoHibernateDAO extends HibernateDAO<Transacao> implements Tr
 	 *
 	 * {@inheritDoc}
 	 *
+	 * @see br.com.coffeework.persistencia.dao.TransacaoDAO#listarBitcoinNaoComercializados(java.io.Serializable, java.io.Serializable)
+	 */
+	@Override
+	public Transacao listarBitcoinNaoComercializados(final Serializable idBitcoin) {
+
+		final Criteria criteria = this.obterCriteria();
+
+		if (idBitcoin != null) {
+
+			criteria.createAlias("bitcoin", "b");
+
+			criteria.add(Restrictions.eq("b.id", idBitcoin));
+		}
+
+		return (Transacao) criteria.uniqueResult();
+	}
+
+	/**
+	 * Descrição Padrão: <br>
+	 * <br>
+	 *
+	 * {@inheritDoc}
+	 *
 	 * @see br.com.coffeework.persistencia.dao.impl.HibernateDAO#listar()
 	 */
 	@Override
@@ -50,11 +74,11 @@ public class TransacaoHibernateDAO extends HibernateDAO<Transacao> implements Tr
 
 		final Criteria criteria = this.obterCriteria();
 
-		criteria.createAlias("carteira", "carteira");
+		criteria.createAlias("carteira", "c");
 
-		criteria.createAlias("carteira.usuario", "usuario");
+		criteria.createAlias("c.usuario", "u");
 
-		criteria.createAlias("bitCoin", "bitcoin");
+		criteria.createAlias("bitCoin", "b");
 
 		criteria.add(Restrictions.eq("status", EnumStatus.ATIVO));
 

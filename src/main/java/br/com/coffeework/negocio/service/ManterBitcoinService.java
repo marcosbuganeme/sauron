@@ -2,9 +2,12 @@ package br.com.coffeework.negocio.service;
 
 import javax.inject.Inject;
 
+import br.com.coffeework.exception.NegocioException;
+import br.com.coffeework.exception.ValidacaoException;
 import br.com.coffeework.modelo.entidade.BitCoin;
 import br.com.coffeework.negocio.service.facade.ManterBitcoinServiceFacade;
 import br.com.coffeework.persistencia.dao.BitcoinDAO;
+import br.com.coffeework.util.jpa.Transacional;
 
 /**
  * <p>
@@ -23,12 +26,59 @@ import br.com.coffeework.persistencia.dao.BitcoinDAO;
  */
 public class ManterBitcoinService extends Service<BitCoin> implements ManterBitcoinServiceFacade {
 
-	/** Atributo serialVersionUID. */
+	/** Constante serialVersionUID. */
 	private static final long serialVersionUID = -2879541538734689834L;
+
+	/** Constante VALIDACA_BITCOIN_TRANSACAO_ATIVA. */
+	private static final String VALIDACA_BITCOIN_TRANSACAO_ATIVA = "bitcoin.possui.transacao.ativa";
 
 	/** Atributo dao. */
 	@Inject
 	private BitcoinDAO dao;
+
+	@Override
+	public boolean isBitcoinPossuiTransacao(final Long idBitcoin) {
+
+		return this.getDao().isBitcoinPossuiTransacao(idBitcoin);
+	}
+
+	/**
+	 * Descrição Padrão: <br>
+	 * <br>
+	 *
+	 * {@inheritDoc}
+	 *
+	 * @see br.com.coffeework.negocio.service.Service#salvar(br.com.coffeework.modelo.entidade.Entidade)
+	 */
+	@Transacional
+	@Override
+	public void salvar(final BitCoin entidade) throws NegocioException {
+
+		entidade.setComercializado(false);
+
+		super.salvar(entidade);
+	}
+
+	/**
+	 * Descrição Padrão: <br>
+	 * <br>
+	 *
+	 * {@inheritDoc}
+	 *
+	 * @see br.com.coffeework.negocio.service.Service#remover(br.com.coffeework.modelo.entidade.Entidade)
+	 */
+	@Transacional
+	@Override
+	public void remover(final BitCoin entidade) throws NegocioException {
+
+		if (this.isBitcoinPossuiTransacao((Long) entidade.getIdentificador())) {
+
+			throw new ValidacaoException(ManterBitcoinService.VALIDACA_BITCOIN_TRANSACAO_ATIVA);
+		}
+
+		super.remover(entidade);
+
+	}
 
 	/**
 	 * Descrição Padrão: <br>

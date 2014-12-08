@@ -1,5 +1,7 @@
 package br.com.coffeework.persistencia.dao.impl;
 
+import java.io.Serializable;
+
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
@@ -82,6 +84,31 @@ public class UsuarioHibernateDAO extends HibernateDAO<Usuario> implements Usuari
 	}
 
 	/**
+	 * Descrição Padrão: <br>
+	 * <br>
+	 *
+	 * {@inheritDoc}
+	 *
+	 * @see br.com.coffeework.persistencia.dao.UsuarioDAO#isUsuarioPossuiCarteira(java.lang.Long)
+	 */
+	@Override
+	public boolean isUsuarioPossuiCarteira(final Serializable idUsuario) {
+
+		final Criteria criteria = this.obterCriteria();
+
+		if (idUsuario != null) {
+
+			criteria.createAlias("carteira", "c");
+
+			criteria.add(Restrictions.eq("id", idUsuario));
+
+			criteria.add(Restrictions.eq("c.id", idUsuario));
+		}
+
+		return criteria.uniqueResult() != null;
+	}
+
+	/**
 	 * Retorna o valor do atributo <code>manager</code>
 	 *
 	 * @return <code>EntityManager</code>
@@ -91,5 +118,4 @@ public class UsuarioHibernateDAO extends HibernateDAO<Usuario> implements Usuari
 
 		return this.manager;
 	}
-
 }

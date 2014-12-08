@@ -44,15 +44,15 @@
 							<span>#{permissao.identificador}</span>
 						</p:column>
 
-						<p:column headerText="#{msgs['usuario.label.email']}" width="30%" >
+						<p:column headerText="#{msgs['usuario.label.email']}" width="30%" sortBy="#{permissao.usuario.email}">
 							<span>#{permissao.usuario.email}</span>
 						</p:column>
 
-						<p:column headerText="#{msgs['usuario.label.permissao']}" width="20%">
+						<p:column headerText="#{msgs['usuario.label.permissao']}" width="20%" sortBy="#{permissao.permissao}">
 							<span>#{permissao.permissao}</span>
 						</p:column>
 
-						<p:column headerText="#{msgs['usuario.label.descricao']}" width="30%">
+						<p:column headerText="#{msgs['usuario.label.descricao']}" width="30%" sortBy="#{permissao.descricao}">
 							<span>#{permissao.descricao}</span>
 						</p:column>
 

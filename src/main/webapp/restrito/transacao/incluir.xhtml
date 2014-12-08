@@ -111,12 +111,53 @@
 								<f:selectItems value="#{manterTransacaoController.preencheComboBoxBitcoin()}" var="bitcoin"
 									itemLabel="#{bitcoin.volume}" itemValue="#{bitcoin}" />
 
+								<p:ajax process="@this" update="bigIntSaldoIncluir, bigIntSaldoEditar" listener="#{manterTransacaoController.obterSaldoBitCoinSelecionado()}" />
+
 							</h:selectOneMenu>
 						</div>
 					</div>
 				</div>
 
-				<p:spacer height="5px" />
+				<div jsf:rendered="#{manterTransacaoController.formulario.mostrarValorUnitarioBitcoinDaTransacao}">
+					<p:spacer height="5px" />
+
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="col-xs-4">
+								<div class="form-group">
+									<p:outputLabel value="#{msgs['bitcoin.label.precoatual']}" for="bigIntSaldoIncluir" />
+								</div>
+							</div>
+
+							<div class="col-xs-8 pull-left">
+								<div class="form-group">
+									<p:outputLabel value="R$ " />
+									<p:outputLabel id="bigIntSaldoIncluir" value="#{manterTransacaoController.formulario.valorUnitarioBitcoinDaTransacao}" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div jsf:rendered="#{!manterTransacaoController.formulario.entidade.novoRegistro}">
+					<p:spacer height="5px" />
+
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="col-xs-4">
+								<div class="form-group">
+									<p:outputLabel value="#{msgs['bitcoin.label.precoatual']}" for="bigIntSaldoEditar" />
+								</div>
+							</div>
+
+							<div class="col-xs-8">
+								<div class="form-group">
+									<p:outputLabel id="bigIntSaldoEditar" value="#{manterTransacaoController.formulario.entidade.bitCoin.preco}" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 
 				<div class="row">
 					<div class="col-xs-12">

@@ -32,6 +32,12 @@ public class ManterTransacaoFormulario extends Formulario<Transacao> {
 	/** Atributo colecaoComboBoxCarteiras. */
 	private Collection<Carteira> colecaoComboBoxCarteiras;
 
+	/** Atributo saldoBitcoinTransacao. */
+	private Double valorUnitarioBitcoinDaTransacao;
+
+	/** Atributo isMostrarValorUnitarioBitcoinDaTransacao. */
+	private boolean isMostrarValorUnitarioBitcoinDaTransacao;
+
 	/**
 	 * Responsável pela criação de novas instâncias desta classe.
 	 */
@@ -77,6 +83,46 @@ public class ManterTransacaoFormulario extends Formulario<Transacao> {
 	public void setColecaoComboBoxCarteiras(final Collection<Carteira> colecaoComboBoxCarteiras) {
 
 		this.colecaoComboBoxCarteiras = colecaoComboBoxCarteiras;
+	}
+
+	/**
+	 * Retorna o valor do atributo <code>valorUnitarioBitcoinDaTransacao</code>
+	 *
+	 * @return <code>BigDecimal</code>
+	 */
+	public Double getValorUnitarioBitcoinDaTransacao() {
+
+		return this.valorUnitarioBitcoinDaTransacao;
+	}
+
+	/**
+	 * Define o valor do atributo <code>valorUnitarioBitcoinDaTransacao</code>.
+	 *
+	 * @param valorUnitarioBitcoinDaTransacao
+	 */
+	public void setValorUnitarioBitcoinDaTransacao(final Double valorUnitarioBitcoinDaTransacao) {
+
+		this.valorUnitarioBitcoinDaTransacao = valorUnitarioBitcoinDaTransacao;
+	}
+
+	/**
+	 * Retorna o valor do atributo <code>isMostrarValorUnitarioBitcoinDaTransacao</code>
+	 *
+	 * @return <code>boolean</code>
+	 */
+	public boolean isMostrarValorUnitarioBitcoinDaTransacao() {
+
+		return this.isMostrarValorUnitarioBitcoinDaTransacao;
+	}
+
+	/**
+	 * Define o valor do atributo <code>isMostrarValorUnitarioBitcoinDaTransacao</code>.
+	 *
+	 * @param isMostrarValorUnitarioBitcoinDaTransacao
+	 */
+	public void setMostrarValorUnitarioBitcoinDaTransacao(final boolean isMostrarValorUnitarioBitcoinDaTransacao) {
+
+		this.isMostrarValorUnitarioBitcoinDaTransacao = isMostrarValorUnitarioBitcoinDaTransacao;
 	}
 
 }

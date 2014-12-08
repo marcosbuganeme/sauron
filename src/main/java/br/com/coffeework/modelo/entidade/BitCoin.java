@@ -1,7 +1,5 @@
 package br.com.coffeework.modelo.entidade;
 
-import java.math.BigDecimal;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
@@ -44,7 +42,11 @@ public class BitCoin extends EntidadeSauron {
 	/** Atributo preco. */
 	@NotNull
 	@Column(name = "preco", nullable = false)
-	private BigDecimal preco;
+	private Double preco;
+
+	/** Atributo isComercializado. */
+	@Column(name = "comercializado", nullable = false)
+	private boolean isComercializado;
 
 	/**
 	 * Responsável pela criação de novas instâncias desta classe.
@@ -96,9 +98,9 @@ public class BitCoin extends EntidadeSauron {
 	/**
 	 * Retorna o valor do atributo <code>preco</code>
 	 *
-	 * @return <code>BigDecimal</code>
+	 * @return <code>Double</code>
 	 */
-	public BigDecimal getPreco() {
+	public Double getPreco() {
 
 		return this.preco;
 	}
@@ -108,9 +110,29 @@ public class BitCoin extends EntidadeSauron {
 	 *
 	 * @param preco
 	 */
-	public void setPreco(final BigDecimal preco) {
+	public void setPreco(final Double preco) {
 
 		this.preco = preco;
+	}
+
+	/**
+	 * Retorna o valor do atributo <code>isComercializado</code>
+	 *
+	 * @return <code>boolean</code>
+	 */
+	public boolean isComercializado() {
+
+		return this.isComercializado;
+	}
+
+	/**
+	 * Define o valor do atributo <code>isComercializado</code>.
+	 *
+	 * @param isComercializado
+	 */
+	public void setComercializado(final boolean isComercializado) {
+
+		this.isComercializado = isComercializado;
 	}
 
 }

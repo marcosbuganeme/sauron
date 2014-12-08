@@ -47,13 +47,13 @@ public class CarteiraHibernateDAO extends HibernateDAO<Carteira> implements Cart
 
 		final Criteria criteria = this.obterCriteria();
 
-		criteria.createAlias("usuario", "user");
-		
+		criteria.createAlias("usuario", "u");
+
 		criteria.add(Restrictions.eq("status", EnumStatus.ATIVO));
 
 		if (idUsuario != null) {
 
-			criteria.add(Restrictions.eq("user.id", idUsuario));
+			criteria.add(Restrictions.eq("u.id", idUsuario));
 		}
 
 		return (Carteira) criteria.uniqueResult();

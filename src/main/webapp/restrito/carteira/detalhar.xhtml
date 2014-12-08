@@ -25,10 +25,8 @@
 			<f:facet name="header">
 				<div class="pull-left">
 					<div class="btn-group">
-						<h:button id="btnNovo" value="#{msgs['btn.novo']}"
-							title="#{msgs['btn.novo.title']}" 
-							outcome="/restrito/carteira/incluir"
-							styleClass="btn btn-lg btn-default" />
+						<h:button id="btnNovo" value="#{msgs['btn.novo']}" title="#{msgs['btn.novo.title']}"
+							outcome="/restrito/carteira/incluir" styleClass="btn btn-lg btn-default" />
 					</div>
 				</div>
 			</f:facet>
@@ -50,7 +48,7 @@
 							<span>#{carteira.usuario.email}</span>
 						</p:column>
 
-						<p:column headerText="#{msgs['usuario.label.permissao']}" width="20%">
+						<p:column headerText="#{msgs['carteira.label.saldo']}" width="20%">
 							<span>#{carteira.saldo}</span>
 						</p:column>
 

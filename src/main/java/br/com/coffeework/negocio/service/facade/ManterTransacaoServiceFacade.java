@@ -33,11 +33,11 @@ public interface ManterTransacaoServiceFacade extends ServiceFacade<Transacao> {
 	Collection<Carteira> obterTodasCarteiras();
 
 	/**
-	 * Método responsável por obter todos os bitcoins do sistema.
+	 * Método responsável por listar todos os bitcoins não comercializados.
 	 *
 	 * @author marcosbuganeme
 	 *
-	 * @return <i>coleção de bitcoins</i>.
+	 * @return <i>coleção de bitcoins não comercializados</i>.
 	 */
-	Collection<BitCoin> obterTodosBitcoins();
+	Collection<BitCoin> listarBitcoinNaoComercializado();
 }

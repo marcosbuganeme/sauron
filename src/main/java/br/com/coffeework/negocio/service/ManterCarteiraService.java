@@ -1,9 +1,9 @@
 package br.com.coffeework.negocio.service;
 
 import java.util.Collection;
+import java.util.HashSet;
 
 import javax.inject.Inject;
-import javax.transaction.Transactional;
 
 import br.com.coffeework.exception.NegocioException;
 import br.com.coffeework.exception.RegistroJaExisteException;
@@ -12,6 +12,7 @@ import br.com.coffeework.modelo.entidade.Usuario;
 import br.com.coffeework.negocio.service.facade.ManterCarteiraServiceFacade;
 import br.com.coffeework.persistencia.dao.CarteiraDAO;
 import br.com.coffeework.persistencia.dao.UsuarioDAO;
+import br.com.coffeework.util.jpa.Transacional;
 
 /**
  * <p>
@@ -34,7 +35,7 @@ public class ManterCarteiraService extends Service<Carteira> implements ManterCa
 	private static final long serialVersionUID = 2470493317373399714L;
 
 	/** Constante REGISTRO_JA_EXISTE. */
-	private static final String REGISTRO_JA_EXISTE = "validacao.carteira.existente";
+	private static final String REGISTRO_JA_EXISTE = "validacao.carteira.ja.existe";
 
 	/** Atributo dao. */
 	@Inject
@@ -52,7 +53,7 @@ public class ManterCarteiraService extends Service<Carteira> implements ManterCa
 	 *
 	 * @see br.com.coffeework.negocio.service.Service#salvar(br.com.coffeework.modelo.entidade.Entidade)
 	 */
-	@Transactional
+	@Transacional
 	@Override
 	public void salvar(final Carteira carteira) throws NegocioException {
 
@@ -94,10 +95,28 @@ public class ManterCarteiraService extends Service<Carteira> implements ManterCa
 	 *
 	 * {@inheritDoc}
 	 *
-	 * @see br.com.coffeework.negocio.service.facade.ManterCarteiraServiceFacade#consultarTodosUsuarios()
+	 * @see br.com.coffeework.negocio.service.facade.ManterCarteiraServiceFacade#listarUsuariosSemCarteira()
 	 */
 	@Override
-	public Collection<Usuario> consultarTodosUsuarios() {
+	public Collection<Usuario> listarUsuariosSemCarteira() {
+
+		final Collection<Usuario> colecaoUsuario = this.getUsuarioDAO().listar();
+
+		final Collection<Usuario> colecaoUsuarioSemCarteira = new HashSet<Usuario>(0);
+
+		for (final Usuario usuario : colecaoUsuario) {
+
+			if (usuario.getCarteira() == null) {
+
+				colecaoUsuarioSemCarteira.add(usuario);
+			}
+		}
+
+		return colecaoUsuarioSemCarteira;
+	}
+
+	@Override
+	public Collection<Usuario> listarTodosUsuarios() {
 
 		return this.getUsuarioDAO().listar();
 	}

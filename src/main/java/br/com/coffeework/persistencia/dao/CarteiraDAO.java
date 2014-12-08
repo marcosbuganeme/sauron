@@ -20,14 +20,14 @@ import br.com.coffeework.modelo.entidade.Carteira;
 public interface CarteiraDAO extends DAO<Carteira> {
 
 	/**
-	 * Método responsável por obter uma carteira por um determinado usuário.
+	 * Método responsável por obter uma carteira para um determinado usuário.
 	 *
 	 * @author marcosbuganeme
 	 *
 	 * @param idUsuario
 	 *            - identificador do registro que será filtrado.
 	 * 
-	 * @return <i>registro da carteira</i>
+	 * @return <i>registro da carteira</i>.
 	 */
-	public Carteira obterCarteiraPorUsuario(final Long idUsuario);
+	Carteira obterCarteiraPorUsuario(final Long idUsuario);
 }

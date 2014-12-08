@@ -38,6 +38,9 @@ public class ManterUsuarioController extends ManutencaoController<Usuario> {
 	/** Constante MSG_NAO_PODE_REMOVER_USUARIO_LOGADO. */
 	private static final String MSG_NAO_PODE_REMOVER_USUARIO_LOGADO = "validacao.remover.usuario.logado";
 
+	/** Constante MSG_NAO_PODE_REMOVER_COM_CARTEIRA. */
+	private static final String MSG_NAO_PODE_REMOVER_COM_CARTEIRA = "validacao.remover.usuario.carteira.vinculada";
+
 	/** Atributo formulario. */
 	@Inject
 	private ManterUsuarioFormulario formulario;
@@ -70,9 +73,15 @@ public class ManterUsuarioController extends ManutencaoController<Usuario> {
 
 		final UsuarioSistema usuarioLogado = this.usuarioLogadoController.obterUsuarioLogado();
 
+		final boolean isPossuiCarteira = this.getService().isUsuarioPossuiCarteira(this.getFormulario().getEntidade().getIdentificador());
+
 		if (this.getService().isUsuarioLogadoIgualUsuarioRemovido(usuarioLogado, this.getFormulario().getEntidade())) {
 
 			UtilitarioJSF.addMensagemError(this.getMessage(ManterUsuarioController.MSG_NAO_PODE_REMOVER_USUARIO_LOGADO));
+
+		} else if (isPossuiCarteira) {
+
+			UtilitarioJSF.addMensagemError(this.getMessage(ManterUsuarioController.MSG_NAO_PODE_REMOVER_COM_CARTEIRA));
 
 		} else {
 

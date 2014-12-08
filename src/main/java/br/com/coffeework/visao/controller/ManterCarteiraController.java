@@ -54,6 +54,18 @@ public class ManterCarteiraController extends ManutencaoController<Carteira> {
 	}
 
 	/**
+	 * Método responsável por listar todos os usuários.
+	 *
+	 * @author marcosbuganeme
+	 *
+	 * @return <i>coleção com todos os usuários</i>.
+	 */
+	public Collection<Usuario> preencheComboBoxUsuarioEditar() {
+
+		return this.getFormulario().getColecaousuariosComboBoxEditar();
+	}
+
+	/**
 	 * Descrição Padrão: <br>
 	 * <br>
 	 *
@@ -64,7 +76,9 @@ public class ManterCarteiraController extends ManutencaoController<Carteira> {
 	@Override
 	public void iniciarDados() {
 
-		this.getFormulario().setColecaoUsuariosComboBox(this.getService().consultarTodosUsuarios());
+		this.getFormulario().setColecaoUsuariosComboBox(this.getService().listarUsuariosSemCarteira());
+
+		this.getFormulario().setColecaousuariosComboBoxEditar(this.getService().listarTodosUsuarios());
 	}
 
 	/**
@@ -92,7 +106,7 @@ public class ManterCarteiraController extends ManutencaoController<Carteira> {
 	@Override
 	public String abreIniciar() {
 
-		return "/admin/carteira/inicial";
+		return "/restrito/carteira/inicial";
 	}
 
 	/**
@@ -120,7 +134,7 @@ public class ManterCarteiraController extends ManutencaoController<Carteira> {
 	@Override
 	public String abreDetalhar() {
 
-		return "/admin/carteira/detalhar";
+		return "/restrito/carteira/detalhar";
 	}
 
 	/**

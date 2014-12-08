@@ -1,5 +1,6 @@
 package br.com.coffeework.negocio.service;
 
+import java.io.Serializable;
 import java.util.Collection;
 
 import javax.inject.Inject;
@@ -8,6 +9,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import br.com.coffeework.exception.NegocioException;
 import br.com.coffeework.exception.RegistroJaExisteException;
+import br.com.coffeework.exception.ValidacaoException;
 import br.com.coffeework.modelo.entidade.Permissao;
 import br.com.coffeework.modelo.entidade.Usuario;
 import br.com.coffeework.negocio.service.facade.ManterUsuarioServiceFacade;
@@ -16,6 +18,7 @@ import br.com.coffeework.persistencia.dao.UsuarioDAO;
 import br.com.coffeework.springsecurity.UsuarioSistema;
 import br.com.coffeework.util.criptografia.UtilCriptografia;
 import br.com.coffeework.util.jpa.Transacional;
+import br.com.coffeework.util.pattern.UtilCPF;
 
 /**
  * <p>
@@ -42,6 +45,9 @@ public class ManterUsuarioService extends Service<Usuario> implements ManterUsua
 
 	/** Constante REGISTRO_DE_CPF_JA_EXISTE. */
 	private static final String REGISTRO_DE_CPF_JA_EXISTE = "validacao.usuario.cpf.existe";
+
+	/** Constante CPF_INVALIDO. */
+	private static final String CPF_INVALIDO = "validacao.cpf.invalido";
 
 	/** Constante MSG_USUARIO_VINCULO_PERMISSAO. */
 	private static final String MSG_USUARIO_VINCULO_PERMISSAO = "validacao.usuario.vinculo.permissao";
@@ -76,6 +82,11 @@ public class ManterUsuarioService extends Service<Usuario> implements ManterUsua
 			if (this.isCPFJaExiste(usuario)) {
 
 				throw new RegistroJaExisteException(ManterUsuarioService.REGISTRO_DE_CPF_JA_EXISTE);
+			}
+
+			if (!UtilCPF.validaCPF(usuario.getCpf())) {
+
+				throw new ValidacaoException(ManterUsuarioService.CPF_INVALIDO);
 			}
 
 			final String senhaCriptografada = UtilCriptografia.obterStringMD5(usuario.getSenha());
@@ -232,6 +243,20 @@ public class ManterUsuarioService extends Service<Usuario> implements ManterUsua
 	private final PermissaoDAO getPermissaoDAO() {
 
 		return this.permissaoDAO;
+	}
+
+	/**
+	 * Descrição Padrão: <br>
+	 * <br>
+	 *
+	 * {@inheritDoc}
+	 *
+	 * @see br.com.coffeework.negocio.service.facade.ManterUsuarioServiceFacade#isUsuarioPossuiCarteira(java.lang.Long)
+	 */
+	@Override
+	public boolean isUsuarioPossuiCarteira(final Serializable idUsuario) {
+
+		return this.getDao().isUsuarioPossuiCarteira(idUsuario);
 	}
 
 }

@@ -1,5 +1,7 @@
 package br.com.coffeework.persistencia.dao;
 
+import java.io.Serializable;
+
 import br.com.coffeework.modelo.entidade.Transacao;
 
 /**
@@ -19,4 +21,15 @@ import br.com.coffeework.modelo.entidade.Transacao;
  */
 public interface TransacaoDAO extends DAO<Transacao> {
 
+	/**
+	 * Método responsável por obter carteira e bitcoin por transação.
+	 *
+	 * @author marcosbuganeme
+	 *
+	 * @param idBitcoin
+	 *            - filtro de bitcoin.
+	 * 
+	 * @return <i>transação</i>
+	 */
+	Transacao listarBitcoinNaoComercializados(final Serializable idBitcoin);
 }

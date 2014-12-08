@@ -3,7 +3,11 @@ package br.com.coffeework.persistencia.dao.impl;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.Criteria;
+
 import br.com.coffeework.modelo.entidade.BitCoin;
+import br.com.coffeework.modelo.enuns.EnumStatus;
 import br.com.coffeework.persistencia.dao.BitcoinDAO;
 
 /**
@@ -29,6 +33,27 @@ public class BitcoinHibernateDAO extends HibernateDAO<BitCoin> implements Bitcoi
 	/** Atributo manager. */
 	@Inject
 	private EntityManager manager;
+
+	@Override
+	public boolean isBitcoinPossuiTransacao(final Long idBitcoin) {
+
+		final Criteria criteria = this.obterCriteria();
+
+		criteria.add(Restrictions.eq("status", EnumStatus.ATIVO));
+
+		if (idBitcoin != null) {
+
+			criteria.add(Restrictions.eq("id", idBitcoin));
+		}
+
+		criteria.createAlias("transacao", "t");
+
+		criteria.add(Restrictions.eq("t.bitcoin.id", idBitcoin));
+
+		final int quantidadeRegistros = (int) criteria.uniqueResult();
+
+		return quantidadeRegistros > 0 ? true : false;
+	}
 
 	/**
 	 * Descrição Padrão: <br>

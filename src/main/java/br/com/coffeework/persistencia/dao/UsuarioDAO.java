@@ -1,6 +1,6 @@
 package br.com.coffeework.persistencia.dao;
 
-import java.util.Collection;
+import java.io.Serializable;
 
 import br.com.coffeework.modelo.entidade.Usuario;
 
@@ -44,4 +44,16 @@ public interface UsuarioDAO extends DAO<Usuario> {
 	 * @return <i>usuário pesquisado</i>.
 	 */
 	Usuario obterUsuarioPorCPF(final String cpf);
+
+	/**
+	 * Método responsável por obter a carteira do usuário através de seu identificador.
+	 *
+	 * @author marcosbuganeme
+	 *
+	 * @param idUsuario
+	 *            - id do usuário.
+	 * 
+	 * @return <i>True, se o usuário possuir uma carteira</i>.
+	 */
+	boolean isUsuarioPossuiCarteira(final Serializable idUsuario);
 }

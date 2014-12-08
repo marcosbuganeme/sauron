@@ -19,4 +19,15 @@ import br.com.coffeework.modelo.entidade.BitCoin;
  */
 public interface ManterBitcoinServiceFacade extends ServiceFacade<BitCoin> {
 
+	/**
+	 * Método responsável por verificar se um bitcoin possui transacao.
+	 *
+	 * @author marcosbuganeme
+	 *
+	 * @param idBitcoin
+	 *            - filtro da consulta.
+	 * 
+	 * @return <i>True, se o bitcoin participa de uma transação</i>.
+	 */
+	boolean isBitcoinPossuiTransacao(final Long idBitcoin);
 }

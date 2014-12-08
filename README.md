@@ -2,7 +2,7 @@ sauron
 ======
 
 SGB - Sistema Gerenciador de Bitcoin
-Software criado para simular uma transação de bitcoin, feito em java.
+Software criado para simular transações de bitcoin, desenvolvido em java.
 
 Ferramentas utilizadas no processo de desenvolvimento do software
 

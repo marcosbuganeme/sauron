@@ -1,6 +1,5 @@
 package br.com.coffeework.modelo.entidade;
 
-import java.math.BigDecimal;
 import java.util.Collection;
 
 import javax.persistence.Column;
@@ -46,13 +45,27 @@ public class Carteira extends EntidadeSauron {
 	/** Atributo saldo. */
 	@NotNull
 	@Column(name = "saldo", nullable = false)
-	private BigDecimal saldo;
+	private Double saldo;
 
 	/**
 	 * Responsável pela criação de novas instâncias desta classe.
 	 */
 	public Carteira() {
 
+	}
+
+	/**
+	 * Responsável pela criação de novas instâncias desta classe.
+	 * 
+	 * @param usuario
+	 * 
+	 * @param saldo
+	 */
+	public Carteira( final Usuario usuario, final Double saldo ) {
+
+		this.usuario = usuario;
+
+		this.saldo = saldo;
 	}
 
 	/**
@@ -98,9 +111,9 @@ public class Carteira extends EntidadeSauron {
 	/**
 	 * Retorna o valor do atributo <code>saldo</code>
 	 *
-	 * @return <code>BigDecimal</code>
+	 * @return <code>Double</code>
 	 */
-	public BigDecimal getSaldo() {
+	public Double getSaldo() {
 
 		return this.saldo;
 	}
@@ -110,7 +123,7 @@ public class Carteira extends EntidadeSauron {
 	 *
 	 * @param saldo
 	 */
-	public void setSaldo(final BigDecimal saldo) {
+	public void setSaldo(final Double saldo) {
 
 		this.saldo = saldo;
 	}

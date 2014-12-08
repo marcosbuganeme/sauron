@@ -1,6 +1,7 @@
 package br.com.coffeework.negocio.service;
 
 import java.util.Collection;
+import java.util.HashSet;
 
 import javax.inject.Inject;
 
@@ -64,12 +65,24 @@ public class ManterTransacaoService extends Service<Transacao> implements Manter
 	 *
 	 * {@inheritDoc}
 	 *
-	 * @see br.com.coffeework.negocio.service.facade.ManterTransacaoServiceFacade#obterTodosBitcoins()
+	 * @see br.com.coffeework.negocio.service.facade.ManterTransacaoServiceFacade#listarBitcoinNaoComercializado()
 	 */
 	@Override
-	public Collection<BitCoin> obterTodosBitcoins() {
+	public Collection<BitCoin> listarBitcoinNaoComercializado() {
 
-		return this.getBitcoinDAO().listar();
+		final Collection<BitCoin> colecaoBitcoin = this.getBitcoinDAO().listar();
+
+		final Collection<BitCoin> colecaoBitcoinNaoComercializados = new HashSet<BitCoin>(0);
+
+		for (final BitCoin bitCoin : colecaoBitcoin) {
+
+			if (bitCoin.getTransacao() == null) {
+
+				colecaoBitcoinNaoComercializados.add(bitCoin);
+			}
+		}
+
+		return colecaoBitcoinNaoComercializados;
 	}
 
 	/**

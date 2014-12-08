@@ -44,15 +44,15 @@
 						rowsPerPageLabel="#{msgs['datatable.label.rows']} :" rowsPerPageTemplate="10, 15, 30, 50"
 						emptyMessage="#{msgs['datatable.mensagem.vazia']}" styleClass="table table-hover" >
 
-						<p:column headerText="#{msgs['label.id']}" width="10%">
-							<span>#{bitcoin.identificador}</span>
+						<p:column headerText="#{msgs['label.status']}" width="10%">
+							<h:graphicImage library="img" name="transacao_#{bitcoin.comercializado}.png" />
 						</p:column>
 
-						<p:column headerText="#{msgs['bitcoin.label.volume']}" width="30%" >
+						<p:column headerText="#{msgs['bitcoin.label.volume']}" width="30%" sortBy="#{bitcoin.volume}">
 							<span>#{bitcoin.volume}</span>
 						</p:column>
 
-						<p:column headerText="#{msgs['bitcoin.label.valor']}" width="20%">
+						<p:column headerText="#{msgs['bitcoin.label.valor']}" width="20%" sortBy="#{bitcoin.preco}">
 							<span>#{bitcoin.preco}</span>
 						</p:column>
 
