@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 
+import br.com.coffeework.modelo.entidade.Carteira;
 import br.com.coffeework.modelo.entidade.Transacao;
 import br.com.coffeework.modelo.enuns.EnumStatus;
 import br.com.coffeework.persistencia.dao.TransacaoDAO;
@@ -51,6 +52,8 @@ public class TransacaoHibernateDAO extends HibernateDAO<Transacao> implements Tr
 
 		final Criteria criteria = this.obterCriteria();
 
+		criteria.add(Restrictions.eq("status", EnumStatus.ATIVO));
+
 		if (idBitcoin != null) {
 
 			criteria.createAlias("bitcoin", "b");
@@ -59,6 +62,42 @@ public class TransacaoHibernateDAO extends HibernateDAO<Transacao> implements Tr
 		}
 
 		return (Transacao) criteria.uniqueResult();
+	}
+
+	@Override
+	public boolean isCarteiraPossuiTransacao(final Serializable idCarteira) {
+
+		final Criteria criteria = this.obterCriteria();
+
+		criteria.add(Restrictions.eq("status", EnumStatus.ATIVO));
+
+		if (idCarteira != null) {
+
+			criteria.createAlias("carteira", "c");
+
+			criteria.add(Restrictions.eq("c.id", idCarteira));
+		}
+
+		final Collection<Carteira> colecaoCarteiras = criteria.list();
+
+		return colecaoCarteiras.size() > 0 ? true : false;
+	}
+
+	@Override
+	public boolean isBitcoinComercializado(final Serializable idBitcoin) {
+
+		final Criteria criteria = this.obterCriteria();
+
+		criteria.add(Restrictions.eq("status", EnumStatus.ATIVO));
+
+		if (idBitcoin != null) {
+
+			criteria.createAlias("bitCoin", "b");
+
+			criteria.add(Restrictions.eq("b.id", idBitcoin));
+		}
+
+		return criteria.uniqueResult() != null ? true : false;
 	}
 
 	/**

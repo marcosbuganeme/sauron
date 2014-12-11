@@ -7,10 +7,12 @@ import javax.inject.Inject;
 
 import br.com.coffeework.exception.NegocioException;
 import br.com.coffeework.exception.RegistroJaExisteException;
+import br.com.coffeework.exception.ValidacaoException;
 import br.com.coffeework.modelo.entidade.Carteira;
 import br.com.coffeework.modelo.entidade.Usuario;
 import br.com.coffeework.negocio.service.facade.ManterCarteiraServiceFacade;
 import br.com.coffeework.persistencia.dao.CarteiraDAO;
+import br.com.coffeework.persistencia.dao.TransacaoDAO;
 import br.com.coffeework.persistencia.dao.UsuarioDAO;
 import br.com.coffeework.util.jpa.Transacional;
 
@@ -37,6 +39,9 @@ public class ManterCarteiraService extends Service<Carteira> implements ManterCa
 	/** Constante REGISTRO_JA_EXISTE. */
 	private static final String REGISTRO_JA_EXISTE = "validacao.carteira.ja.existe";
 
+	/** Constante CARTEIRA_POSSUI_TRANSACAO. */
+	private static final String CARTEIRA_POSSUI_TRANSACAO = "validacao.carteira.possui.transacao";
+
 	/** Atributo dao. */
 	@Inject
 	private CarteiraDAO dao;
@@ -44,6 +49,10 @@ public class ManterCarteiraService extends Service<Carteira> implements ManterCa
 	/** Atributo usuarioDAO. */
 	@Inject
 	private UsuarioDAO usuarioDAO;
+
+	/** Atributo transacaoDAO. */
+	@Inject
+	private TransacaoDAO transacaoDAO;
 
 	/**
 	 * Descrição Padrão: <br>
@@ -65,6 +74,33 @@ public class ManterCarteiraService extends Service<Carteira> implements ManterCa
 			}
 
 			this.getDao().salvar(carteira);
+		}
+	}
+
+	/**
+	 * Descrição Padrão: <br>
+	 * <br>
+	 *
+	 * {@inheritDoc}
+	 *
+	 * @see br.com.coffeework.negocio.service.Service#remover(br.com.coffeework.modelo.entidade.Entidade)
+	 */
+	@Transacional
+	@Override
+	public void remover(final Carteira carteira) throws NegocioException {
+
+		final boolean isCarteiraPossuiTransacao = this.getTransacaoDAO().isCarteiraPossuiTransacao(carteira.getIdentificador());
+
+		if (isCarteiraPossuiTransacao) {
+
+			throw new ValidacaoException(ManterCarteiraService.CARTEIRA_POSSUI_TRANSACAO);
+		}
+
+		final Carteira carteiraObtida = this.obterPorId(carteira.getIdentificador());
+
+		if (carteiraObtida != null) {
+
+			this.getDao().remover(carteiraObtida);
 		}
 	}
 
@@ -140,9 +176,19 @@ public class ManterCarteiraService extends Service<Carteira> implements ManterCa
 	 *
 	 * @return <code>UsuarioDAO</code>
 	 */
-	public UsuarioDAO getUsuarioDAO() {
+	protected UsuarioDAO getUsuarioDAO() {
 
 		return this.usuarioDAO;
+	}
+
+	/**
+	 * Retorna o valor do atributo <code>transacaoDAO</code>
+	 *
+	 * @return <code>TransacaoDAO</code>
+	 */
+	protected TransacaoDAO getTransacaoDAO() {
+
+		return this.transacaoDAO;
 	}
 
 }

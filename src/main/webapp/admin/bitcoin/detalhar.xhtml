@@ -59,7 +59,9 @@
 						</p:column>
 
 						<p:column headerText="#{msgs['bitcoin.label.valor']}" width="20%" sortBy="#{bitcoin.preco}">
-							<span>#{bitcoin.preco}</span>
+							<h:outputText value="R$ #{bitcoin.preco}">
+								<f:convertNumber currencySymbol="R$" locale="pt_BR" minFractionDigits="2" />
+							</h:outputText>
 						</p:column>
 
 						<p:column width="10%">

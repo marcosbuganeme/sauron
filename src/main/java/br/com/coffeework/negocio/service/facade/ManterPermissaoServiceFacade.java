@@ -42,4 +42,16 @@ public interface ManterPermissaoServiceFacade extends ServiceFacade<Permissao> {
 	 * @return <i>True, se existir usuário vinculado com permissão de administrador</i>.
 	 */
 	boolean isUsuarioPermissaoAdministradorExistente(final Collection<Permissao> colecaoPermissoes);
+
+	/**
+	 * Método responsável por verificar se o usuário possui a permissão de ADMINISTRADOR vinculada a seu perfil.
+	 *
+	 * @author marcosbuganeme
+	 *
+	 * @param colecaoPermissoes
+	 *            - coleção de permissões que serão verificadas.
+	 * 
+	 * @return <i>True, se existir usuário vinculado com permissão de usuário</i>.
+	 */
+	public boolean isUsuarioPermissaoUsuarioExistente(final Collection<Permissao> colecaoPermissoes);
 }

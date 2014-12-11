@@ -95,7 +95,7 @@
 					<div class="col-xs-8">
 						<h:selectOneMenu id="comboBoxUsuarioEditar" converter="omnifaces.SelectItemsConverter"
 							value="#{manterCarteiraController.formulario.entidade.usuario}"
-							style="width: 100% !important;">
+							styleClass="form-control">
 
 							<f:selectItem itemLabel="#{msgs['combobox.selecionaritens']}" noSelectionOption="true" />
 							<f:selectItems value="#{manterCarteiraController.preencheComboBoxUsuarioEditar()}" var="usuario" 

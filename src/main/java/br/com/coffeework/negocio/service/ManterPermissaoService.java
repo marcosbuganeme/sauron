@@ -37,6 +37,9 @@ public class ManterPermissaoService extends Service<Permissao> implements Manter
 	/** Constante MSG_USUARIO_COM_PERMISSAO_ADMINISTRADOR. */
 	private static final String MSG_USUARIO_COM_PERMISSAO_ADMINISTRADOR = "validacao.permissao.usuario.administrador";
 
+	/** Atributo MSG_USUARIO_JA_POSSUI_ESSA_PERMISSAO. */
+	private static final String MSG_USUARIO_JA_POSSUI_ESSA_PERMISSAO = "validacao.usuario.permissao.jaexiste";
+
 	/** Atributo dao. */
 	@Inject
 	private PermissaoDAO dao;
@@ -45,14 +48,25 @@ public class ManterPermissaoService extends Service<Permissao> implements Manter
 	@Inject
 	private UsuarioDAO usuarioDAO;
 
-	/**
-	 * Descrição Padrão: <br>
-	 * <br>
-	 *
-	 * {@inheritDoc}
-	 *
-	 * @see br.com.coffeework.negocio.service.Service#remover(br.com.coffeework.modelo.entidade.Entidade)
-	 */
+	@Transacional
+	@Override
+	public void salvar(final Permissao permissao) throws NegocioException {
+
+		final Collection<Permissao> colecaoPermissoes = this.getDao().obterPermissaoUsuario((Long) permissao.getUsuario().getIdentificador());
+
+		if (this.isUsuarioPermissaoAdministradorExistente(colecaoPermissoes)) {
+
+			throw new ValidacaoException(ManterPermissaoService.MSG_USUARIO_JA_POSSUI_ESSA_PERMISSAO);
+		}
+
+		if (this.isUsuarioPermissaoUsuarioExistente(colecaoPermissoes)) {
+
+			throw new ValidacaoException(ManterPermissaoService.MSG_USUARIO_JA_POSSUI_ESSA_PERMISSAO);
+		}
+
+		super.salvar(permissao);
+	}
+
 	@Transacional
 	@Override
 	public void remover(final Permissao permissao) throws NegocioException {
@@ -67,14 +81,6 @@ public class ManterPermissaoService extends Service<Permissao> implements Manter
 		super.remover(permissao);
 	}
 
-	/**
-	 * Descrição Padrão: <br>
-	 * <br>
-	 *
-	 * {@inheritDoc}
-	 *
-	 * @see br.com.coffeework.negocio.service.facade.ManterPermissaoServiceFacade#isUsuarioPermissaoAdministradorExistente(java.util.Collection)
-	 */
 	@Override
 	public boolean isUsuarioPermissaoAdministradorExistente(final Collection<Permissao> colecaoPermissoes) {
 
@@ -89,28 +95,25 @@ public class ManterPermissaoService extends Service<Permissao> implements Manter
 		return false;
 	}
 
-	/**
-	 * Descrição Padrão: <br>
-	 * <br>
-	 *
-	 * {@inheritDoc}
-	 *
-	 * @see br.com.coffeework.negocio.service.facade.ManterPermissaoServiceFacade#consultarTodosUsuarios()
-	 */
+	public boolean isUsuarioPermissaoUsuarioExistente(final Collection<Permissao> colecaoPermissoes) {
+
+		for (final Permissao permissao : colecaoPermissoes) {
+
+			if (permissao.getPermissao().equals(EnumPermissao.USUARIO)) {
+
+				return true;
+			}
+		}
+
+		return false;
+	}
+
 	@Override
 	public Collection<Usuario> consultarTodosUsuarios() {
 
 		return this.getUsuarioDAO().listar();
 	}
 
-	/**
-	 * Descrição Padrão: <br>
-	 * <br>
-	 *
-	 * {@inheritDoc}
-	 *
-	 * @see br.com.coffeework.negocio.service.Service#getDao()
-	 */
 	@Override
 	protected PermissaoDAO getDao() {
 

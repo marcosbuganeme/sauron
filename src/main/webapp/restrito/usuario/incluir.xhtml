@@ -116,7 +116,7 @@
 					</div>
 
 					<div class="col-xs-8">
-						<p:inputText id="txtEmailAlterar" value="#{manterUsuarioController.formulario.entidade.email}"
+						<p:inputText id="txtEmailAlterar" value="#{manterUsuarioController.formulario.entidade.email}" 
 							pt:placeholder="#{msgs['usuario.placeholder.email']}"
 							maxlength="80" style="width: 100%;" readonly="true" />
 					</div>
@@ -126,7 +126,7 @@
 			<p:spacer height="5px" />
 
 			<div class="row">
-				<div class="col-xs-12">
+				<div class="col-xs-12" jsf:rendered="#{manterUsuarioController.formulario.entidade.novoRegistro}">
 					<div class="col-xs-4">
 						<p:outputLabel value="#{msgs['usuario.label.cpf']}" for="txtCPF" />
 						<span style="color: red !important">*</span>
@@ -147,6 +147,21 @@
 
 						<div class="col-xs-4" />
 					</div>
+				</div>
+				
+				<div class="col-xs-12" jsf:rendered="#{!manterUsuarioController.formulario.entidade.novoRegistro}">
+					<div class="col-xs-4">
+						<p:outputLabel value="#{msgs['usuario.label.cpf']}" for="txtCPFAlterar" />
+						<span style="color: red !important">*</span>
+					</div>
+
+					<div class="col-xs-2">
+						<p:inputText id="txtCPFAlterar" value="#{manterUsuarioController.formulario.entidade.cpf}"
+							pt:placeholder="#{msgs['usuario.placeholder.cpf']}" readonly="true"
+							maxlength="14" style="width: 100%;" />
+					</div>
+
+					<div class="colxs-6" />
 				</div>
 			</div>
 

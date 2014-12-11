@@ -51,7 +51,9 @@
 						</p:column>
 
 						<p:column headerText="#{msgs['carteira.label.saldo']}" width="20%" sortBy="#{carteira.saldo}">
-							<span>#{carteira.saldo}</span>
+							<h:outputText value="R$ #{carteira.saldo}">
+								<f:convertNumber currencySymbol="R$" locale="pt_BR" minFractionDigits="2"/>
+							</h:outputText>
 						</p:column>
 
 						<p:column width="10%">

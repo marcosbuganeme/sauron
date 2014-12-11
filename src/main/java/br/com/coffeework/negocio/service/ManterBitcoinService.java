@@ -7,6 +7,7 @@ import br.com.coffeework.exception.ValidacaoException;
 import br.com.coffeework.modelo.entidade.BitCoin;
 import br.com.coffeework.negocio.service.facade.ManterBitcoinServiceFacade;
 import br.com.coffeework.persistencia.dao.BitcoinDAO;
+import br.com.coffeework.persistencia.dao.TransacaoDAO;
 import br.com.coffeework.util.jpa.Transacional;
 
 /**
@@ -30,11 +31,15 @@ public class ManterBitcoinService extends Service<BitCoin> implements ManterBitc
 	private static final long serialVersionUID = -2879541538734689834L;
 
 	/** Constante VALIDACA_BITCOIN_TRANSACAO_ATIVA. */
-	private static final String VALIDACA_BITCOIN_TRANSACAO_ATIVA = "bitcoin.possui.transacao.ativa";
+	private static final String VALIDACA_BITCOIN_TRANSACAO_ATIVA = "validacao.remover.bitcoin.com.transacao.ativa";
 
 	/** Atributo dao. */
 	@Inject
 	private BitcoinDAO dao;
+
+	/** Atributo transacaoDAO. */
+	@Inject
+	private TransacaoDAO transacaoDAO;
 
 	@Override
 	public boolean isBitcoinPossuiTransacao(final Long idBitcoin) {
@@ -71,7 +76,7 @@ public class ManterBitcoinService extends Service<BitCoin> implements ManterBitc
 	@Override
 	public void remover(final BitCoin entidade) throws NegocioException {
 
-		if (this.isBitcoinPossuiTransacao((Long) entidade.getIdentificador())) {
+		if (this.getTransacaoDAO().isBitcoinComercializado(entidade.getIdentificador())) {
 
 			throw new ValidacaoException(ManterBitcoinService.VALIDACA_BITCOIN_TRANSACAO_ATIVA);
 		}
@@ -92,6 +97,16 @@ public class ManterBitcoinService extends Service<BitCoin> implements ManterBitc
 	protected BitcoinDAO getDao() {
 
 		return this.dao;
+	}
+
+	/**
+	 * Retorna o valor do atributo <code>transacaoDAO</code>
+	 *
+	 * @return <code>TransacaoDAO</code>
+	 */
+	protected TransacaoDAO getTransacaoDAO() {
+
+		return this.transacaoDAO;
 	}
 
 }
