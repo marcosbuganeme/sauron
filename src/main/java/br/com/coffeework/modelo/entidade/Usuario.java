@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -38,7 +39,7 @@ public class Usuario extends EntidadeSauron {
 	private Collection<Permissao> colecaoPermissoes;
 
 	/** Atributo carteira. */
-	@OneToOne(mappedBy = "usuario")
+	@OneToOne(mappedBy = "usuario", fetch = FetchType.EAGER)
 	private Carteira carteira;
 
 	/** Atributo nome. */

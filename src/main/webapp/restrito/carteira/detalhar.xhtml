@@ -35,10 +35,11 @@
 
 			<h:form id="frm">
 				<div class="table-responsive">
-					<p:dataTable id="dtPermissao" value="#{manterCarteiraController.formulario.colecaoEntidades}"
+					<p:dataTable id="dtCarteira" value="#{manterCarteiraController.formulario.colecaoEntidades}"
 						var="carteira" paginator="true" paginatorPosition="bottom" paginatorAlwaysVisible="false"
 						rows="10" rowsPerPageLabel="#{msgs['datatable.label.rows']} :" rowsPerPageTemplate="10, 15, 30, 50"
-						emptyMessage="#{msgs['datatable.mensagem.vazia']}" styleClass="table table-hover" >
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+						emptyMessage="#{msgs['datatable.mensagem.vazia']}" styleClass="table table-hover">
 
 						<p:column headerText="#{msgs['label.datacadastro']}" width="10%" sortBy="#{carteira.dataCadastro}">
 							<h:outputText value="#{carteira.dataCadastro}">
@@ -55,14 +56,14 @@
 								<f:convertNumber currencySymbol="R$" locale="pt_BR" minFractionDigits="2"/>
 							</h:outputText>
 						</p:column>
-
+						
 						<p:column width="10%">
 							<h:link id="btnEditar" title="#{msgs['link.editar.title']}" outcome="/restrito/carteira/incluir">
 								<f:param name="carteira" value="#{carteira.identificador}" />
 								<h:graphicImage library="img" name="btnEditar_preto-20x20.png" />
 							</h:link>
 
-							<p:spacer width="20px" />
+							<p:spacer width="2%" />
 
 							<p:commandLink id="btnRemover" title="#{msgs['link.excluir.title']}" oncomplete="PF('dlgExcluir').show();" 
 								process="@this" update="@form">

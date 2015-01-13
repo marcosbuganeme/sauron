@@ -38,6 +38,9 @@ public class ManterTransacaoFormulario extends Formulario<Transacao> {
 	/** Atributo isMostrarValorUnitarioBitcoinDaTransacao. */
 	private boolean isMostrarValorUnitarioBitcoinDaTransacao;
 
+	/** Atributo comboBoxCarteiraUsuarioLogado. */
+	private Collection<Carteira> comboBoxCarteiraUsuarioLogado;
+
 	/**
 	 * Responsável pela criação de novas instâncias desta classe.
 	 */
@@ -125,4 +128,23 @@ public class ManterTransacaoFormulario extends Formulario<Transacao> {
 		this.isMostrarValorUnitarioBitcoinDaTransacao = isMostrarValorUnitarioBitcoinDaTransacao;
 	}
 
+	/**
+	 * Retorna o valor do atributo <code>comboBoxCarteiraUsuarioLogado</code>
+	 *
+	 * @return <code>Collection<Carteira></code>
+	 */
+	public Collection<Carteira> getComboBoxCarteiraUsuarioLogado() {
+
+		return this.comboBoxCarteiraUsuarioLogado;
+	}
+
+	/**
+	 * Define o valor do atributo <code>comboBoxCarteiraUsuarioLogado</code>.
+	 *
+	 * @param comboBoxCarteiraUsuarioLogado
+	 */
+	public void setComboBoxCarteiraUsuarioLogado(final Collection<Carteira> comboBoxCarteiraUsuarioLogado) {
+
+		this.comboBoxCarteiraUsuarioLogado = comboBoxCarteiraUsuarioLogado;
+	}
 }

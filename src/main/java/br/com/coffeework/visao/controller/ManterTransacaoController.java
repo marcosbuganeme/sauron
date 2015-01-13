@@ -1,11 +1,15 @@
 package br.com.coffeework.visao.controller;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
 import br.com.coffeework.exception.NegocioException;
 import br.com.coffeework.modelo.entidade.BitCoin;
@@ -15,6 +19,7 @@ import br.com.coffeework.modelo.enuns.EnumTipoOperacao;
 import br.com.coffeework.negocio.service.facade.ManterBitcoinServiceFacade;
 import br.com.coffeework.negocio.service.facade.ManterCarteiraServiceFacade;
 import br.com.coffeework.negocio.service.facade.ManterTransacaoServiceFacade;
+import br.com.coffeework.springsecurity.UsuarioSistema;
 import br.com.coffeework.util.jsf.UtilitarioJSF;
 import br.com.coffeework.visao.formulario.ManterTransacaoFormulario;
 
@@ -61,6 +66,44 @@ public class ManterTransacaoController extends ManutencaoController<Transacao> {
 	/** Atributo bitcoinService. */
 	@Inject
 	private ManterBitcoinServiceFacade bitcoinService;
+
+	/**
+	 * Método responsável por obter a carteira do usuário corrente através do usuário logado.
+	 *
+	 * @author marcosbuganeme
+	 *
+	 */
+	public void obterCarteiraPorUsuario() {
+
+		UsuarioSistema usuarioSistema = null;
+
+		final UsernamePasswordAuthenticationToken user = (UsernamePasswordAuthenticationToken) FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal();
+
+		if (user != null) {
+
+			usuarioSistema = (UsuarioSistema) user.getPrincipal();
+		}
+
+		final Carteira carteiraPesquisada = this.getService().obterCarteiraPorUsuario((Long) usuarioSistema.getUsuario().getIdentificador());
+
+		final Collection<Carteira> colecaoCarteiraUsuarioLogado = new ArrayList<Carteira>(0);
+
+		colecaoCarteiraUsuarioLogado.add(carteiraPesquisada);
+
+		this.getFormulario().setComboBoxCarteiraUsuarioLogado(colecaoCarteiraUsuarioLogado);
+	}
+
+	/**
+	 * Método responsável por preencher o combo box das carteiras cadastradas no sistema que estão ativas.
+	 *
+	 * @author marcosbuganeme
+	 *
+	 * @return <i>carteira do usuário logado</i>.
+	 */
+	public Collection<Carteira> preencheComboBoxCarteiraComUsuarioLogado() {
+
+		return this.getFormulario().getComboBoxCarteiraUsuarioLogado();
+	}
 
 	/**
 	 * Método responsável por preencher o combo box das carteiras cadastradas no sistema que estão ativas.
@@ -209,6 +252,8 @@ public class ManterTransacaoController extends ManutencaoController<Transacao> {
 		this.getFormulario().setColecaoComboBoxCarteiras(this.getService().obterTodasCarteiras());
 
 		this.getFormulario().setMostrarValorUnitarioBitcoinDaTransacao(true);
+
+		this.obterCarteiraPorUsuario();
 	}
 
 	/**

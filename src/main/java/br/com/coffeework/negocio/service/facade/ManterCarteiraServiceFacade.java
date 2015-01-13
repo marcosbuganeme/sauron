@@ -23,6 +23,18 @@ import br.com.coffeework.modelo.entidade.Usuario;
 public interface ManterCarteiraServiceFacade extends ServiceFacade<Carteira> {
 
 	/**
+	 * Método responsável por obter a quantidade de bitcoins por carteira.
+	 *
+	 * @author marcosbuganeme
+	 *
+	 * @param idCarteira
+	 *            - identificador do bitcoin filtrado.
+	 * 
+	 * @return <i>quantidade de bitcoins por carteira</i>.
+	 */
+	Long obterQuantidadeBitcoinPorCarteira(final Long idCarteira);
+
+	/**
 	 * Método responsável por obter uma coleção de usuários que não tenham carteira.
 	 *
 	 * @author marcosbuganeme

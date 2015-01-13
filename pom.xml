@@ -23,15 +23,31 @@
 
 		<developer>
 
-			<id>marcosbuganeme</id>
+			<id>joaolucas</id>
 
-			<name>Marcos Olavo Silva Buganeme</name>
+			<name>JOAO LUCAS DE AZEVEDO SOUZA</name>
 
-			<email>marcos.after@gmail.com</email>
+			<organization>coffeework.unip</organization>
 
-			<timezone>-3</timezone>
+			<roles>
 
-			<organization>CoffeeWork</organization>
+				<role>Java Developer</role>
+
+				<role>Software Engineer</role>
+
+				<role>Software Architect</role>
+
+			</roles>
+
+		</developer>
+
+		<developer>
+
+			<id>wdias</id>
+
+			<name>Wanderson araujo dias</name>
+
+			<organization>coffeework.unip</organization>
 
 			<roles>
 
@@ -100,7 +116,7 @@
 
 			<id>releases</id>
 
-			<url>http://192.168.1.2:8888/nexus-2.8.1-01/content/repositories/releases</url>
+			<url>http://192.168.1.7:8888/nexus-2.8.1-01/content/repositories/releases</url>
 
 		</repository>
 
@@ -109,7 +125,7 @@
 
 			<id>snapshots</id>
 
-			<url>http://192.168.1.2:8888/nexus-2.8.1-01/content/repositories/snapshots</url>
+			<url>http://192.168.1.7:8888/nexus-2.8.1-01/content/repositories/snapshots</url>
 
 		</snapshotRepository>
 
@@ -163,7 +179,7 @@
 
 			<artifactId>primefaces</artifactId>
 
-			<version>5.0</version>
+			<version>5.1</version>
 
 			<scope>compile</scope>
 

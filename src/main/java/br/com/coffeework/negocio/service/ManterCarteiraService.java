@@ -53,15 +53,13 @@ public class ManterCarteiraService extends Service<Carteira> implements ManterCa
 	/** Atributo transacaoDAO. */
 	@Inject
 	private TransacaoDAO transacaoDAO;
+	
+	@Override
+	public Long obterQuantidadeBitcoinPorCarteira(final Long idCarteira) {
 
-	/**
-	 * Descrição Padrão: <br>
-	 * <br>
-	 *
-	 * {@inheritDoc}
-	 *
-	 * @see br.com.coffeework.negocio.service.Service#salvar(br.com.coffeework.modelo.entidade.Entidade)
-	 */
+		return this.getTransacaoDAO().obterQuantidadeBitcoinPorCarteira(idCarteira);
+	}
+
 	@Transacional
 	@Override
 	public void salvar(final Carteira carteira) throws NegocioException {
@@ -77,14 +75,6 @@ public class ManterCarteiraService extends Service<Carteira> implements ManterCa
 		}
 	}
 
-	/**
-	 * Descrição Padrão: <br>
-	 * <br>
-	 *
-	 * {@inheritDoc}
-	 *
-	 * @see br.com.coffeework.negocio.service.Service#remover(br.com.coffeework.modelo.entidade.Entidade)
-	 */
 	@Transacional
 	@Override
 	public void remover(final Carteira carteira) throws NegocioException {
@@ -104,14 +94,6 @@ public class ManterCarteiraService extends Service<Carteira> implements ManterCa
 		}
 	}
 
-	/**
-	 * Descrição Padrão: <br>
-	 * <br>
-	 *
-	 * {@inheritDoc}
-	 *
-	 * @see br.com.coffeework.negocio.service.facade.ManterCarteiraServiceFacade#isRegistroExiste(br.com.coffeework.modelo.entidade.Carteira)
-	 */
 	@Override
 	public boolean isRegistroExiste(final Carteira carteira) {
 
@@ -125,14 +107,6 @@ public class ManterCarteiraService extends Service<Carteira> implements ManterCa
 		return false;
 	}
 
-	/**
-	 * Descrição Padrão: <br>
-	 * <br>
-	 *
-	 * {@inheritDoc}
-	 *
-	 * @see br.com.coffeework.negocio.service.facade.ManterCarteiraServiceFacade#listarUsuariosSemCarteira()
-	 */
 	@Override
 	public Collection<Usuario> listarUsuariosSemCarteira() {
 
@@ -157,14 +131,6 @@ public class ManterCarteiraService extends Service<Carteira> implements ManterCa
 		return this.getUsuarioDAO().listar();
 	}
 
-	/**
-	 * Descrição Padrão: <br>
-	 * <br>
-	 *
-	 * {@inheritDoc}
-	 *
-	 * @see br.com.coffeework.negocio.service.Service#getDao()
-	 */
 	@Override
 	protected CarteiraDAO getDao() {
 

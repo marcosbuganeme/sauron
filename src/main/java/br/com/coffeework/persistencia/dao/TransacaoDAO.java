@@ -22,6 +22,18 @@ import br.com.coffeework.modelo.entidade.Transacao;
 public interface TransacaoDAO extends DAO<Transacao> {
 
 	/**
+	 * Método responsável por obter a quantidade de bitcoins por carteira.
+	 *
+	 * @author marcosbuganeme
+	 *
+	 * @param idCarteira
+	 *            - identificador da carteira.
+	 * 
+	 * @return <i>quantidade de bitcoins por carteira</i>.
+	 */
+	Long obterQuantidadeBitcoinPorCarteira(final Long idCarteira);
+
+	/**
 	 * Método responsável por verificar se o bitcoin parametrizado está contido em alguma <code>Transacao</code>.
 	 *
 	 * @author marcosbuganeme

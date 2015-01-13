@@ -65,13 +65,6 @@
 						</p:column>
 
 						<p:column width="10%">
-							<h:link id="btnEditar" title="#{msgs['link.editar.title']}" outcome="/restrito/bitcoin/incluir">
-								<f:param name="bitcoin" value="#{bitcoin.identificador}" />
-								<h:graphicImage library="img" name="btnEditar_preto-20x20.png" />
-							</h:link>
-
-							<p:spacer width="20px" />
-
 							<p:commandLink id="btnRemover" title="#{msgs['link.excluir.title']}" oncomplete="PF('dlgExcluir').show();" 
 								process="@this" update="@form">
 								<h:graphicImage library="img" name="btnRemover_preto-20x20.png" />

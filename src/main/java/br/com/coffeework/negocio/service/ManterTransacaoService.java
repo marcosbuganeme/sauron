@@ -45,28 +45,18 @@ public class ManterTransacaoService extends Service<Transacao> implements Manter
 	@Inject
 	private BitcoinDAO bitcoinDAO;
 
-	/**
-	 * Descrição Padrão: <br>
-	 * <br>
-	 *
-	 * {@inheritDoc}
-	 *
-	 * @see br.com.coffeework.negocio.service.facade.ManterTransacaoServiceFacade#obterTodasCarteiras()
-	 */
+	@Override
+	public Carteira obterCarteiraPorUsuario(final Long idUsuario) {
+
+		return this.getCarteiraDAO().obterCarteiraPorUsuario(idUsuario);
+	}
+
 	@Override
 	public Collection<Carteira> obterTodasCarteiras() {
 
 		return this.getCarteiraDAO().listar();
 	}
 
-	/**
-	 * Descrição Padrão: <br>
-	 * <br>
-	 *
-	 * {@inheritDoc}
-	 *
-	 * @see br.com.coffeework.negocio.service.facade.ManterTransacaoServiceFacade#listarBitcoinNaoComercializado()
-	 */
 	@Override
 	public Collection<BitCoin> listarBitcoinNaoComercializado() {
 
@@ -85,14 +75,6 @@ public class ManterTransacaoService extends Service<Transacao> implements Manter
 		return colecaoBitcoinNaoComercializados;
 	}
 
-	/**
-	 * Descrição Padrão: <br>
-	 * <br>
-	 *
-	 * {@inheritDoc}
-	 *
-	 * @see br.com.coffeework.negocio.service.Service#getDao()
-	 */
 	@Override
 	protected TransacaoDAO getDao() {
 

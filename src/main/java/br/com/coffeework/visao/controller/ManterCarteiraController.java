@@ -41,6 +41,11 @@ public class ManterCarteiraController extends ManutencaoController<Carteira> {
 	@Inject
 	private ManterCarteiraServiceFacade service;
 
+	public Long obterQuantidadeBitcoinPorCarteira(final Long idCarteira) {
+
+		return this.getService().obterQuantidadeBitcoinPorCarteira(idCarteira);
+	}
+
 	/**
 	 * Método responsável por obter uma colecação de todos os usuários registrados.
 	 *

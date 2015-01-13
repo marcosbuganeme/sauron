@@ -72,21 +72,43 @@
 
 				<p:spacer height="2px" />
 
-				<div class="row">
+				<div class="row" jsf:rendered="#{manterUsuarioLogadoController.administrador}">
 					<div class="col-xs-12">
 						<div class="col-xs-4">
 							<div class="form-group">
-								<p:outputLabel value="#{msgs['transacao.label.carteira']}" for="comboBoxCarteira" />
+								<p:outputLabel value="#{msgs['transacao.label.carteira']}" for="comboBoxCarteiraAdmin" />
 								<span class="color: red !important;"> *</span>
 							</div>
 						</div>
 
 						<div class="col-xs-8">
-							<h:selectOneMenu id="comboBoxCarteira" value="#{manterTransacaoController.formulario.entidade.carteira}"
+							<h:selectOneMenu id="comboBoxCarteiraAdmin" value="#{manterTransacaoController.formulario.entidade.carteira}"
 								title="#{msgs['transacao.title.combobox.carteira']}" styleClass="form-control">
 
 								<f:selectItem itemLabel="#{msgs['combobox.selecionaritens']}" noSelectionOption="true" />
 								<f:selectItems value="#{manterTransacaoController.preencheComboBoxCarteira()}" var="carteira"
+									itemLabel="#{carteira.usuario.email}" itemValue="#{carteira}" />
+
+							</h:selectOneMenu>
+						</div>
+					</div>
+				</div>
+
+				<div class="row" jsf:rendered="#{!manterUsuarioLogadoController.administrador}">
+					<div class="col-xs-12">
+						<div class="col-xs-4">
+							<div class="form-group">
+								<p:outputLabel value="#{msgs['transacao.label.carteira']}" for="comboBoxCarteiraUsuario" />
+								<span class="color: red !important;"> *</span>
+							</div>
+						</div>
+
+						<div class="col-xs-8">
+							<h:selectOneMenu id="comboBoxCarteiraUsuario" value="#{manterTransacaoController.formulario.entidade.carteira}"
+								title="#{msgs['transacao.title.combobox.carteira']}" styleClass="form-control">
+
+								<f:selectItem itemLabel="#{msgs['combobox.selecionaritens']}" noSelectionOption="true" />
+								<f:selectItems value="#{manterTransacaoController.preencheComboBoxCarteiraComUsuarioLogado()}" var="carteira"
 									itemLabel="#{carteira.usuario.email}" itemValue="#{carteira}" />
 
 							</h:selectOneMenu>

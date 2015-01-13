@@ -39,14 +39,23 @@ public class TransacaoHibernateDAO extends HibernateDAO<Transacao> implements Tr
 	@Inject
 	private EntityManager manager;
 
-	/**
-	 * Descrição Padrão: <br>
-	 * <br>
-	 *
-	 * {@inheritDoc}
-	 *
-	 * @see br.com.coffeework.persistencia.dao.TransacaoDAO#listarBitcoinNaoComercializados(java.io.Serializable, java.io.Serializable)
-	 */
+	@Override
+	public Long obterQuantidadeBitcoinPorCarteira(final Long idCarteira) {
+
+		final Criteria criteria = this.obterCriteria();
+
+		criteria.add(Restrictions.eq("status", EnumStatus.ATIVO));
+
+		if (idCarteira != null) {
+
+			criteria.createAlias("bitcoin", "b");
+
+			criteria.add(Restrictions.eq("b.id", idCarteira));
+		}
+
+		return (Long) criteria.uniqueResult();
+	}
+
 	@Override
 	public Transacao listarBitcoinNaoComercializados(final Serializable idBitcoin) {
 
@@ -100,14 +109,6 @@ public class TransacaoHibernateDAO extends HibernateDAO<Transacao> implements Tr
 		return criteria.uniqueResult() != null ? true : false;
 	}
 
-	/**
-	 * Descrição Padrão: <br>
-	 * <br>
-	 *
-	 * {@inheritDoc}
-	 *
-	 * @see br.com.coffeework.persistencia.dao.impl.HibernateDAO#listar()
-	 */
 	@Override
 	public Collection<Transacao> listar() {
 
@@ -134,5 +135,4 @@ public class TransacaoHibernateDAO extends HibernateDAO<Transacao> implements Tr
 
 		return this.manager;
 	}
-
 }

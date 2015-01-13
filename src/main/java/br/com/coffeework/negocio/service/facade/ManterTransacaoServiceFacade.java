@@ -24,6 +24,18 @@ import br.com.coffeework.modelo.entidade.Transacao;
 public interface ManterTransacaoServiceFacade extends ServiceFacade<Transacao> {
 
 	/**
+	 * Método responsável por obter uma carteira para um determinado usuário.
+	 *
+	 * @author marcosbuganeme
+	 *
+	 * @param idUsuario
+	 *            - identificador do registro que será filtrado.
+	 * 
+	 * @return <i>registro da carteira</i>.
+	 */
+	Carteira obterCarteiraPorUsuario(final Long idUsuario);
+
+	/**
 	 * Método responsável por obter todas as carteiras cadastradas do sistema.
 	 *
 	 * @author marcosbuganeme

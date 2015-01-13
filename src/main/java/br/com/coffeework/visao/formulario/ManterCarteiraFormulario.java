@@ -25,6 +25,12 @@ public class ManterCarteiraFormulario extends Formulario<Carteira> {
 	/** Atributo serialVersionUID. */
 	private static final long serialVersionUID = -4667498006303585675L;
 
+	/** Atributo email. */
+	private String email;
+
+	/** Atributo saldo. */
+	private Double saldo;
+
 	/** Atributo colecaoUsuariosComboBox. */
 	private Collection<Usuario> colecaoUsuariosComboBox;
 
@@ -69,6 +75,46 @@ public class ManterCarteiraFormulario extends Formulario<Carteira> {
 	public void setColecaousuariosComboBoxEditar(final Collection<Usuario> colecaousuariosComboBoxEditar) {
 
 		this.colecaousuariosComboBoxEditar = colecaousuariosComboBoxEditar;
+	}
+
+	/**
+	 * Retorna o valor do atributo <code>email</code>
+	 *
+	 * @return <code>String</code>
+	 */
+	public String getEmail() {
+
+		return this.email;
+	}
+
+	/**
+	 * Define o valor do atributo <code>email</code>.
+	 *
+	 * @param email
+	 */
+	public void setEmail(final String email) {
+
+		this.email = email;
+	}
+
+	/**
+	 * Retorna o valor do atributo <code>saldo</code>
+	 *
+	 * @return <code>Double</code>
+	 */
+	public Double getSaldo() {
+
+		return this.saldo;
+	}
+
+	/**
+	 * Define o valor do atributo <code>saldo</code>.
+	 *
+	 * @param saldo
+	 */
+	public void setSaldo(final Double saldo) {
+
+		this.saldo = saldo;
 	}
 
 }

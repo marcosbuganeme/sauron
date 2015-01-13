@@ -34,6 +34,7 @@ public class Carteira extends EntidadeSauron {
 	private static final long serialVersionUID = -1266465153919598041L;
 
 	/** Atributo usuario. */
+	@NotNull
 	@OneToOne(optional = false)
 	@JoinColumn(name = "id_usuario", foreignKey = @ForeignKey(name = "FK_USUARIO_CARTEIRA"))
 	private Usuario usuario;
