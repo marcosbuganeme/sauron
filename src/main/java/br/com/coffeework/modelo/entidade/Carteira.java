@@ -11,6 +11,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 /**
  * <p>
  * <b>Título:</b> Conta.java
@@ -28,6 +31,7 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(name = "carteira")
+@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Carteira extends EntidadeSauron {
 
 	/** Constante serialVersionUID. */

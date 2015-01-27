@@ -11,6 +11,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import br.com.coffeework.modelo.enuns.EnumTipoOperacao;
 
 /**
@@ -30,6 +33,7 @@ import br.com.coffeework.modelo.enuns.EnumTipoOperacao;
  */
 @Entity
 @Table(name = "transacao")
+@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Transacao extends EntidadeSauron {
 
 	/** Constante serialVersionUID. */

@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import br.com.coffeework.modelo.enuns.EnumPermissao;
@@ -32,6 +34,7 @@ import br.com.coffeework.modelo.enuns.EnumPermissao;
  */
 @Entity
 @Table(name = "permissao")
+@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Permissao extends EntidadeSauron {
 
 	/** Constante serialVersionUID. */

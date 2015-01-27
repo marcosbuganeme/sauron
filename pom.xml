@@ -108,6 +108,23 @@
 
 	</build>
 
+	<!-- Metadados do repositorio de interfaces gráficas Primefaces -->
+	<repositories>
+
+		<repository>
+
+			<id>prime-repo</id>
+
+			<name>PrimeFaces Maven Repository</name>
+
+			<url>http://repository.primefaces.org</url>
+
+			<layout>default</layout>
+
+		</repository>
+
+	</repositories>
+
 	<!-- Configuração do repositório nexus remoto para dependências de bibliotecas -->
 	<distributionManagement>
 
@@ -219,6 +236,31 @@
 			<artifactId>hibernate-entitymanager</artifactId>
 
 			<version>4.3.6.Final</version>
+
+			<scope>compile</scope>
+
+		</dependency>
+
+		<!-- Implementação de cache -->
+		<dependency>
+
+			<groupId>net.sf.ehcache</groupId>
+
+			<artifactId>ehcache-core</artifactId>
+
+			<version>2.6.10</version>
+
+			<scope>compile</scope>
+
+		</dependency>
+
+		<dependency>
+
+			<groupId>org.hibernate</groupId>
+
+			<artifactId>hibernate-ehcache</artifactId>
+
+			<version>4.3.8.Final</version>
 
 			<scope>compile</scope>
 

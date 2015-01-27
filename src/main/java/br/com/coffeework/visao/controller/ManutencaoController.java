@@ -134,7 +134,7 @@ public abstract class ManutencaoController<E extends Entidade> extends ConsultaC
 
 			UtilitarioJSF.addMensagemError(this.getMessage(negocioException.getMessage()));
 
-			ManutencaoController.LOG.error("ERRO MÉTODO REMOVER() DA CLASSE ::: " + this.getClass().getSimpleName() + ".java", negocioException.getCause());
+			ManutencaoController.LOG.error("ERRO MÉTODO REMOVER() " + this.getClass().getSimpleName() + ".java", negocioException.getCause());
 		}
 	}
 
