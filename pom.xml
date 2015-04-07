@@ -23,31 +23,11 @@
 
 		<developer>
 
-			<id>joaolucas</id>
+			<id>marcosolavo</id>
 
-			<name>JOAO LUCAS DE AZEVEDO SOUZA</name>
+			<name>marcos olavo silva buganeme</name>
 
-			<organization>coffeework.unip</organization>
-
-			<roles>
-
-				<role>Java Developer</role>
-
-				<role>Software Engineer</role>
-
-				<role>Software Architect</role>
-
-			</roles>
-
-		</developer>
-
-		<developer>
-
-			<id>wdias</id>
-
-			<name>Wanderson araujo dias</name>
-
-			<organization>coffeework.unip</organization>
+			<organization>br.com.cofeework</organization>
 
 			<roles>
 
